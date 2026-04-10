@@ -50,7 +50,6 @@ in
       github-desktop
 
       # Multimedia
-      #krita
       #inkscape
       #unstable.audacity
       unstable.libresprite
@@ -82,6 +81,7 @@ in
       #arduino-cli
       unstable.vscode
       #unstable.godot
+      ffmpeg-full
 
       # Sistema y virtualización
       #podman
@@ -112,6 +112,7 @@ in
       #winetricks
       protonup-ng
       elyWrapped
+      librewolf
 
       # Comunicación y misc
       #qbittorrent

@@ -23,6 +23,8 @@ let
     ".config/sway" = "${dotfiles}/config/sway";
     ".config/waybar" = "${dotfiles}/config/waybar";
     ".config/wal" = "${dotfiles}/config/wal";
+    ".config/albert" = "${dotfiles}/config/albert";
+    ".local/share/albert/widgetsboxmodel" = "${dotfiles}/config/albert/widgetsboxmodel";
   };
 in
 {

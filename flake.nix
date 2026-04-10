@@ -9,7 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     impermanence.url = "github:nix-community/impermanence";
-    
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     nixpak = {
       url = "github:nixpak/nixpak";
@@ -55,6 +59,7 @@
             ./hosts/${hostname}/configuration.nix
             inputs.impermanence.nixosModules.impermanence
             home-manager.nixosModules.home-manager
+            inputs.nix-index-database.nixosModules.default
             {
               nixpkgs.config.allowUnfree = true;
               nixpkgs.overlays = [ unstableOverlay ];

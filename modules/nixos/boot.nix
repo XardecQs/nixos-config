@@ -18,17 +18,17 @@
           configurationLimit = 5;
           consoleMode = "max";
         };
+        efi.canTouchEfiVariables = true;
       };
       kernel.sysctl = {
         "vm.swappiness" = 100;
         "vm.watermark_boost_factor" = 0;
         "vm.watermark_scale_factor" = 125;
       };
-      loader = {
-        efi = {
-          canTouchEfiVariables = true;
-        };
-      };
+      kernelModules = [ "ntsync" ];
     };
+    services.udev.extraRules = ''
+      KERNEL=="ntsync", MODE="0660", TAG+="uaccess"
+    '';
   };
 }

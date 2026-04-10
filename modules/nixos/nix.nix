@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
   category = "sistema"; # [ sistema | home-manager ]
   moduleName = "nix";
@@ -9,11 +14,6 @@ in
   config = lib.mkIf config.modulos.${category}.${moduleName}.enable {
     nixpkgs.config.allowUnfree = true;
     nix = {
-      gc = {
-        automatic = true;
-        dates = "weekly";
-        options = "--delete-older-than 7d";
-      };
       settings = {
         trusted-users = [
           "root"
@@ -31,11 +31,31 @@ in
       };
     };
     programs = {
+      nix-index = {
+        enable = true;
+        enableZshIntegration = true;
+      };
+      nix-index-database.comma.enable = true;
+      nh = {
+        enable = true;
+        clean.enable = true;
+        clean.extraArgs = "--keep-since 4d --keep 3";
+        flake = "/etc/nixos";
+      };
       nix-ld.enable = true;
       appimage = {
         enable = true;
         binfmt = true;
       };
     };
+
+    environment.systemPackages = with pkgs; [
+      nix-output-monitor
+      nixd
+      nvd
+      nil
+      nix-ld
+      comma
+    ];
   };
 }

@@ -22,8 +22,12 @@
       gnomeExtensions.emoji-copy
       gnomeExtensions.logo-menu
       unstable.gnomeExtensions.maximize-window-into-new-workspace
-      #unstable.gnomeExtensions.gtk4-desktop-icons-ng-ding
-      unstable.gnomeExtensions.custom-command-toggle
+      #gnomeExtensions.gtk4-desktop-icons-ng-ding
+      #gnomeExtensions.desktop-icons-ng-ding
+      #unstable.gnomeExtensions.custom-command-toggle
+      gnomeExtensions.night-theme-switcher
+      gnomeExtensions.boost-volume
+      
 
       gnome-tweaks
       gnome-extension-manager
@@ -38,6 +42,9 @@
       resources
       gthumb
       gnome-network-displays
+
+      albert
+      python3
     ];
     # Habilitar GTK y Qt para coherencia visual
     gtk = {
@@ -119,6 +126,7 @@
           gsconnect.extensionUuid
           blur-my-shell.extensionUuid
           #gtk4-desktop-icons-ng-ding.extensionUuid
+          #desktop-icons-ng-ding.extensionUuid
           rounded-window-corners-reborn.extensionUuid
           clipboard-indicator.extensionUuid
           fullscreen-hot-corner.extensionUuid
@@ -127,9 +135,10 @@
           emoji-copy.extensionUuid
           logo-menu.extensionUuid
           #auto-adwaita-colors.extensionUuid
-          custom-command-toggle.extensionUuid
+          #custom-command-toggle.extensionUuid
           "MaximizeWindowIntoNewWorkspace@kyleross.com"
-
+          night-theme-switcher.extensionUuid
+          boost-volume.extensionUuid
         ];
       };
 
@@ -144,6 +153,7 @@
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
         ];
       };
 
@@ -165,6 +175,12 @@
         binding = "<Super><Shift>w";
       };
 
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
+        binding = "<Super>space";
+        command = ''bash -c 'if pgrep -x ".albert-wrapped" >/dev/null; then albert toggle; else albert --platform xcb & while ! pgrep -x ".albert-wrapped" >/dev/null && ((c++<20)); do sleep 0.6; done; albert toggle; fi' '';
+        name = "albert toggle";
+      };
+
       # Desactivar atajos de aplicaciones predeterminadas (para usar workspaces 1-9)
       "org/gnome/shell/keybindings" = {
         switch-to-application-1 = [ ];
@@ -180,7 +196,10 @@
 
       # Workspaces y cierre de ventanas
       "org/gnome/desktop/wm/keybindings" = {
+        switch-input-source = [ ];
+        switch-input-source-backward = [ ];
         close = [ "<Super>c" ];
+        toggle-fullscreen = [ "<Super>f" ];
         switch-to-workspace-1 = [ "<Super>1" ];
         switch-to-workspace-2 = [ "<Super>2" ];
         switch-to-workspace-3 = [ "<Super>3" ];

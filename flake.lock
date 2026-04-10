@@ -8,11 +8,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773258383,
-        "narHash": "sha256-XVkf+hrKobeS2u+Bap1PNQBkAUPa+a93aEkS1X3ykbo=",
+        "lastModified": 1774277543,
+        "narHash": "sha256-7wq3jRTtCvJ9dCwH34OLsdVLZNGmaL2TmpqZTQFHnSw=",
         "owner": "ElyPrismLauncher",
         "repo": "ElyPrismLauncher",
-        "rev": "6d55c0d6b2e6faaa0753edab25c2195df5d1d269",
+        "rev": "b10334b16567a17080cd4217b87dfbbe8ae4d970",
         "type": "github"
       },
       "original": {
@@ -152,11 +152,11 @@
     "libnbtplusplus": {
       "flake": false,
       "locked": {
-        "lastModified": 1744811532,
-        "narHash": "sha256-qhmjaRkt+O7A+gu6HjUkl7QzOEb4r8y8vWZMG2R/C6o=",
+        "lastModified": 1772016279,
+        "narHash": "sha256-7itkptyjoRcXfGLwg1/jxajetZ3a4mDc66+w4X6yW8s=",
         "owner": "PrismLauncher",
         "repo": "libnbtplusplus",
-        "rev": "531449ba1c930c98e0bcf5d332b237a8566f9d78",
+        "rev": "687e43031df0dc641984b4256bcca50d5b3f7de3",
         "type": "github"
       },
       "original": {
@@ -178,6 +178,26 @@
         "owner": "gmodena",
         "ref": "latest",
         "repo": "nix-flatpak",
+        "type": "github"
+      }
+    },
+    "nix-index-database": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-stable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1774156144,
+        "narHash": "sha256-gdYe9wTPl4ignDyXUl1LlICWj41+S0GB5lG1fKP17+A=",
+        "owner": "nix-community",
+        "repo": "nix-index-database",
+        "rev": "55b588747fa3d7fc351a11831c4b874dab992862",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-index-database",
         "type": "github"
       }
     },
@@ -237,11 +257,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1773821835,
-        "narHash": "sha256-TJ3lSQtW0E2JrznGVm8hOQGVpXjJyXY2guAxku2O9A4=",
+        "lastModified": 1775036866,
+        "narHash": "sha256-ZojAnPuCdy657PbTq5V0Y+AHKhZAIwSIT2cb8UgAz/U=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "b40629efe5d6ec48dd1efba650c797ddbd39ace0",
+        "rev": "6201e203d09599479a3b3450ed24fa81537ebc4e",
         "type": "github"
       },
       "original": {
@@ -271,6 +291,7 @@
         "impermanence": "impermanence",
         "lan-mouse": "lan-mouse",
         "nix-flatpak": "nix-flatpak",
+        "nix-index-database": "nix-index-database",
         "nixpak": "nixpak",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-unstable": "nixpkgs-unstable",

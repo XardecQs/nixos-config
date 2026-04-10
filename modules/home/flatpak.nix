@@ -9,7 +9,7 @@
         packages = [
           "com.github.tchx84.Flatseal"
           "org.gtk.Gtk3theme.adw-gtk3"
-          #"com.github.johnfactotum.Foliate"
+          "com.github.johnfactotum.Foliate"
           "app.zen_browser.zen"
           #"md.obsidian.Obsidian"
           #"net.blockbench.Blockbench"
@@ -24,9 +24,11 @@
           "org.onlyoffice.desktopeditors"
           "com.github.jeromerobert.pdfarranger"
           #"it.mijorus.gearlever"
-          #"io.github.Querz.mcaselector"
-          #"com.usebottles.bottles"
+          "io.github.Querz.mcaselector"
+          "com.usebottles.bottles"
           #"net.lutris.Lutris"
+          "net.retrodeck.retrodeck"
+          "org.kde.krita"
         ];
       };
     };

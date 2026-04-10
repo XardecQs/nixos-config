@@ -19,9 +19,9 @@
       #obs.enable = true;
       packages.enable = true;
       #spicetify.enable = true;
-      #syncthing.enable = true;
+      syncthing.enable = true;
       #lan-mouse.enable = true;
-      retroarch.enable = true;
+      #retroarch.enable = true;
     };
   };
 }

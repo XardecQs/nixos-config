@@ -19,7 +19,6 @@
       neovim
       tree-sitter
       ripgrep
-      nixd
       tmux
       unzip
       wget
@@ -34,8 +33,6 @@
       entr
       fd
       gparted
-      nil
-      nix-ld
       tree
       unimatrix
       hwloc

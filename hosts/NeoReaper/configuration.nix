@@ -20,7 +20,7 @@
       locate.enable = true;
       networking.enable = true;
       nix.enable = true;
-      #steam.enable = true;
+      steam.enable = true;
       systemPackages.enable = true;
       users.enable = true;
       #virtualisation.enable = true;
@@ -58,6 +58,7 @@
       "/etc/NetworkManager/system-connections"
       "/etc/nixos"
       "/var/db/sudo"
+      "/var/lib/AccountsService"
     ];
     files = [
       "/etc/machine-id"
@@ -74,7 +75,6 @@
         ".dotfiles"
         ".local/share/ElyPrismLauncher"
         ".local/share/flatpak"
-        #".local/share/Trash"
         ".local/share/fonts"
         ".local/share/zinit"
         ".local/state/zsh"
@@ -94,6 +94,15 @@
         "Trastero"
         ".themes"
         ".config/libresprite"
+        ".local/share/Steam"
+        ".steam"
+        ".local/share/nautilus"
+        ".cache/nix-index"
+        ".local/share/albert"
+        ".local/share/nvim"
+        ".local/share/SMB1R"
+        ".config/librewolf"
+        ".local/state/syncthing"
       ];
       files = [
         ".config/mimeapps.list"
