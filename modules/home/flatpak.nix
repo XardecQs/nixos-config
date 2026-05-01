@@ -11,7 +11,8 @@
           "org.gtk.Gtk3theme.adw-gtk3"
           "com.github.johnfactotum.Foliate"
           "app.zen_browser.zen"
-          #"md.obsidian.Obsidian"
+          "md.obsidian.Obsidian"
+          "org.gnome.NetworkDisplays"
           #"net.blockbench.Blockbench"
           "io.gitlab.adhami3310.Converter"
           "fr.handbrake.ghb"
@@ -29,6 +30,12 @@
           #"net.lutris.Lutris"
           "net.retrodeck.retrodeck"
           "org.kde.krita"
+          "page.codeberg.JakobDev.jdNBTExplorer"
+          "org.gnome.Builder"
+          "re.sonny.Workbench"
+          "org.gnome.design.Contrast"
+          "org.gnome.design.IconLibrary"
+          "app.drey.Elastic"
         ];
       };
     };

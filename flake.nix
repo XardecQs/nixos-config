@@ -23,7 +23,6 @@
     #affinity-nix.url = "github:mrshmllow/affinity-nix";
     elyprismlauncher = {
       url = "github:ElyPrismLauncher/ElyPrismLauncher";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     lan-mouse = {
       url = "github:feschber/lan-mouse";

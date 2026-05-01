@@ -43,70 +43,94 @@
 
     printing = {
       enable = true;
-      drivers = [ pkgs.epson-escpr2 ];
+      drivers = [
+        pkgs.epson-escpr2
+        pkgs.epson-escpr
+      ];
     };
+  };
+  hardware.sane = {
+    enable = true;
+    extraBackends = [
+      (pkgs.epsonscan2.override { withNonFreePlugins = true; })
+    ];
+  };
+
+  users.users."xardec" = {
+    extraGroups = [
+      "scanner"
+      "lp"
+    ];
   };
 
   environment.persistence."/persist" = {
     hideMounts = true;
     allowTrash = true;
+    # --- Configuración y Estado del Sistema ---
     directories = [
-      "/var/lib/bluetooth"
-      "/var/lib/nixos"
-      "/var/lib/systemd/coredump"
-      "/var/lib/systemd/timers"
       "/etc/NetworkManager/system-connections"
       "/etc/nixos"
       "/var/db/sudo"
       "/var/lib/AccountsService"
+      "/var/lib/bluetooth"
+      "/var/lib/nixos"
+      "/var/lib/systemd/coredump"
+      "/var/lib/systemd/timers"
     ];
     files = [
       "/etc/machine-id"
       "/var/cache/locatedb"
     ];
     users.xardec = {
+      # --- Directorios del Usuario ---
       directories = [
-        ".cache/clipboard-indicator@tudmotu.com"
-        ".config/Code"
-        ".config/dconf"
-        ".config/gsconnect"
-        ".config/gtk-3.0"
-        ".config/retroarch"
-        ".dotfiles"
-        ".local/share/ElyPrismLauncher"
-        ".local/share/flatpak"
-        ".local/share/fonts"
-        ".local/share/zinit"
-        ".local/state/zsh"
-        ".ssh"
-        ".var"
-        ".vscode"
+        # Datos Personales y Proyectos
         "Descargas"
         "Documentos"
-        "Media"
         "Juegos"
+        "Media"
         "Proyectos"
-        ".config/GitHub Desktop"
+        "Trastero"
+        ".dotfiles"
+        # Configuración de Entorno y Shell
+        ".cache/clipboard-indicator@tudmotu.com"
+        ".cache/nix-index"
+        ".config/dconf"
+        ".config/gtk-3.0"
+        ".local/share/fonts"
         ".local/share/gvfs-metadata"
         ".local/share/keyrings"
-        ".config/btop"
-        ".local/share/zoxide"
-        "Trastero"
-        ".themes"
-        ".config/libresprite"
-        ".local/share/Steam"
-        ".steam"
         ".local/share/nautilus"
-        ".cache/nix-index"
+        ".local/share/zinit"
+        ".local/share/zoxide"
+        ".local/state/zsh"
+        ".ssh"
+        ".themes"
+        # Aplicaciones de Trabajo y Herramientas
+        ".config/btop"
+        ".config/Code"
+        ".config/GitHub Desktop"
         ".local/share/albert"
         ".local/share/nvim"
-        ".local/share/SMB1R"
+        ".vscode"
+        # Navegadores y Comunicación
+        ".config/gsconnect"
         ".config/librewolf"
         ".local/state/syncthing"
+        # Multimedia y Diseño
+        ".config/libresprite"
+        ".config/retroarch"
+        ".local/share/SMB1R"
+        # Juegos y Runtimes
+        ".local/share/ElyPrismLauncher"
+        ".local/share/flatpak"
+        ".local/share/Steam"
+        ".steam"
+        ".var"
       ];
       files = [
-        ".config/mimeapps.list"
         ".config/background"
+        ".config/mimeapps.list"
       ];
     };
   };
