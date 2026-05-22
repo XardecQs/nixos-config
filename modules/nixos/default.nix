@@ -3,6 +3,7 @@
   imports = [
     ./escritorios/gnome.nix
     ./escritorios/sway.nix
+    ./arduino.nix
     ./boot.nix
     ./general.nix
     ./intel-gpu.nix

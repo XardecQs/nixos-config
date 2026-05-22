@@ -20,13 +20,15 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    #affinity-nix.url = "github:mrshmllow/affinity-nix";
     elyprismlauncher = {
       url = "github:ElyPrismLauncher/ElyPrismLauncher";
     };
     lan-mouse = {
       url = "github:feschber/lan-mouse";
       inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+    dusk = {
+      url = "github:TwilitRealm/dusk";
     };
   };
 

@@ -36,6 +36,7 @@
           "org.gnome.design.Contrast"
           "org.gnome.design.IconLibrary"
           "app.drey.Elastic"
+          "re.fossplant.songrec"
         ];
       };
     };
