@@ -11,17 +11,23 @@
   };
 
   modulos = {
-    home-manager = {
-      dotfiles.enable = true;
-      flatpak.enable = true;
-      gnome.enable = true;
-      #java.enable = true;
-      #obs.enable = true;
-      packages.enable = true;
-      #spicetify.enable = true;
-      syncthing.enable = true;
-      #lan-mouse.enable = true;
-      #retroarch.enable = true;
+    home = {
+      core = {
+        dotfiles.enable = true;
+        packages.enable = true;
+      };
+      desktop = {
+        gnome.enable = true;
+        #spicetify.enable = true;
+        #obs.enable = true;
+      };
+      apps = {
+        flatpak.enable = true;
+        syncthing.enable = true;
+        #java.enable = true;
+        #lan-mouse.enable = true;
+        #retroarch.enable = true;
+      };
     };
   };
 }

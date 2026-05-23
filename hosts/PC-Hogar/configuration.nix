@@ -8,26 +8,32 @@
   networking.hostName = "PC-Hogar";
 
   modulos = {
-    sistema = {
-      escritorio = {
+    nixos = {
+      core = {
+        boot.enable = false;
+        general.enable = true;
+        locate.enable = true;
+        nix.enable = true;
+        security.enable = true;
+        users.enable = true;
+      };
+      hardware = {
+        intel-gpu.enable = true;
+        laptop.enable = false;
+      };
+      desktop = {
         gnome.enable = false;
         sway.enable = false;
+        pipewire.enable = true;
+        steam.enable = false;
+        systemPackages.enable = true;
       };
-      boot.enable = false;
-      general.enable = true;
-      intel-gpu.enable = true;
-      laptop.enable = false;
-      locate.enable = true;
-      networking.enable = true;
-      nix.enable = true;
-      steam.enable = false;
-      systemPackages.enable = true;
-      users.enable = true;
-      virtualisation.enable = false;
-      waydroid.enable = false;
-      pipewire.enable = true;
-      security.enable = true;
-      servidor.enable = true;
+      services = {
+        networking.enable = true;
+        servidor.enable = true;
+        virtualisation.enable = false;
+        waydroid.enable = false;
+      };
     };
   };
 
