@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     impermanence.url = "github:nix-community/impermanence";
+    font-collection = {
+      url = "github:XardecQs/font-collection";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs-stable";
@@ -58,6 +63,7 @@
 
           modules = [
             ./hosts/${hostname}/configuration.nix
+            inputs.font-collection.nixosModules.default
             inputs.impermanence.nixosModules.impermanence
             home-manager.nixosModules.home-manager
             inputs.nix-index-database.nixosModules.default

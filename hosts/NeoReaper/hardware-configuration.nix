@@ -49,19 +49,6 @@
     ];
   };
 
-  fileSystems."/home" = {
-    device = "/dev/mapper/sda2_crypt";
-    fsType = "btrfs";
-    options = [
-      "subvol=@home"
-      "noatime"
-      "compress=zstd"
-      "autodefrag"
-      "space_cache=v2"
-    ];
-    neededForBoot = true;
-  };
-
   fileSystems."/persist" = {
     device = "/dev/mapper/sda2_crypt";
     fsType = "btrfs";
@@ -107,39 +94,27 @@
   };
 
   boot.initrd.postDeviceCommands = lib.mkAfter ''
-    mkdir /btrfs_tmp
-    mount /dev/mapper/sda2_crypt /btrfs_tmp
+        mkdir /btrfs_tmp
+        mount /dev/mapper/sda2_crypt /btrfs_tmp
 
-    timestamp=$(date +%Y-%m-%d_%H-%M-%S)
-    mkdir -p /btrfs_tmp/old_roots
+        timestamp=$(date +%Y-%m-%d_%H-%M-%S)
+        mkdir -p /btrfs_tmp/old_roots
 
-    # --- ROOT ---
-    if [ -e /btrfs_tmp/@root ]; then
-      mv /btrfs_tmp/@root "/btrfs_tmp/old_roots/@root_$timestamp"
-    fi
+        # --- ROOT ---
+        if [ -e /btrfs_tmp/@root ]; then
+          mv /btrfs_tmp/@root "/btrfs_tmp/old_roots/@root_$timestamp"
+        fi
 
-    ls -1 /btrfs_tmp/old_roots | grep "@root_" | sort | head -n -3 | while read -r old_root; do
-      echo "Eliminando snapshot de root antiguo: $old_root"
-      btrfs subvolume delete -R "/btrfs_tmp/old_roots/$old_root"
-    done || true
+        ls -1 /btrfs_tmp/old_roots | grep "@root_" | sort | head -n -3 | while read -r old_root; do
+          echo "Eliminando snapshot de root antiguo: $old_root"
+          btrfs subvolume delete -R "/btrfs_tmp/old_roots/$old_root"
+        done || true
 
-    btrfs subvolume snapshot /btrfs_tmp/@blank /btrfs_tmp/@root
-
-    # --- HOME ---
-    if [ -e /btrfs_tmp/@home ]; then
-      mv /btrfs_tmp/@home "/btrfs_tmp/old_roots/@home_$timestamp"
-    fi
-
-    ls -1 /btrfs_tmp/old_roots | grep "@home_" | sort | head -n -3 | while read -r old_home; do
-      echo "Eliminando snapshot de home antiguo: $old_home"
-      btrfs subvolume delete -R "/btrfs_tmp/old_roots/$old_home"
-    done || true
-
-    btrfs subvolume snapshot /btrfs_tmp/@blank /btrfs_tmp/@home
+        btrfs subvolume snapshot /btrfs_tmp/@blank /btrfs_tmp/@root
 
     find /btrfs_tmp/old_roots -mindepth 1 -type d -empty -delete 2>/dev/null || true
 
-    umount /btrfs_tmp
+        umount /btrfs_tmp
   '';
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

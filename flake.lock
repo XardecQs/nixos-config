@@ -58,6 +58,26 @@
         "type": "github"
       }
     },
+    "font-collection": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1779555492,
+        "narHash": "sha256-ISfYeaviOYo4SkXwV1iHoChNJnClauirB7l0ZpKDaf8=",
+        "owner": "XardecQs",
+        "repo": "font-collection",
+        "rev": "b4bd55f589413436c0ff003a1af840b1bcc2aa13",
+        "type": "github"
+      },
+      "original": {
+        "owner": "XardecQs",
+        "repo": "font-collection",
+        "type": "github"
+      }
+    },
     "hercules-ci-effects": {
       "inputs": {
         "flake-parts": [
@@ -333,6 +353,7 @@
       "inputs": {
         "dusk": "dusk",
         "elyprismlauncher": "elyprismlauncher",
+        "font-collection": "font-collection",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "lan-mouse": "lan-mouse",
