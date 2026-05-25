@@ -13,7 +13,10 @@
   modulos = {
     home = {
       core = {
-        dotfiles.enable = true;
+        dotfiles = {
+          enable = true;
+          localPath = "/home/xardec/Proyectos/GitHub/dotfiles";
+        };
         packages.enable = true;
       };
       desktop = {
