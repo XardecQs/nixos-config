@@ -10,7 +10,7 @@ let
 
   elyWrapped = pkgs.symlinkJoin {
     name = "elyprismlauncher-wrapped";
-    paths = [ inputs.elyprismlauncher.packages.${pkgs.system}.default ];
+    paths = [ inputs.elyprismlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default ];
     nativeBuildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
       wrapProgram $out/bin/elyprismlauncher \
@@ -75,12 +75,8 @@ in
 
       protonup-ng
       elyWrapped
-      (inputs.dusk.packages.${pkgs.system}.default.overrideAttrs (old: {
-        NIX_CFLAGS_COMPILE = (old.NIX_CFLAGS_COMPILE or "") + " -march=x86-64-v3 -mtune=generic";
-        NIX_CXXFLAGS_COMPILE = (old.NIX_CXXFLAGS_COMPILE or "") + " -march=x86-64-v3 -mtune=generic";
-      }))
       librewolf
-
+      cage
     ];
   };
 }

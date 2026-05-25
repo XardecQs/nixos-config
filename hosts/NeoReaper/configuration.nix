@@ -26,7 +26,7 @@
       desktop = {
         gnome.enable = true;
         sway.enable = false;
-        kmscon.enable = true;
+        #kmscon.enable = true;
         pipewire.enable = true;
         steam.enable = true;
         systemPackages.enable = true;

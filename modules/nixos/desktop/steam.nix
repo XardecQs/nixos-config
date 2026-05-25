@@ -14,6 +14,8 @@ let
       (pkgs.writeShellScriptBin "gamescope-session" ''
         export XKB_DEFAULT_LAYOUT=latam
         export XKB_DEFAULT_VARIANT=""
+        export WLR_NO_HARDWARE_CURSORS=1
+        export INTEL_DEBUG=norbc
         MANGOAPP_FLAG=""
         if command -v mangoapp &> /dev/null; then
           MANGOAPP_FLAG="--mangoapp"
@@ -22,6 +24,12 @@ let
         fi
         ${pkgs.gamescope}/bin/gamescope -e \
           $MANGOAPP_FLAG \
+          --force-grab-cursor \
+          --expose-wayland \
+          --adaptive-sync \
+          --immediate-flips \
+          --rt \
+          -r 60 \
           -- steam -steamdeck -steamos3 -shutdown-on-exit
       '')
 

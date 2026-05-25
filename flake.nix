@@ -13,6 +13,10 @@
       url = "github:XardecQs/font-collection";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    iconos = {
+      url = "github:XardecQs/iconos";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -32,9 +36,7 @@
       url = "github:feschber/lan-mouse";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
-    dusk = {
-      url = "github:TwilitRealm/dusk";
-    };
+    
   };
 
   outputs =
@@ -64,6 +66,7 @@
           modules = [
             ./hosts/${hostname}/configuration.nix
             inputs.font-collection.nixosModules.default
+            inputs.iconos.nixosModules.default
             inputs.impermanence.nixosModules.impermanence
             home-manager.nixosModules.home-manager
             inputs.nix-index-database.nixosModules.default

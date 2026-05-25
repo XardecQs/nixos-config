@@ -39,13 +39,6 @@ in
       fi
     '';
 
-    home.activation.cloneFonts = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      FONTS_DIR="$HOME/.local/share/fonts"
-      if [ ! -d "$FONTS_DIR" ] || [ -z "$(ls -A "$FONTS_DIR" 2>/dev/null)" ]; then
-        mkdir -p "$FONTS_DIR"
-        ${pkgs.git}/bin/git clone --progress --depth 1 https://github.com/XardecQs/font-collection.git "$FONTS_DIR"
-      fi
-    '';
     home.file = builtins.mapAttrs (name: abspath: {
       source = create_symlink abspath;
       recursive = true;

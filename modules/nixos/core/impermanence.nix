@@ -45,7 +45,6 @@ in
           ".cache/nix-index"
           ".config/dconf"
           ".config/gtk-3.0"
-          ".local/share/fonts"
           ".local/share/gvfs-metadata"
           ".local/share/keyrings"
           ".local/share/nautilus"

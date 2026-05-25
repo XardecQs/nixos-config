@@ -29,12 +29,12 @@ in
         "net.retrodeck.retrodeck"
         "org.kde.krita"
         "page.codeberg.JakobDev.jdNBTExplorer"
-        "org.gnome.Builder"
-        "re.sonny.Workbench"
-        "org.gnome.design.Contrast"
-        "org.gnome.design.IconLibrary"
-        "app.drey.Elastic"
-        "re.fossplant.songrec"
+        #"org.gnome.Builder"
+        #"re.sonny.Workbench"
+        #"org.gnome.design.Contrast"
+        #"org.gnome.design.IconLibrary"
+        #"app.drey.Elastic"
+        #"re.fossplant.songrec"
       ];
     };
   };

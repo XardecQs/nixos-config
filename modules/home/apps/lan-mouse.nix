@@ -15,7 +15,7 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = [
-      inputs.lan-mouse.packages.${pkgs.system}.default
+      inputs.lan-mouse.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };
 }
