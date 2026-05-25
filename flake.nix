@@ -17,6 +17,10 @@
       url = "github:XardecQs/iconos";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    dotfiles = {
+      url = "git+file:///home/xardec/Proyectos/GitHub/dotfiles";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -36,7 +40,7 @@
       url = "github:feschber/lan-mouse";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
-    
+
   };
 
   outputs =
@@ -84,6 +88,7 @@
                     ./hosts/${hostname}/home.nix
                     inputs.spicetify-nix.homeManagerModules.default
                     inputs.nix-flatpak.homeManagerModules.nix-flatpak
+                    inputs.dotfiles.homeManagerModules.default
                   ];
                 };
               };

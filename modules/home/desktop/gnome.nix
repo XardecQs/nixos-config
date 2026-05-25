@@ -48,7 +48,7 @@ in
 
     gtk = {
       enable = true;
-      cursorTheme.name = "MacOS-Tahoe-Cursor";
+      cursorTheme.name = "macos-tahoe-cursor";
       font.name = "SF Pro Display";
     };
 
@@ -75,10 +75,10 @@ in
       "org/gnome/desktop/interface" = {
         clock-format = "12h";
         color-scheme = "prefer-dark";
-        cursor-theme = "MacOS-Tahoe-Cursor";
+        cursor-theme = "macos-tahoe-cursor";
         font-name = "SF Pro Display 11";
         gtk-theme = "adw-gtk3-dark";
-        icon-theme = "Definitivo";
+        icon-theme = "definitivo";
         show-battery-percentage = true;
       };
 

@@ -14,7 +14,6 @@ in
 
       directories = [
         "/etc/NetworkManager/system-connections"
-        "/etc/nixos"
         "/var/db/sudo"
         "/var/lib/AccountsService"
         "/var/lib/bluetooth"
@@ -40,7 +39,6 @@ in
           "Media"
           "Proyectos"
           "Trastero"
-          ".dotfiles"
           ".cache/clipboard-indicator@tudmotu.com"
           ".cache/nix-index"
           ".config/dconf"

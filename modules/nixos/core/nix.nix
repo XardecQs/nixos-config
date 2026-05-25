@@ -41,7 +41,7 @@ in
         enable = true;
         clean.enable = true;
         clean.extraArgs = "--keep-since 4d --keep 3";
-        flake = "/etc/nixos";
+        flake = "/home/xardec/Proyectos/GitHub/nixos-config";
       };
       nix-ld.enable = true;
       appimage = {
