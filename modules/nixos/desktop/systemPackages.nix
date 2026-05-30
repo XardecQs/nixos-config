@@ -15,30 +15,16 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       adw-gtk3
-      bat
-      btop
-      fastfetch
-      fzf
-      gdu
-      lsd
       neovim
       tree-sitter
-      ripgrep
-      tmux
-      unzip
-      wget
       wl-clipboard
-      yazi
-      zoxide
       bindfs
       btrfs-progs
       bubblewrap
       direnv
       entr
-      fd
       gparted
       tree
-      unimatrix
       hwloc
       beep
     ];

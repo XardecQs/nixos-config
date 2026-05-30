@@ -21,6 +21,13 @@ in
       ];
     };
 
+    users.users.xardec = {
+      extraGroups = [
+        "scanner"
+        "lp"
+      ];
+    };
+
     hardware.sane = {
       enable = true;
       extraBackends = [
@@ -28,11 +35,5 @@ in
       ];
     };
 
-    users.users.xardec = {
-      extraGroups = [
-        "scanner"
-        "lp"
-      ];
-    };
   };
 }

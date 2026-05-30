@@ -76,7 +76,6 @@ in
           ".cache/opencode"
         ];
         files = [
-          ".config/mimeapps.list"
         ];
       };
     };

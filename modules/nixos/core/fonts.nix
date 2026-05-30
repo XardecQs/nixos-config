@@ -13,6 +13,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    fonts.fontDir.enable = true;
     fonts.packages = with pkgs; [
       nerd-fonts.jetbrains-mono
     ];

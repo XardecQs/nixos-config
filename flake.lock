@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "dotfiles": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1779827551,
+        "narHash": "sha256-fyIsNNEtyD6gWm+bRjcwL8QJTxFwAKgKErfjsiRoW80=",
+        "ref": "refs/heads/main",
+        "rev": "8e421233daf1b42939d74952986b4cc4918c587f",
+        "revCount": 10,
+        "type": "git",
+        "url": "file:///home/xardec/Proyectos/GitHub/dotfiles"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///home/xardec/Proyectos/GitHub/dotfiles"
+      }
+    },
     "elyprismlauncher": {
       "inputs": {
         "libnbtplusplus": "libnbtplusplus",
@@ -337,6 +357,7 @@
     },
     "root": {
       "inputs": {
+        "dotfiles": "dotfiles",
         "elyprismlauncher": "elyprismlauncher",
         "font-collection": "font-collection",
         "home-manager": "home-manager",

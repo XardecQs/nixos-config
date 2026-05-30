@@ -27,6 +27,7 @@
       apps = {
         flatpak.enable = true;
         syncthing.enable = true;
+        windows-vm.enable = true;
         #java.enable = true;
         #lan-mouse.enable = true;
         #retroarch.enable = true;

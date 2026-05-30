@@ -13,7 +13,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    nixpkgs.config.allowUnfree = true;
     nix = {
       settings = {
         trusted-users = [

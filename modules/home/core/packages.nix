@@ -10,7 +10,10 @@ let
 
   elyWrapped = pkgs.symlinkJoin {
     name = "elyprismlauncher-wrapped";
-    paths = [ inputs.elyprismlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default ];
+    paths = [
+      inputs.elyprismlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default
+      pkgs.temurin-bin-25
+    ];
     nativeBuildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
       wrapProgram $out/bin/elyprismlauncher \
@@ -51,6 +54,7 @@ in
       github-desktop
 
       unstable.libresprite
+      inkscape
 
       binutils
       gnumake

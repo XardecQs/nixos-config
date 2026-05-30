@@ -38,6 +38,7 @@
         printing.enable = true;
         sshd.enable = true;
         virtualisation.enable = true;
+        windows-vm.enable = true;
         #waydroid.enable = true;
       };
     };

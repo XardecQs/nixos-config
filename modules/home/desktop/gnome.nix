@@ -43,7 +43,6 @@ in
       gthumb
 
       albert
-      python3
     ];
 
     gtk = {

@@ -26,7 +26,6 @@ in
         extraGroups = [
           "networkmanager"
           "wheel"
-          "dialout"
         ];
         hashedPassword = "$6$6kcVeTMDK6yE6XdY$cgvhSqLBhNShREDb.cdNYV0iJS3GpqM.HTjcJKFt864nsnOviqoL6tZah/oamGZe3REqS8q1MQPcxq/76jYTW.";
       };
