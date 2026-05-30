@@ -1,6 +1,7 @@
 { lib, config, ... }:
 let
   cfg = config.modulos.nixos.core.security;
+  user = config.modulos.nixos.core.users.primaryUser;
 in
 {
   options.modulos.nixos.core.security = {
@@ -15,9 +16,9 @@ in
       pam.services.login.enableGnomeKeyring = true;
     };
 
-    environment.persistence."/persist" = {
+    environment.persistence."/persist" = lib.mkIf config.modulos.nixos.core.impermanence.enable {
       directories = [ "/var/db/sudo" ];
-      users.xardec.directories = [ ".local/share/keyrings" ];
+      users.${user}.directories = [ ".local/share/keyrings" ];
     };
   };
 }

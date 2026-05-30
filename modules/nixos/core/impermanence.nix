@@ -1,6 +1,7 @@
 { lib, config, ... }:
 let
   cfg = config.modulos.nixos.core.impermanence;
+  user = config.modulos.nixos.core.users.primaryUser;
 in
 {
   options.modulos.nixos.core.impermanence = {
@@ -18,7 +19,7 @@ in
       files = [
         "/etc/machine-id"
       ];
-      users.xardec = {
+      users.${user} = {
         directories = [
           "Virtualizacion"
           "Descargas"

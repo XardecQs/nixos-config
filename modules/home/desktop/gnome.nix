@@ -160,7 +160,7 @@ in
 
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
         name = "Wallpaper aleatorio";
-        command = "/home/xardec/Proyectos/Scripts/rust/gwal/target/release/gwal --random";
+        command = "${config.home.homeDirectory}/Proyectos/Scripts/rust/gwal/target/release/gwal --random";
         binding = "<Super><Shift>w";
       };
 

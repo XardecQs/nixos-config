@@ -10,9 +10,11 @@ in
   config = lib.mkIf cfg.enable {
     services.flatpak.enable = true;
 
-    environment.persistence."/persist".users.xardec.directories = [
-      ".local/share/flatpak"
-      ".var"
-    ];
+    environment.persistence."/persist" = lib.mkIf config.modulos.nixos.core.impermanence.enable {
+      users.${config.modulos.nixos.core.users.primaryUser}.directories = [
+        ".local/share/flatpak"
+        ".var"
+      ];
+    };
   };
 }

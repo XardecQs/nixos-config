@@ -21,7 +21,7 @@ in
       ];
     };
 
-    users.users.xardec = {
+    users.users.${config.modulos.nixos.core.users.primaryUser} = {
       extraGroups = [
         "scanner"
         "lp"

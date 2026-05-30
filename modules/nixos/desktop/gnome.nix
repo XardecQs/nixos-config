@@ -6,6 +6,7 @@
 }:
 let
   cfg = config.modulos.nixos.desktop.gnome;
+  user = config.modulos.nixos.core.users.primaryUser;
 in
 {
   options.modulos.nixos.desktop.gnome = {
@@ -23,9 +24,9 @@ in
       package = pkgs.gnomeExtensions.gsconnect;
     };
 
-    environment.persistence."/persist" = {
+    environment.persistence."/persist" = lib.mkIf config.modulos.nixos.core.impermanence.enable {
       directories = [ "/var/lib/AccountsService" ];
-      users.xardec.directories = [
+      users.${user}.directories = [
         ".cache/clipboard-indicator@tudmotu.com"
         ".config/dconf"
         ".config/gtk-3.0"

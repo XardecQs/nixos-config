@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, primaryUser, ... }:
 {
   imports = [
     ./../../modules/home
@@ -6,8 +6,8 @@
 
   home = {
     stateVersion = "25.11";
-    username = "xardec";
-    homeDirectory = "/home/xardec";
+    username = primaryUser;
+    homeDirectory = "/home/${primaryUser}";
 
     packages = with pkgs; [
       gcc

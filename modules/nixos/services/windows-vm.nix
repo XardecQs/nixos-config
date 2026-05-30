@@ -8,12 +8,12 @@ let
   cfg = config.modulos.nixos.services.windows-vm;
 
   sessionScript = pkgs.writeShellScriptBin "ventana-qemu-session" ''
-    LOG_FILE="/home/xardec/Virtualizacion/ventana-qemu-session.log"
+    LOG_FILE="$HOME/Virtualizacion/ventana-qemu-session.log"
     exec >"$LOG_FILE" 2>&1 || exec >"/tmp/ventana-qemu-session.log" 2>&1
 
     set -euo pipefail
 
-    VM_DISK="/home/xardec/Virtualizacion/images/windows-ltsc.qcow2"
+    VM_DISK="$HOME/Virtualizacion/images/windows-ltsc.qcow2"
     SPICE_SOCK="/tmp/ventana-qemu-spice-''${UID}.sock"
     PID_FILE="/tmp/ventana-qemu-''${UID}.pid"
 

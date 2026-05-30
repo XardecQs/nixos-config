@@ -6,6 +6,7 @@
 }:
 let
   cfg = config.modulos.nixos.core.nix;
+  user = config.modulos.nixos.core.users.primaryUser;
 in
 {
   options.modulos.nixos.core.nix = {
@@ -40,7 +41,7 @@ in
         enable = true;
         clean.enable = true;
         clean.extraArgs = "--keep-since 4d --keep 3";
-        flake = "/home/xardec/Proyectos/GitHub/nixos-config";
+        flake = "/home/${user}/Proyectos/GitHub/nixos-config";
       };
       nix-ld.enable = true;
       appimage = {
@@ -58,9 +59,9 @@ in
       comma
     ];
 
-    environment.persistence."/persist" = {
+    environment.persistence."/persist" = lib.mkIf config.modulos.nixos.core.impermanence.enable {
       directories = [ "/var/lib/nixos" ];
-      users.xardec.directories = [ ".cache/nix-index" ];
+      users.${user}.directories = [ ".cache/nix-index" ];
     };
   };
 }

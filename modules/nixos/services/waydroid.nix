@@ -6,6 +6,7 @@
 }:
 let
   cfg = config.modulos.nixos.services.waydroid;
+  user = config.modulos.nixos.core.users.primaryUser;
 in
 {
   options.modulos.nixos.services.waydroid = {
@@ -20,12 +21,12 @@ in
     ];
 
     users = {
-      users.xardec = {
+      users.${user} = {
         extraGroups = [
           "waydroid"
         ];
       };
-      users.waydroid-xardec = {
+      users."waydroid-${user}" = {
         isSystemUser = true;
         uid = 10121;
         group = "waydroid";
@@ -42,6 +43,8 @@ in
       groups.waydroid.gid = 1023;
     };
 
-    environment.persistence."/persist".directories = [ "/var/lib/waydroid" ];
+    environment.persistence."/persist" = lib.mkIf config.modulos.nixos.core.impermanence.enable {
+      directories = [ "/var/lib/waydroid" ];
+    };
   };
 }

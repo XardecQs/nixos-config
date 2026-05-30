@@ -13,6 +13,8 @@ in
       settings.PermitRootLogin = "no";
     };
 
-    environment.persistence."/persist".users.xardec.directories = [ ".ssh" ];
+    environment.persistence."/persist" = lib.mkIf config.modulos.nixos.core.impermanence.enable {
+      users.${config.modulos.nixos.core.users.primaryUser}.directories = [ ".ssh" ];
+    };
   };
 }

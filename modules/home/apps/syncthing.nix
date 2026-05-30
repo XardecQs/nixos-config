@@ -20,17 +20,17 @@ in
         };
         folders = {
           "Kotatsu" = {
-            path = "/home/xardec/Media/Mangas/.Kotatsu";
+            path = "${config.home.homeDirectory}/Media/Mangas/.Kotatsu";
             id = "tovx9-9995f";
             devices = [ "Redmi Note 10 Pro" ];
           };
           "Música" = {
-            path = "/home/xardec/Media/Música";
+            path = "${config.home.homeDirectory}/Media/Música";
             id = "w9yjz-9kb76";
             devices = [ "Redmi Note 10 Pro" ];
           };
           "Capturas de pantalla" = {
-            path = "/home/xardec/Media/Imágenes/Capturas de pantalla";
+            path = "${config.home.homeDirectory}/Media/Imágenes/Capturas de pantalla";
             id = "7979p-4pjv5";
             devices = [ "Redmi Note 10 Pro" ];
           };
