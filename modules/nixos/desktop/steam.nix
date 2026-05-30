@@ -129,5 +129,10 @@ in
       ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="*", RUN+="${pkgs.coreutils}/bin/chmod a+rw /sys/class/backlight/%k/brightness"
       ACTION=="change", SUBSYSTEM=="backlight", KERNEL=="*", RUN+="${pkgs.coreutils}/bin/chmod a+rw /sys/class/backlight/%k/brightness"
     '';
+
+    environment.persistence."/persist".users.xardec.directories = [
+      ".local/share/Steam"
+      ".steam"
+    ];
   };
 }

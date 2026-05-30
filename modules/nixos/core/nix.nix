@@ -57,5 +57,10 @@ in
       nix-ld
       comma
     ];
+
+    environment.persistence."/persist" = {
+      directories = [ "/var/lib/nixos" ];
+      users.xardec.directories = [ ".cache/nix-index" ];
+    };
   };
 }

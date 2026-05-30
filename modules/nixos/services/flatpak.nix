@@ -9,5 +9,10 @@ in
 
   config = lib.mkIf cfg.enable {
     services.flatpak.enable = true;
+
+    environment.persistence."/persist".users.xardec.directories = [
+      ".local/share/flatpak"
+      ".var"
+    ];
   };
 }

@@ -32,5 +32,18 @@ in
       "libvirtd"
     ];
     services.spice-vdagentd.enable = true;
+
+    environment.persistence."/persist" = {
+      directories = [
+        "/var/lib/libvirt"
+        "/var/lib/virt-manager"
+        "/var/lib/docker"
+        "/var/lib/containerd"
+      ];
+      users.xardec.directories = [
+        ".local/share/containers"
+        ".config/containers"
+      ];
+    };
   };
 }

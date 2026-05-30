@@ -23,5 +23,7 @@ in
         "/home/.cache"
       ];
     };
+
+    environment.persistence."/persist".files = [ "/var/cache/locatedb" ];
   };
 }

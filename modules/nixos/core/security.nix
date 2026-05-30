@@ -14,5 +14,10 @@ in
       allowUserNamespaces = true;
       pam.services.login.enableGnomeKeyring = true;
     };
+
+    environment.persistence."/persist" = {
+      directories = [ "/var/db/sudo" ];
+      users.xardec.directories = [ ".local/share/keyrings" ];
+    };
   };
 }

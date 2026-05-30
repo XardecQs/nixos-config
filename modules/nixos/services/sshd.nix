@@ -12,5 +12,7 @@ in
       enable = true;
       settings.PermitRootLogin = "no";
     };
+
+    environment.persistence."/persist".users.xardec.directories = [ ".ssh" ];
   };
 }

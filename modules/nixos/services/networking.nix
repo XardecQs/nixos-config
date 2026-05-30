@@ -15,5 +15,9 @@ in
         allowedUDPPorts = [ 4242 ];
       };
     };
+
+    environment.persistence."/persist".directories = [
+      "/etc/NetworkManager/system-connections"
+    ];
   };
 }
