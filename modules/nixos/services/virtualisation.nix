@@ -17,7 +17,10 @@ in
     programs.virt-manager.enable = true;
 
     virtualisation = {
-      libvirtd.enable = true;
+      #libvirtd = {
+      #  enable = true;
+      #  parallelShutdown = 3;
+      #};
       podman = {
         enable = true;
         dockerCompat = true;

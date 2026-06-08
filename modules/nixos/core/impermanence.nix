@@ -34,6 +34,7 @@ in
           ".config/btop"
           ".config/Code"
           ".config/GitHub Desktop"
+          ".config/gh"
           ".local/share/nvim"
           ".vscode"
           ".local/share/applications"
@@ -47,7 +48,8 @@ in
           ".local/share/opencode"
           ".cache/opencode"
         ];
-        files = [ ];
+        files = [ 
+        ];
       };
     };
   };

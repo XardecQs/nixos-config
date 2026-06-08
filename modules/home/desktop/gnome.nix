@@ -41,8 +41,6 @@ in
       zenity
       resources
       gthumb
-
-      albert
     ];
 
     gtk = {
@@ -164,11 +162,11 @@ in
         binding = "<Super><Shift>w";
       };
 
-      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
-        binding = "<Super>space";
-        command = ''bash -c 'if pgrep -x ".albert-wrapped" >/dev/null; then albert toggle; else albert --platform xcb & while ! pgrep -x ".albert-wrapped" >/dev/null && ((c++<20)); do sleep 0.6; done; albert toggle; fi' '';
-        name = "albert toggle";
-      };
+      #"org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
+      #  binding = "<Super>space";
+      #  command = ''bash -c 'if pgrep -x ".albert-wrapped" >/dev/null; then albert toggle; else albert --platform xcb & while ! pgrep -x ".albert-wrapped" >/dev/null && ((c++<20)); do sleep 0.6; done; albert toggle; fi' '';
+      #  name = "albert toggle";
+      #};
 
       "org/gnome/shell/keybindings" = {
         switch-to-application-1 = [ ];

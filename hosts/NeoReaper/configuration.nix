@@ -34,7 +34,7 @@
         pipewire.enable = true;
         steam.enable = true;
         systemPackages.enable = true;
-        hyprland.enable = true;
+        #hyprland.enable = true;
       };
       services = {
         arduino.enable = true;

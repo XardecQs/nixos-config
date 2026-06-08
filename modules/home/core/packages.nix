@@ -61,7 +61,7 @@ in
       cmake
       nodejs
       python3
-      nixfmt-rfc-style
+      nixfmt
       texliveFull
       cargo
       rust-analyzer
@@ -82,5 +82,16 @@ in
       librewolf
       cage
     ];
+    programs.git = {
+      enable = true;
+      settings = {
+        user = {
+          name = "XardecQs";
+          email = "126134158+XardecQs@users.noreply.github.com";
+        };
+        init.defaultBranch = "main";
+        push.autoSetupRemote = true;
+      };
+    };
   };
 }

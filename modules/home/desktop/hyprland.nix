@@ -26,20 +26,5 @@ in
       nautilus
       pywal16
     ];
-
-    gtk = {
-      enable = true;
-      cursorTheme.name = "macos-tahoe-cursor";
-      font.name = "SF Pro Display";
-    };
-
-    qt = {
-      enable = true;
-      platformTheme.name = "adwaita";
-      style = {
-        name = "Adwaita-dark";
-        package = pkgs.adwaita-qt6;
-      };
-    };
   };
 }

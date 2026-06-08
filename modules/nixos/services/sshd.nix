@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
   cfg = config.modulos.nixos.services.sshd;
 in
@@ -12,6 +17,10 @@ in
       enable = true;
       settings.PermitRootLogin = "no";
     };
+
+    environment.systemPackages = with pkgs; [
+      sshfs
+    ];
 
     environment.persistence."/persist" = lib.mkIf config.modulos.nixos.core.impermanence.enable {
       users.${config.modulos.nixos.core.users.primaryUser}.directories = [ ".ssh" ];
