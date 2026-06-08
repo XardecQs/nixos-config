@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780880102,
-        "narHash": "sha256-PBForagm2ePv8X3aTBCQy7O9+jW51jG0Zrq342HxYnU=",
+        "lastModified": 1780884271,
+        "narHash": "sha256-B1dRuAbbYKtVTpOSkt199dojNyltnHMDc9nIvGYjbOo=",
         "ref": "refs/heads/main",
-        "rev": "166bdc42ed2a7563dec5010719657ba967d4a13d",
-        "revCount": 14,
+        "rev": "8b7bf3af5f304c2725a09bfc78b62089c2025915",
+        "revCount": 15,
         "type": "git",
         "url": "file:///home/xardec/Proyectos/GitHub/dotfiles"
       },
