@@ -15,6 +15,11 @@ in
       default = "xardec";
       description = "Usuario primario del sistema";
     };
+    primaryUserPassword = lib.mkOption {
+      type = lib.types.str;
+      default = "$6$6kcVeTMDK6yE6XdY$cgvhSqLBhNShREDb.cdNYV0iJS3GpqM.HTjcJKFt864nsnOviqoL6tZah/oamGZe3REqS8q1MQPcxq/76jYTW.";
+      description = "Hash de contraseña del usuario primario";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -32,7 +37,7 @@ in
           "networkmanager"
           "wheel"
         ];
-        hashedPassword = "$6$6kcVeTMDK6yE6XdY$cgvhSqLBhNShREDb.cdNYV0iJS3GpqM.HTjcJKFt864nsnOviqoL6tZah/oamGZe3REqS8q1MQPcxq/76jYTW.";
+        hashedPassword = cfg.primaryUserPassword;
       };
     };
     programs = {

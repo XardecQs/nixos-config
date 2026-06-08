@@ -14,13 +14,25 @@
     home = {
       core = {
         dotfiles = {
-          enable = true;
           localPath = "/home/${primaryUser}/Proyectos/GitHub/dotfiles";
+          nvim.enable = true;
+          kitty.enable = true;
+          fastfetch.enable = true;
+          zsh.enable = true;
+          tmux.enable = true;
+          alacritty.enable = true;
+          waybar.enable = true;
+          wal.enable = true;
+          wlogout.enable = true;
+          albert.enable = true;
+          code.enable = true;
+          xdgUserDirs.enable = true;
         };
         packages.enable = true;
       };
       desktop = {
         gnome.enable = true;
+        #hyprland.enable = true;
         #spicetify.enable = true;
         #obs.enable = true;
       };

@@ -17,7 +17,11 @@
         locate.enable = true;
         nix.enable = true;
         security.enable = true;
-        users.enable = true;
+        users = {
+          enable = true;
+          primaryUser = "xardec";
+          primaryUserPassword = "$6$6kcVeTMDK6yE6XdY$cgvhSqLBhNShREDb.cdNYV0iJS3GpqM.HTjcJKFt864nsnOviqoL6tZah/oamGZe3REqS8q1MQPcxq/76jYTW.";
+        };
       };
       hardware = {
         intel-gpu.enable = true;
@@ -30,6 +34,7 @@
         pipewire.enable = true;
         steam.enable = true;
         systemPackages.enable = true;
+        hyprland.enable = true;
       };
       services = {
         arduino.enable = true;

@@ -27,7 +27,12 @@
   modulos = {
     home = {
       core = {
-        dotfiles.enable = true;
+        dotfiles = {
+          nvim.enable = true;
+          zsh.enable = true;
+          tmux.enable = true;
+          xdgUserDirs.enable = true;
+        };
         packages.enable = false;
       };
       desktop = {
