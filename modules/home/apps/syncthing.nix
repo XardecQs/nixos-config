@@ -34,6 +34,11 @@ in
             id = "7979p-4pjv5";
             devices = [ "Redmi Note 10 Pro" ];
           };
+          "ROMs" = {
+            path = "${config.home.homeDirectory}/Juegos/ROMs";
+            id = "qlb1e-69yh0";
+            devices = [ "Redmi Note 10 Pro" ];
+          };
         };
       };
     };

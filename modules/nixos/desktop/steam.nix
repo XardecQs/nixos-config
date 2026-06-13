@@ -24,12 +24,6 @@ let
         fi
         ${pkgs.gamescope}/bin/gamescope -e \
           $MANGOAPP_FLAG \
-          --force-grab-cursor \
-          --expose-wayland \
-          --adaptive-sync \
-          --immediate-flips \
-          --rt \
-          -r 60 \
           -- steam -steamdeck -steamos3 -shutdown-on-exit
       '')
 

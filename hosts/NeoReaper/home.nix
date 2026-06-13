@@ -42,7 +42,7 @@
         #windows-vm.enable = true;
         #java.enable = true;
         #lan-mouse.enable = true;
-        #retroarch.enable = true;
+        retroarch.enable = true;
       };
     };
   };

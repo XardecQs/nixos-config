@@ -22,7 +22,7 @@ in
         "org.nickvision.tubeconverter"
         "org.musicbrainz.Picard"
         "org.soundconverter.SoundConverter"
-        "org.onlyoffice.desktopeditors"
+        #"org.onlyoffice.desktopeditors"
         "com.github.jeromerobert.pdfarranger"
         "io.github.Querz.mcaselector"
         "com.usebottles.bottles"

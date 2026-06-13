@@ -79,8 +79,10 @@ in
 
       protonup-ng
       elyWrapped
+      dusklight
       librewolf
       cage
+      onlyoffice-desktopeditors
     ];
     programs.git = {
       enable = true;

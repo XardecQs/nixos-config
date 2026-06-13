@@ -41,12 +41,12 @@ in
           ".config/librewolf"
           ".local/state/syncthing"
           ".config/libresprite"
-          ".config/retroarch"
           ".local/share/SMB1R"
           ".local/share/ElyPrismLauncher"
           ".config/opencode"
           ".local/share/opencode"
           ".cache/opencode"
+          ".local/share/TwilitRealm"
         ];
         files = [ 
         ];
