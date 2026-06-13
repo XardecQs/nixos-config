@@ -91,6 +91,7 @@ in
           name = "XardecQs";
           email = "126134158+XardecQs@users.noreply.github.com";
         };
+        url."git@github.com:".insteadOf = "https://github.com/";
         init.defaultBranch = "main";
         push.autoSetupRemote = true;
       };
