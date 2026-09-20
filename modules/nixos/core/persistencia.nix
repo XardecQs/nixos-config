@@ -25,6 +25,9 @@ let
         inInitrd = true;
       }
       "/var/cache/locatedb"
+      # Clave de host de systemd-creds: necesaria para descifrar la clave de
+      # secretos de libvirt entre reinicios (ver virtualisation.nix).
+      "/var/lib/systemd/credential.secret"
     ];
   };
 
