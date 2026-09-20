@@ -15,6 +15,7 @@ in
         gnomeExtensions.gsconnect
         gnomeExtensions.blur-my-shell
         gnomeExtensions.dash-to-dock
+        gnomeExtensions.show-desktop-button
         gnomeExtensions.user-themes
         gnomeExtensions.rounded-window-corners-reborn
         gnomeExtensions.fullscreen-hot-corner
@@ -138,7 +139,6 @@ in
           custom-keybindings = [
             "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
             "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
-            "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
           ];
         };
 
@@ -153,12 +153,6 @@ in
           command = "nautilus";
           binding = "<Super>e";
         };
-
-        #"org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
-        #  binding = "<Super>space";
-        #  command = ''bash -c 'if pgrep -x ".albert-wrapped" >/dev/null; then albert toggle; else albert --platform xcb & while ! pgrep -x ".albert-wrapped" >/dev/null && ((c++<20)); do sleep 0.6; done; albert toggle; fi' '';
-        #  name = "albert toggle";
-        #};
 
         "org/gnome/shell/keybindings" = {
           switch-to-application-1 = [ ];

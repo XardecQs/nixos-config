@@ -174,30 +174,6 @@
     };
   };
 
-  #boot.initrd.postDeviceCommands = lib.mkAfter ''
-  #      mkdir /btrfs_tmp
-  #      mount /dev/mapper/DecryptedSystem /btrfs_tmp
-  #
-  #      timestamp=$(date +%Y-%m-%d_%H-%M-%S)
-  #      mkdir -p /btrfs_tmp/old_roots
-  #
-  #      # --- ROOT ---
-  #      if [ -e /btrfs_tmp/@root ]; then
-  #        mv /btrfs_tmp/@root "/btrfs_tmp/old_roots/@root_$timestamp"
-  #      fi
-  #
-  #      ls -1 /btrfs_tmp/old_roots | grep "@root_" | sort | head -n -3 | while read -r old_root; do
-  #        echo "Eliminando snapshot de root antiguo: $old_root"
-  #        btrfs subvolume delete -R "/btrfs_tmp/old_roots/$old_root"
-  #      done || true
-  #
-  #      btrfs subvolume snapshot /btrfs_tmp/@blank /btrfs_tmp/@root
-  #
-  #  find /btrfs_tmp/old_roots -mindepth 1 -type d -empty -delete 2>/dev/null || true
-  #
-  #      umount /btrfs_tmp
-  #'';
-
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

@@ -14,12 +14,6 @@ in
   options.modulos.home.apps.gta-mo = {
     enable = lib.mkEnableOption "gta-mo";
 
-    persistencia = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-      description = "Persistir los datos de gta-mo: base de datos de mods y ajustes de usuario.";
-    };
-
     gameRoot = lib.mkOption {
       type = lib.types.str;
       default = "/home/xardec/Juegos/Windows/GTA_SA_Limpio";
@@ -34,17 +28,12 @@ in
 
     disableUpscalers = lib.mkOption {
       type = lib.types.bool;
-      default = true;
+      default = false;
       description = "Evitar que Proton (GE/CachyOS) descargue/actualice upscalers (FSR/DLSS/XeSS/OptiScaler).";
     };
   };
 
   config = lib.mkIf cfg.enable {
-    # El default del módulo es `true`; aquí se deja desactivado por ahora
-    # (probando distintos protons). Ponlo en true cuando quieras evitar la
-    # descarga de modelos/upscalers.
-    modulos.home.apps.gta-mo.disableUpscalers = false;
-
     programs.gta-mo = {
       enable = true;
       enableGui = true;

@@ -54,7 +54,12 @@ in
     usbAutosuspend = lib.mkOption {
       type = lib.types.bool;
       default = true;
-      description = "Activar suspensión automática de USB";
+      description = "Desactivar la suspensión automática de USB HID";
+    };
+    powertop = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "Activar los tunings automáticos de powertop";
     };
     descargarWifiSuspend = lib.mkOption {
       type = lib.types.bool;
@@ -82,7 +87,7 @@ in
     services.upower.enable = cfg.upower.enable;
     services.power-profiles-daemon.enable = false;
 
-    powerManagement.powertop.enable = cfg.usbAutosuspend;
+    powerManagement.powertop.enable = cfg.powertop;
 
     # La QCA9377 (ath10k) cuelga el equipo al suspender por un enlace PCIe
     # degradado. Se descarga el driver antes de dormir y se recarga al despertar.

@@ -17,6 +17,7 @@ in
     programs.virt-manager.enable = true;
 
     virtualisation = {
+      libvirtd.enable = true;
       podman = {
         enable = true;
         dockerCompat = true;
@@ -29,6 +30,7 @@ in
     ];
     users.users.${user}.extraGroups = [
       "podman"
+      "libvirtd"
     ];
     services.spice-vdagentd.enable = true;
   };

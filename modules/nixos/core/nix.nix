@@ -35,7 +35,6 @@ in
           "flakes"
         ];
         auto-optimise-store = true;
-        warn-dirty = false;
       }
       // lib.optionalAttrs (cfg.cores != null) {
         cores = cfg.cores;
@@ -71,8 +70,6 @@ in
       nixd
       nvd
       nil
-      nix-ld
-      comma
     ];
   };
 }

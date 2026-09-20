@@ -14,7 +14,6 @@ in
         enable32Bit = true;
       };
       enableRedistributableFirmware = true;
-      cpu.intel.updateMicrocode = config.hardware.enableRedistributableFirmware;
     };
     services.xserver.videoDrivers = [ "intel" ];
   };
