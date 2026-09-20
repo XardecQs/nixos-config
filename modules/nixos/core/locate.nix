@@ -22,7 +22,5 @@ in
         "/var/tmp"
       ];
     };
-
-    modulos.persistencia.sistema.files = [ "/var/cache/locatedb" ];
   };
 }

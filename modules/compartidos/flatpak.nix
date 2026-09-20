@@ -22,11 +22,6 @@ in
     lib.mkMerge [
       (lib.mkIf cfg.sistema {
         services.flatpak.enable = true;
-
-        modulos.persistencia.usuarios.${user}.directories = [
-          ".local/share/flatpak"
-          ".var"
-        ];
       })
 
       (lib.mkIf cfg.usuario {

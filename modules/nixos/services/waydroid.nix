@@ -42,7 +42,5 @@ in
       };
       groups.waydroid.gid = 1023;
     };
-
-    modulos.persistencia.sistema.directories = [ "/var/lib/waydroid" ];
   };
 }

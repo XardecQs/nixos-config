@@ -123,10 +123,5 @@ in
       ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="*", RUN+="${pkgs.coreutils}/bin/chmod a+rw /sys/class/backlight/%k/brightness"
       ACTION=="change", SUBSYSTEM=="backlight", KERNEL=="*", RUN+="${pkgs.coreutils}/bin/chmod a+rw /sys/class/backlight/%k/brightness"
     '';
-
-    modulos.persistencia.usuarios.${config.modulos.nixos.core.users.primaryUser}.directories = [
-      ".local/share/Steam"
-      ".steam"
-    ];
   };
 }

@@ -24,8 +24,6 @@ in
       primaryUser-password.file = ../../../secrets/primaryUser-password.age;
     };
 
-    modulos.persistencia.usuarios.${cfg.primaryUser}.directories = [ ".ssh" ];
-
     users = {
       mutableUsers = true;
       defaultUserShell = pkgs.zsh;

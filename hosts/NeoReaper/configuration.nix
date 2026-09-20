@@ -63,43 +63,9 @@
   };
 
   modulos = {
-    persistencia = {
-      enable = true;
-      sistema.files = [
-        "/etc/machine-id"
-      ];
-      usuarios.xardec.directories = [
-        "Virtualizacion"
-        "Descargas"
-        "Documentos"
-        "Juegos"
-        "Media"
-        "Proyectos"
-        "Trastero"
-        ".config/rofi"
-        ".local/share/rofi"
-        ".local/state/syncthing"
-        ".config/retroarch"
-        ".local/share/xemu"
-        ".cache/tracker3"
-        ".local/share/tracker3"
-        ".local/state/wireplumber"
-        ".config/gtk-4.0"
-        ".local/share/gnome-shell/extensions"
-        ".cache/fontconfig"
-        ".local/share/fonts"
-        ".config/syncthing"
-        ".config/goa-1.0"
-        ".cups"
-        #".local/share/backgrounds"
-      ];
-      usuarios.xardec.files = [
-        ".gitconfig"
-        ".config/mimeapps.list"
-      ];
-    };
-
     nixos = {
+      persistencia.enable = true;
+
       core = {
         boot.enable = true;
         boot.kernelPackage = pkgs.linuxPackages_latest;

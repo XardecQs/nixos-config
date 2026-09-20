@@ -31,11 +31,5 @@ in
       "podman"
     ];
     services.spice-vdagentd.enable = true;
-
-    modulos.persistencia.sistema.directories = [ "/var/lib/containerd" ];
-    modulos.persistencia.usuarios.${user}.directories = [
-      ".local/share/containers"
-      ".config/containers"
-    ];
   };
 }

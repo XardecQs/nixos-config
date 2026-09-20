@@ -7,7 +7,6 @@
 }:
 let
   cfg = config.modulos.nixos.core.nix;
-  user = config.modulos.nixos.core.users.primaryUser;
 in
 {
   options.modulos.nixos.core.nix = {
@@ -75,8 +74,5 @@ in
       nix-ld
       comma
     ];
-
-    modulos.persistencia.sistema.directories = [ "/var/lib/nixos" ];
-    modulos.persistencia.usuarios.${user}.directories = [ ".cache/nix-index" ];
   };
 }

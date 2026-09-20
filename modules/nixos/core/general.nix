@@ -17,10 +17,5 @@ in
     time.timeZone = "America/Lima";
     i18n.defaultLocale = "es_PE.UTF-8";
     console.keyMap = "la-latin1";
-
-    modulos.persistencia.sistema.directories = [
-      "/var/lib/systemd/coredump"
-      "/var/lib/systemd/timers"
-    ];
   };
 }

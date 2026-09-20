@@ -15,9 +15,5 @@ in
         allowedUDPPorts = [ 4242 ];
       };
     };
-
-    modulos.persistencia.sistema.directories = [
-      "/etc/NetworkManager/system-connections"
-    ];
   };
 }
