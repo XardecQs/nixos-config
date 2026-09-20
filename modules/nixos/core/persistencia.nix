@@ -14,6 +14,7 @@ let
       "/var/lib/AccountsService"
       "/var/lib/bluetooth"
       "/var/lib/containerd"
+      "/var/lib/libvirt"
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"
       "/var/lib/systemd/timers"
@@ -25,9 +26,6 @@ let
         inInitrd = true;
       }
       "/var/cache/locatedb"
-      # Clave de host de systemd-creds: necesaria para descifrar la clave de
-      # secretos de libvirt entre reinicios (ver virtualisation.nix).
-      "/var/lib/systemd/credential.secret"
     ];
   };
 

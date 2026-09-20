@@ -8,15 +8,13 @@ let
   cfg = config.modulos.nixos.services.virtualisation;
   user = config.modulos.nixos.core.users.primaryUser;
 
-  # En este equipo el sellado TPM2 de systemd-creds falla y systemd-creds
-  # aborta (bug). Se cifra la clave de secretos de libvirt con la clave de host.
-  virtSecretInit = pkgs.writeShellScript "virt-secret-init-encryption-host" ''
+  # libvirt espera una credencial cifrada con systemd-creds, pero el sellado
+  # TPM2 falla en este equipo y la clave de host no sobrevive a impermanence.
+  # Generamos la clave en texto plano y virtsecretd la carga con LoadCredential.
+  virtSecretInit = pkgs.writeShellScript "virt-secret-init-plaintext" ''
     umask 0077
-    dd if=/dev/random status=none bs=32 count=1 \
-      | ${config.systemd.package}/bin/systemd-creds encrypt \
-          --with-key=host \
-          --name=secrets-encryption-key \
-          - /var/lib/libvirt/secrets/secrets-encryption-key
+    ${pkgs.coreutils}/bin/dd if=/dev/urandom of=/var/lib/libvirt/secrets/secrets-encryption-key bs=32 count=1 status=none
+    ${pkgs.coreutils}/bin/chmod 600 /var/lib/libvirt/secrets/secrets-encryption-key
   '';
 in
 {
@@ -37,13 +35,23 @@ in
     };
 
     # La unidad original de libvirt usa systemd-creds con TPM2; la reemplazamos
-    # por una variante con --with-key=host para evitar el cuelgue del TPM.
+    # por una variante que crea la clave en texto plano.
     systemd.services.virt-secret-init-encryption = {
       overrideStrategy = "asDropinIfExists";
       serviceConfig.ExecStart = lib.mkForce [
         ""
         "${virtSecretInit}"
       ];
+    };
+
+    # virtsecretd carga la clave como credencial en texto plano (LoadCredential)
+    # en lugar de descifrarla con systemd-creds (LoadCredentialEncrypted).
+    systemd.services.virtsecretd = {
+      overrideStrategy = "asDropinIfExists";
+      serviceConfig = {
+        LoadCredentialEncrypted = lib.mkForce [ "" ];
+        LoadCredential = [ "secrets-encryption-key:/var/lib/libvirt/secrets/secrets-encryption-key" ];
+      };
     };
 
     environment.systemPackages = with pkgs; [
