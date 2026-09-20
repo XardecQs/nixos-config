@@ -1,5 +1,4 @@
 {
-  self,
   lib,
   config,
   pkgs,
@@ -37,7 +36,7 @@ in
         auto-optimise-store = true;
       }
       // lib.optionalAttrs (cfg.cores != null) {
-        cores = cfg.cores;
+        inherit (cfg) cores;
       };
     };
     programs = {

@@ -48,9 +48,9 @@
     let
       system = "x86_64-linux";
 
-      helpers = import ./lib { lib = nixpkgs-stable.lib; };
+      helpers = import ./lib { inherit (nixpkgs-stable) lib; };
 
-      unstableOverlay = final: prev: {
+      unstableOverlay = _final: _prev: {
         unstable = import nixpkgs-unstable {
           inherit system;
           config.allowUnfree = true;

@@ -41,7 +41,7 @@ in
           canTouchEfiVariables = true;
         }
         // lib.optionalAttrs (cfg.efiSysMountPoint != null) {
-          efiSysMountPoint = cfg.efiSysMountPoint;
+          inherit (cfg) efiSysMountPoint;
         };
       };
       kernel.sysctl = {

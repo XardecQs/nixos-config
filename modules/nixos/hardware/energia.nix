@@ -74,38 +74,39 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    services.auto-cpufreq = lib.mkIf cfg.autoCpufreq.enable {
-      enable = true;
-      settings = {
-        battery = {
-          governor = cfg.autoCpufreq.gobernadorBateria;
-          turbo = cfg.autoCpufreq.turboBateria;
-        };
-        charger = {
-          governor = cfg.autoCpufreq.gobernadorCargador;
-          turbo = cfg.autoCpufreq.turboCargador;
+    services = {
+      auto-cpufreq = lib.mkIf cfg.autoCpufreq.enable {
+        enable = true;
+        settings = {
+          battery = {
+            governor = cfg.autoCpufreq.gobernadorBateria;
+            turbo = cfg.autoCpufreq.turboBateria;
+          };
+          charger = {
+            governor = cfg.autoCpufreq.gobernadorCargador;
+            turbo = cfg.autoCpufreq.turboCargador;
+          };
         };
       };
+      thermald.enable = cfg.termald.enable;
+      upower.enable = cfg.upower.enable;
+      power-profiles-daemon.enable = false;
+      udev.extraRules = lib.mkIf cfg.usbAutosuspend ''
+        ACTION=="add", SUBSYSTEM=="usb", ATTR{idClass}=="03", ATTR{power/autosuspend}="-1", ATTR{power/control}="on"
+      '';
     };
 
-    services.thermald.enable = cfg.termald.enable;
-    services.upower.enable = cfg.upower.enable;
-    services.power-profiles-daemon.enable = false;
-
-    powerManagement.powertop.enable = cfg.powertop;
-
-    # La QCA9377 (ath10k) cuelga el equipo al suspender por un enlace PCIe
-    # degradado. Se descarga el driver antes de dormir y se recarga al despertar.
-    powerManagement.powerDownCommands = lib.mkIf cfg.descargarWifiSuspend ''
-      ${pkgs.kmod}/bin/modprobe -r ath10k_pci || true
-    '';
-    powerManagement.resumeCommands = lib.mkIf cfg.descargarWifiSuspend ''
-      ${pkgs.kmod}/bin/modprobe ath10k_pci || true
-    '';
-
-    services.udev.extraRules = lib.mkIf cfg.usbAutosuspend ''
-      ACTION=="add", SUBSYSTEM=="usb", ATTR{idClass}=="03", ATTR{power/autosuspend}="-1", ATTR{power/control}="on"
-    '';
+    powerManagement = {
+      powertop.enable = cfg.powertop;
+      # La QCA9377 (ath10k) cuelga el equipo al suspender por un enlace PCIe
+      # degradado. Se descarga el driver antes de dormir y se recarga al despertar.
+      powerDownCommands = lib.mkIf cfg.descargarWifiSuspend ''
+        ${pkgs.kmod}/bin/modprobe -r ath10k_pci || true
+      '';
+      resumeCommands = lib.mkIf cfg.descargarWifiSuspend ''
+        ${pkgs.kmod}/bin/modprobe ath10k_pci || true
+      '';
+    };
 
     networking.networkmanager.wifi.powersave = cfg.wifiPowersave;
   };

@@ -118,11 +118,9 @@ in
       enable = true;
       preserveAt."/persist" = {
         commonMountOptions = [ "x-gvfs-hide" ];
-        directories = sistema.directories;
-        files = sistema.files;
+        inherit (sistema) directories files;
         users.${user} = {
-          directories = usuario.directories;
-          files = usuario.files;
+          inherit (usuario) directories files;
         };
       };
     };
