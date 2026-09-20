@@ -14,18 +14,20 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.retroarch.enable = true;
-    home.packages = (with pkgs.libretro; [
-      mgba
-      neocd
-      snes9x
-      pcsx2
-      dolphin
-      ppsspp
-      swanstation
-    ]) ++ [
-      pkgs.xemu
-      pkgs.pcsx2
-    ];
+    home.packages =
+      (with pkgs.libretro; [
+        mgba
+        neocd
+        snes9x
+        pcsx2
+        dolphin
+        ppsspp
+        swanstation
+      ])
+      ++ [
+        pkgs.xemu
+        pkgs.pcsx2
+      ];
     home.file.".config/retroarch/cores" = {
       source = "${config.home.path}/lib/retroarch/cores";
       force = true;

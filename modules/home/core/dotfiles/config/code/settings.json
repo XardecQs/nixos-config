@@ -1,0 +1,128 @@
+{
+  // --- Editor: Tipografía ---
+  "editor.fontFamily": "'JetBrainsMono NFM', 'Droid Sans Mono', 'monospace'",
+  "editor.fontLigatures": true,
+  "editor.fontWeight": "600",
+  "terminal.integrated.fontFamily": "monospace",
+  // --- Interfaz y Tema (Workbench) ---
+  "workbench.colorTheme": "One Dark Darker",
+  "workbench.startupEditor": "none",
+  "workbench.activityBar.autoHide": true,
+  "workbench.activityBar.location": "top",
+  "workbench.editor.tabActionCloseVisibility": true,
+  "workbench.tree.indent": 12,
+  "workbench.tree.renderIndentGuides": "none",
+  "window.autoDetectHighContrast": false,
+  "update.mode": "manual",
+  "chat.agentsControl.enabled": false,
+  "workbench.navigationControl.enabled": false,
+  "workbench.layoutControl.enabled": false,
+  // --- Editor: Apariencia y Comportamiento ---
+  "editor.lineNumbers": "on",
+  //"editor.lineHeight": 21,
+  //"editor.padding.top": 14,
+  //"editor.padding.bottom": 14,
+  "editor.smoothScrolling": true,
+  "editor.cursorBlinking": "phase",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.overviewRulerBorder": false,
+  //"editor.scrollbar.horizontal": "auto",
+  "editor.scrollbar.vertical": "auto",
+  "editor.scrollbar.verticalScrollbarSize": 12,
+  "editor.scrollbar.horizontalScrollbarSize": 12,
+  "editor.minimap.enabled": true,
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.size": "proportional",
+  "editor.minimap.autohide": "scroll",
+  "editor.minimap.showSlider": "always",
+  "editor.renderLineHighlight": "none",
+  // --- Editor: Guías y Ayudas Visuales ---
+  "editor.guides.indentation": false,
+  "editor.guides.bracketPairs": "active",
+  "editor.guides.bracketPairsHorizontal": "active",
+  "editor.guides.highlightActiveIndentation": false,
+  "editor.guides.highlightActiveBracketPair": false,
+  "editor.matchBrackets": "near",
+  "editor.codeLens": false,
+  "editor.glyphMargin": false,
+  "editor.foldingHighlight": false,
+  "editor.parameterHints.enabled": false,
+  "editor.inlayHints.enabled": "on",
+  "editor.tabSize": 1,
+  // --- Explorador de Archivos ---
+  "explorer.autoReveal": true,
+  "explorer.compactFolders": false,
+  // --- Configuración de Extensiones (APC Customize UI++) ---
+  "apc.electron": {
+    "frame": false,
+    "titleBarStyle": "hidden",
+    "trafficLightPosition": {
+      "x": 9,
+      "y": 9
+    }
+  },
+  "apc.statusBar": {
+    "position": "editor-bottom"
+  },
+  "apc.header": {
+    "height": 36
+  },
+  // --- Lenguajes y Herramientas Específicas ---
+  "nix.enableLanguageServer": true,
+  "[nix]": {
+    "editor.defaultFormatter": "jnoortheen.nix-ide"
+  },
+  "rust-analyzer.workspace.discoverConfig": null,
+  "latex-workshop.latex.outDir": "%DIR%/build",
+  "zenMode.fullScreen": false,
+  "workbench.sideBar.location": "right",
+  "workbench.editorAssociations": {
+    "{git,gitlens,chat-editing-snapshot-text-model,copilot,git-graph,git-graph-3}:/**/*.qrc": "default",
+    "*.qrc": "qt-core.qrcEditor"
+  },
+  // --- Modding de GTA SA ---
+  "gta3script.compiler": null,
+  "gta3script.config": "gtasa",
+  "gta3script.configpath": null,
+  "gta3script.buildflags": {
+    "gta3": [
+      "--cs"
+    ],
+    "gtavc": [
+      "--cs"
+    ],
+    "gtasa": [
+      "--guesser",
+      "-fbreak-continue",
+      "-fno-entity-tracking",
+      "-fcleo",
+      "--cs",
+      "-O"
+    ]
+  },
+  "gta3script.docprovider": [
+    "Sanny Builder Library",
+    "GTAModding",
+    "GTAG Opcode Database"
+  ],
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js",
+    "*.tsx": "${capture}.ts",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
+    "flake.nix": "flake.lock",
+    "Cargo.toml": "Cargo.lock",
+    "*.sqlite": "${capture}.${extname}-*",
+    "*.db": "${capture}.${extname}-*",
+    "*.sqlite3": "${capture}.${extname}-*",
+    "*.db3": "${capture}.${extname}-*",
+    "*.sdb": "${capture}.${extname}-*",
+    "*.s3db": "${capture}.${extname}-*"
+  },
+  "sqlite3-editor.ui.minimizePanel": true,
+  "window.commandCenter": false,
+  // --- a ---
+}

@@ -182,7 +182,6 @@ in
               custom-keybindings = [
                 "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
                 "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
-                "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
                 "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
               ];
             };
@@ -197,12 +196,6 @@ in
               name = "Open Nautilus";
               command = "nautilus";
               binding = "<Super>e";
-            };
-
-            "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
-              name = "Wallpaper aleatorio";
-              command = "/home/${user}/Proyectos/Scripts/rust/gwal/target/release/gwal --random";
-              binding = "<Super><Shift>w";
             };
 
             #"org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {

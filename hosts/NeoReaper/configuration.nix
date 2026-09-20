@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
 {
   networking.hostName = "NeoReaper";
 
@@ -10,26 +15,23 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
+    backupFileExtension = "backup";
     extraSpecialArgs = { inherit inputs; };
 
     users.xardec = {
       imports = [
         ./../../modules/home
-        inputs.dotfiles.homeManagerModules.default
-        inputs.spicetify-nix.homeManagerModules.default
         inputs.nix-flatpak.homeManagerModules.nix-flatpak
-        inputs.caelestia-shell.homeManagerModules.default
       ];
-      home.stateVersion = "26.05";
+      home.stateVersion = config.modulos.nixos.core.general.stateVersion;
 
       modulos.home = {
         core = {
           dotfiles = {
-            localPath = "/home/xardec/Proyectos/GitHub/dotfiles";
+            enable = true;
             nvim.enable = true;
             kitty.enable = true;
             fastfetch.enable = true;
-            zsh.enable = false;
             tmux.enable = true;
             alacritty.enable = true;
             waybar.enable = true;
@@ -43,9 +45,10 @@
           zsh.enable = true;
         };
         desktop = {
-          #spicetify.enable = true;
           #obs.enable = true;
           rofi.enable = true;
+          gwal.enable = true;
+          gwal.directorio = "/storage/lab-hdd/Fondos de pantalla";
         };
         apps = {
           syncthing.enable = true;
@@ -65,6 +68,13 @@
         "/etc/machine-id"
       ];
       usuarios.xardec.directories = [
+        "Virtualizacion"
+        "Descargas"
+        "Documentos"
+        "Juegos"
+        "Media"
+        "Proyectos"
+        "Trastero"
         ".config/rofi"
         ".local/share/rofi"
         ".local/state/syncthing"
@@ -91,6 +101,7 @@
     nixos = {
       core = {
         boot.enable = true;
+        boot.kernelPackage = pkgs.linuxPackages_latest;
         fonts.enable = true;
         general.enable = true;
         locate.enable = true;
@@ -126,16 +137,7 @@
 
     compartidos = {
       gnome.enable = true;
-      #plasma.enable = true;
-      hyprland.enable = false;
-      caelestia.enable = false;
-      niri = {
-        enable = false;
-        configPath = "/home/xardec/Proyectos/GitHub/nixos-config/modules/compartidos/niri";
-        quickshellPath = "/home/xardec/Proyectos/GitHub/nixos-config/modules/compartidos/niri/quickshell";
-      };
       flatpak.enable = true;
-      #windows-vm.enable = true;
     };
   };
 }

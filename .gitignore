@@ -1,2 +1,3 @@
 secrets/*.tmp
-result/
+secrets/keys.txt
+/result

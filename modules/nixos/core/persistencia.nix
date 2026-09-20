@@ -2,12 +2,16 @@
 let
   cfg = config.modulos.persistencia;
   user = config.modulos.nixos.core.users.primaryUser;
-  uid = config.users.users.${user}.uid;
 
-  mkFileEntry = f:
-    if f == "/etc/machine-id"
-    then { file = f; inInitrd = true; }
-    else f;
+  mkFileEntry =
+    f:
+    if f == "/etc/machine-id" then
+      {
+        file = f;
+        inInitrd = true;
+      }
+    else
+      f;
 in
 {
   options.modulos.persistencia = {
@@ -26,23 +30,27 @@ in
     };
 
     usuarios = lib.mkOption {
-      type = lib.types.attrsOf (lib.types.submodule {
-        options = {
-          directories = lib.mkOption {
-            type = lib.types.listOf lib.types.str;
-            default = [ ];
+      type = lib.types.attrsOf (
+        lib.types.submodule {
+          options = {
+            directories = lib.mkOption {
+              type = lib.types.listOf lib.types.str;
+              default = [ ];
+            };
+            files = lib.mkOption {
+              type = lib.types.listOf lib.types.str;
+              default = [ ];
+            };
           };
-          files = lib.mkOption {
-            type = lib.types.listOf lib.types.str;
-            default = [ ];
-          };
-        };
-      });
+        }
+      );
       default = { };
     };
   };
 
   config = lib.mkIf cfg.enable {
+    systemd.suppressedSystemUnits = [ "systemd-machine-id-commit.service" ];
+
     modulos.persistencia = {
       sistema = {
         directories = [ "/var/lib/bluetooth" ];
@@ -51,13 +59,6 @@ in
 
       usuarios.${user} = {
         directories = [
-          "Virtualizacion"
-          "Descargas"
-          "Documentos"
-          "Juegos"
-          "Media"
-          "Proyectos"
-          "Trastero"
           ".local/share/zinit"
           ".local/share/zoxide"
           ".local/state/zsh"
@@ -93,12 +94,5 @@ in
         }) cfg.usuarios;
       };
     };
-
-    #systemd.tmpfiles.rules = lib.optional (uid != null) ''
-    #  d /persist/.Trash-${toString uid} 0700 ${user} users -
-    #  d /persist/.Trash-${toString uid}/files 0700 ${user} users -
-    #  d /persist/.Trash-${toString uid}/info 0700 ${user} users -
-    #  d /persist/.Trash-${toString uid}/expunged 0700 ${user} users -
-    #'';
   };
 }

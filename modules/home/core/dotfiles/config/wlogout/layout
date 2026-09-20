@@ -1,0 +1,36 @@
+{
+    "label" : "logout",
+    "action" : "hyprctl dispatch exit",
+    "text" : "Cerrar sesión",
+    "keybind" : "e"
+}
+{
+    "label" : "wallpaper",
+    "action" : "$HOME/Proyectos/GitHub/simple-wallpaper-manager/wallpaper.sh 'Imagen aleatoria'",
+    "text" : "Wallpaper aleatorio",
+    "keybind" : "w"
+}
+{
+    "label" : "shutdown",
+    "action" : "systemctl poweroff",
+    "text" : "Apagar",
+    "keybind" : "s"
+}
+{
+    "label" : "reboot",
+    "action" : "systemctl reboot",
+    "text" : "Reiniciar",
+    "keybind" : "r"
+}
+{
+    "label" : "suspend",
+    "action" : "systemctl suspend",
+    "text" : "Suspender",
+    "keybind" : "u"
+}
+{
+    "label":"kill",
+    "action" : "hyprctl kill",
+    "text" : "Matar programa",
+    "keybind" : "k"
+}

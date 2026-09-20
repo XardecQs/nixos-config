@@ -1,0 +1,85 @@
+// ~/.config/waybar/config.jsonc
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "spacing": 10,
+  "reload_style_on_change": true,
+  // Módulos en orden de izquierda a derecha
+  "modules-left": ["sway/workspaces"],
+  "modules-center": ["sway/window"],
+  "modules-right": ["network", "pulseaudio", "clock"],
+
+  // --- Configuración individual de módulos ---
+  "sway/workspaces": {
+    "disable-scroll": false,
+    "all-outputs": true,
+    "format": "{name}: {icon}",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "urgent": "",
+      "focused": "",
+      "default": ""
+    }
+  },
+
+  "sway/window": {
+    "max-length": 50,
+    "rewrite": {
+      "(.*) - Firefox": "🦊 $1",
+      "(.*) - Alacritty": " $1"
+    }
+  },
+
+  "clock": {
+    "format": "{:%H:%M}",
+    "format-alt": "{:%Y-%m-%d}",
+    "tooltip-format": "{:%Y-%m-%d | %H:%M:%S}",
+    "calendar": {
+      "mode"          : "month",
+      "mode-mon-col"  : 3,
+      "weeks-ordered" : false,
+      "format" : {
+        "months"     : "<span color='#ffead3'><b>{}</b></span>",
+        "days"       : "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks"      : "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays"   : "<span color='#ffcc66'><b>{}</b></span>",
+        "today"      : "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode"
+    }
+  },
+
+  "network": {
+    "format-wifi": "{essid} ({signalStrength}%) ",
+    "format-ethernet": "{ipaddr}/{cidr} ",
+    "format-disconnected": "Desconectado ⚠",
+    "tooltip-format": "{ifname} via {gwaddr} ",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "No conectado",
+    "max-length": 50
+  },
+
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-muted": "",
+    "format-icons": {
+      "headphones": "",
+      "handsfree": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    },
+    "scroll-step": 5,
+    "on-click": "pavucontrol"
+  }
+}

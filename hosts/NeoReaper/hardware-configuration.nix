@@ -84,18 +84,18 @@
   };
 
   fileSystems."/storage/lab-hdd" = {
-  device = "/dev/disk/by-uuid/20d10255-4d85-44d7-add6-5beeee5b9b61";
-  fsType = "ext4";
-  options = [
-    "defaults"
-    "nofail"
-    "noatime"
-    "errors=remount-ro"
-    "x-systemd.automount"
-    "x-systemd.idle-timeout=10min"
-    "x-systemd.device-timeout=5s"
-  ];
-};
+    device = "/dev/disk/by-uuid/20d10255-4d85-44d7-add6-5beeee5b9b61";
+    fsType = "ext4";
+    options = [
+      "defaults"
+      "nofail"
+      "noatime"
+      "errors=remount-ro"
+      "x-systemd.automount"
+      "x-systemd.idle-timeout=10min"
+      "x-systemd.device-timeout=5s"
+    ];
+  };
 
   swapDevices = [
     { device = "/dev/disk/by-uuid/1c57e7d2-0869-447c-8d2f-3f6f5fc1139a"; }

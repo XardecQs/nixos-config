@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 let
   cfg = config.modulos.nixos.hardware.energia;
 in
@@ -56,6 +56,11 @@ in
       default = true;
       description = "Activar suspensión automática de USB";
     };
+    descargarWifiSuspend = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "Descargar ath10k_pci antes de suspender para evitar cuelgues por enlace PCIe degradado";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -78,6 +83,15 @@ in
     services.power-profiles-daemon.enable = false;
 
     powerManagement.powertop.enable = cfg.usbAutosuspend;
+
+    # La QCA9377 (ath10k) cuelga el equipo al suspender por un enlace PCIe
+    # degradado. Se descarga el driver antes de dormir y se recarga al despertar.
+    powerManagement.powerDownCommands = lib.mkIf cfg.descargarWifiSuspend ''
+      ${pkgs.kmod}/bin/modprobe -r ath10k_pci || true
+    '';
+    powerManagement.resumeCommands = lib.mkIf cfg.descargarWifiSuspend ''
+      ${pkgs.kmod}/bin/modprobe ath10k_pci || true
+    '';
 
     services.udev.extraRules = lib.mkIf cfg.usbAutosuspend ''
       ACTION=="add", SUBSYSTEM=="usb", ATTR{idClass}=="03", ATTR{power/autosuspend}="-1", ATTR{power/control}="on"

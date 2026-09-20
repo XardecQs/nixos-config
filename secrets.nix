@@ -4,5 +4,4 @@ in
 {
   "secrets/root-password.age".publicKeys = [ neoReaper ];
   "secrets/primaryUser-password.age".publicKeys = [ neoReaper ];
-  "secrets/cloudreve-aria2.age".publicKeys = [ neoReaper ];
 }

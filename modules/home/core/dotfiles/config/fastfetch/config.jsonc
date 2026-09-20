@@ -1,0 +1,165 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "auto",
+    "source": "logo.txt",
+    "height": 18,
+    "padding": {
+      "top": 6,
+      "left": 4,
+      "right": 4
+    }
+  },
+  "display": {
+    "separator": " -> ",
+    "bar": {
+      "char": {
+        "elapsed": "=",
+        "total": "-"
+      },
+      "width": 12
+    }
+  },
+  "modules": [
+    "break",
+    "break",
+    {
+      "type": "custom",
+      "format": "\u001b[90m  \u001b[91m  \u001b[92m  \u001b[93m  \u001b[94m  \u001b[95m  \u001b[96m  \u001b[97m "
+    },
+    "break",
+    {
+      "type": "title",
+      "keyWidth": 10
+    },
+    "break",
+    {
+      "type": "os",
+      "key": " OS",
+      "format": "{name} {version} {#2}{arch}",
+      "keyColor": "32"
+    },
+    {
+      "type": "kernel",
+      "key": " Kernel",
+      "keyColor": "32"
+    },
+    {
+      "type": "host",
+      "key": " Machine",
+      "format": "{family} {name}",
+      "keyColor": "32"
+    },
+    {
+      "type": "cpu",
+      "key": " CPU",
+      "format": "{name} {#2}{freq-max}",
+      "keyColor": "32"
+    },
+    {
+      "type": "gpu",
+      "key": " GPU",
+      "format": "{name} {#2}{type}",
+      "keyColor": "32"
+    },
+    {
+      "type": "battery",
+      "key": " Batería",
+      "format": "{model-name} {capacity}{?time-formatted} {time-formatted}{?} {#2}{technology}",
+      "keyColor": "33"
+    },
+    {
+      "type": "packages",
+      "key": " Paquetes",
+      "keyColor": "33"
+    },
+    {
+      "type": "terminal",
+      "format": "{pretty-name}",
+      "key": " Terminal",
+      "keyColor": "33"
+    },
+    {
+      "type": "shell",
+      "format": "{pretty-name} {#2}{version}",
+      "key": " Shell",
+      "keyColor": "33"
+    },
+    {
+      "type": "memory",
+      "key": " RAM",
+      "format": "{used} / {total} ({percentage})",
+      "keyColor": "91"
+    },
+    {
+      "type": "disk",
+      "key": "󰋊 {name}",
+      "format": "{size-used} / {size-total} ({size-percentage}) {#2}| {filesystem} ({mountpoint})",
+      "keyColor": "91"
+    },
+    {
+      "type": "wm",
+      "key": " WM",
+      "format": "{pretty-name}{?version} {#2}{version}{?}",
+      "keyColor": "95"
+    },
+    {
+      "type": "theme",
+      "key": "󰉋 Tema",
+      "keyColor": "95"
+    },
+    {
+      "type": "icons",
+      "key": "󰪤 Iconos",
+      "keyColor": "95"
+    },
+    {
+      "type": "cursor",
+      "key": " Cursor",
+      "keyColor": "95"
+    },
+    {
+      "type": "terminalfont",
+      "key": " Terminal Font",
+      "keyColor": "95"
+    },
+    {
+      "type": "uptime",
+      "key": " Tiempo Activo",
+      "keyColor": "34"
+    },
+    {
+      "type": "datetime",
+      "format": "{weekday} {day-in-month} {month-name} de {year} | {hour-12-pretty}:{minute-pretty}",
+      "key": " Fecha",
+      "keyColor": "34"
+    },
+    {
+      "type": "localip",
+      "key": "󰩟 IP Local",
+      "format": "{ipv4}",
+      "keyColor": "34"
+    },
+    "break",
+    {
+      "type": "media",
+      "key": "󰝚 Media",
+      "keyColor": "36"
+    },
+    {
+      "type": "player",
+      "key": " Reproductor",
+      "keyColor": "36"
+    },
+    {
+      "type": "sound",
+      "key": "󱡬 Salida de Audio",
+      "keyColor": "36"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "\u001b[90m  \u001b[91m  \u001b[92m  \u001b[93m  \u001b[94m  \u001b[95m  \u001b[96m  \u001b[97m "
+    }
+  ]
+}

@@ -44,7 +44,7 @@ in
       libicns
       zoxide
       lsd
-      fastfetch
+      unstable.fastfetch
       gdu
       yazi
       home-manager

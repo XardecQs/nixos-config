@@ -92,12 +92,10 @@ in
           gs = "git status";
           gl = "git log --oneline --graph";
           gd = "git diff";
-          dots = "cd ~/Proyectos/GitHub/dotfiles";
-          dotsn = "cd ~/Proyectos/GitHub/dotfiles && nvim";
-          dotsc = "cd ~/Proyectos/GitHub/dotfiles && code .";
+          dots = "cd ~/Proyectos/GitHub/nixos-config/modules/home/core/dotfiles";
+          dotsn = "cd ~/Proyectos/GitHub/nixos-config/modules/home/core/dotfiles && nvim";
+          dotsc = "cd ~/Proyectos/GitHub/nixos-config/modules/home/core/dotfiles && code .";
           "nix-shell" = "nix-shell --run zsh";
-          ordenar = "~/Proyectos/GitHub/dotfiles/scripts/ordenar.sh";
-          desordenar = "~/Proyectos/GitHub/dotfiles/scripts/desordenar.sh";
         };
       }
 

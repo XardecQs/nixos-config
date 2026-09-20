@@ -1,5 +1,5 @@
 {
-  description = "Configuración NixOS modular para NeoReaper y PC-Hogar";
+  description = "Configuración NixOS modular para NeoReaper";
 
   inputs = {
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
@@ -14,46 +14,32 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     font-collection = {
-      url = "github:XardecQs/font-collection";
+      url = "git+file:///home/xardec/Proyectos/GitHub/font-collection";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     iconos = {
       url = "github:XardecQs/iconos";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    dotfiles = {
-      url = "github:XardecQs/dotfiles";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
-    nixpak = {
-      url = "github:nixpak/nixpak";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     elyprismlauncher = {
       url = "github:ElyPrismLauncher/ElyPrismLauncher";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     gta-mo = {
-      url = "github:XardecQs/samt-nix";
+      #url = "github:XardecQs/samt-nix";
+      url = "git+file:///home/xardec/Proyectos/GTA-Mod-Organizer";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     lan-mouse = {
       url = "github:feschber/lan-mouse";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
-    caelestia-shell = {
-      url = "github:caelestia-dots/shell";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
   };
 
   outputs =
@@ -102,7 +88,6 @@
 
       nixosConfigurations = {
         NeoReaper = mkHost "NeoReaper" [ ];
-        PC-Hogar = mkHost "PC-Hogar" [ ];
       };
     };
 }
