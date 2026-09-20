@@ -1,4 +1,4 @@
 { helpers, ... }:
 {
-  imports = (helpers.importDir ./. ) ++ [ ./../compartidos ];
+  imports = (helpers.importDir ./.) ++ [ ./../compartidos ];
 }
