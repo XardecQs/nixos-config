@@ -34,25 +34,26 @@ in
       };
     };
 
-    # La unidad original de libvirt usa systemd-creds con TPM2; la reemplazamos
-    # por una variante que crea la clave en texto plano.
-    systemd.services.virt-secret-init-encryption = {
-      overrideStrategy = "asDropinIfExists";
-      serviceConfig.ExecStart = lib.mkForce [
-        ""
-        "${virtSecretInit}"
-      ];
-    };
-
-    # virtsecretd carga la clave como credencial en texto plano (LoadCredential)
-    # en lugar de descifrarla con systemd-creds (LoadCredentialEncrypted).
-    systemd.services.virtsecretd = {
+    # libvirt 12.2 cifra la clave de secretos con systemd-creds (TPM2), que
+    # falla en este equipo y se apoya en una clave de host que impermanence
+    # no puede conservar. La generamos en texto plano y hacemos que los
+    # demonios la carguen con LoadCredential en lugar de LoadCredentialEncrypted.
+    systemd.services = {
+      virt-secret-init-encryption = {
+        overrideStrategy = "asDropinIfExists";
+        serviceConfig.ExecStart = lib.mkForce [
+          ""
+          "${virtSecretInit}"
+        ];
+      };
+    }
+    // lib.genAttrs [ "libvirtd" "virtsecretd" ] (_: {
       overrideStrategy = "asDropinIfExists";
       serviceConfig = {
         LoadCredentialEncrypted = lib.mkForce [ "" ];
         LoadCredential = [ "secrets-encryption-key:/var/lib/libvirt/secrets/secrets-encryption-key" ];
       };
-    };
+    });
 
     environment.systemPackages = with pkgs; [
       distrobox
