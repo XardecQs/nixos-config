@@ -18,12 +18,12 @@
     useUserPackages = true;
     backupFileExtension = "backup";
     extraSpecialArgs = { inherit inputs helpers; };
+    sharedModules = [
+      ./../../modules/home
+      inputs.nix-flatpak.homeManagerModules.nix-flatpak
+    ];
 
     users.xardec = {
-      imports = [
-        ./../../modules/home
-        inputs.nix-flatpak.homeManagerModules.nix-flatpak
-      ];
       home.stateVersion = config.modulos.nixos.core.general.stateVersion;
 
       modulos.home = {

@@ -70,6 +70,25 @@
   },
   // --- Lenguajes y Herramientas Específicas ---
   "nix.enableLanguageServer": true,
+  "nix.serverPath": "nixd",
+  "nix.serverSettings": {
+    "nixd": {
+      "nixpkgs": {
+        "expr": "(builtins.getFlake \"/home/xardec/Proyectos/GitHub/nixos-config\").nixosConfigurations.NeoReaper.pkgs"
+      },
+      "formatting": {
+        "command": ["nixfmt"]
+      },
+      "options": {
+        "nixos": {
+          "expr": "(builtins.getFlake \"/home/xardec/Proyectos/GitHub/nixos-config\").nixosConfigurations.NeoReaper.options"
+        },
+        "home-manager": {
+          "expr": "(builtins.getFlake \"/home/xardec/Proyectos/GitHub/nixos-config\").nixosConfigurations.NeoReaper.options.home-manager.users.type.getSubOptions []"
+        }
+      }
+    }
+  },
   "[nix]": {
     "editor.defaultFormatter": "jnoortheen.nix-ide"
   },
