@@ -1,10 +1,4 @@
-{ ... }:
+{ helpers, ... }:
 {
-  imports = [
-    ./core
-    ./hardware
-    ./desktop
-    ./services
-    ./../compartidos
-  ];
+  imports = (helpers.importDir ./. ) ++ [ ./../compartidos ];
 }

@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  helpers,
   config,
   ...
 }:
@@ -16,7 +17,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup";
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit inputs helpers; };
 
     users.xardec = {
       imports = [

@@ -44,7 +44,6 @@
 
   outputs =
     {
-      self,
       nixpkgs-stable,
       nixpkgs-unstable,
       home-manager,
@@ -52,6 +51,8 @@
     }@inputs:
     let
       system = "x86_64-linux";
+
+      helpers = import ./lib { lib = nixpkgs-stable.lib; };
 
       unstableOverlay = final: prev: {
         unstable = import nixpkgs-unstable {
@@ -64,7 +65,7 @@
         hostname: extraModules:
         nixpkgs-stable.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs self; };
+          specialArgs = { inherit inputs helpers; };
 
           modules = [
             ./hosts/${hostname}/configuration.nix

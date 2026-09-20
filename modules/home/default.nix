@@ -1,8 +1,4 @@
-{ ... }:
+{ helpers, ... }:
 {
-  imports = [
-    ./core
-    ./desktop
-    ./apps
-  ];
+  imports = helpers.importDir ./.;
 }
