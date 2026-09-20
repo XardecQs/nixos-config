@@ -36,10 +36,6 @@
       url = "git+file:///home/xardec/Proyectos/GTA-Mod-Organizer";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
-    lan-mouse = {
-      url = "github:feschber/lan-mouse";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
   };
 
   outputs =

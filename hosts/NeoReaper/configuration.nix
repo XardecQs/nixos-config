@@ -34,10 +34,6 @@
             kitty.enable = true;
             fastfetch.enable = true;
             tmux.enable = true;
-            alacritty.enable = true;
-            waybar.enable = true;
-            wal.enable = true;
-            wlogout.enable = true;
             albert.enable = true;
             code.enable = true;
             xdgUserDirs.enable = true;
@@ -46,15 +42,11 @@
           zsh.enable = true;
         };
         desktop = {
-          #obs.enable = true;
-          rofi.enable = true;
           gwal.enable = true;
           gwal.directorio = "/storage/lab-hdd/Fondos de pantalla";
         };
         apps = {
           syncthing.enable = true;
-          #java.enable = true;
-          #lan-mouse.enable = true;
           retroarch.enable = true;
           gta-mo.enable = true;
         };

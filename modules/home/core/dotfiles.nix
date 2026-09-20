@@ -14,10 +14,6 @@ in
     kitty.enable = lib.mkEnableOption "configuración de Kitty";
     fastfetch.enable = lib.mkEnableOption "configuración de Fastfetch";
     tmux.enable = lib.mkEnableOption "configuración de Tmux";
-    alacritty.enable = lib.mkEnableOption "configuración de Alacritty";
-    waybar.enable = lib.mkEnableOption "configuración de Waybar";
-    wal.enable = lib.mkEnableOption "configuración de Pywal";
-    wlogout.enable = lib.mkEnableOption "configuración de Wlogout";
     albert.enable = lib.mkEnableOption "configuración de Albert launcher";
     code.enable = lib.mkEnableOption "configuración de VS Code";
     xdgUserDirs.enable = lib.mkEnableOption "directorios XDG con nombres en español";
@@ -46,30 +42,6 @@ in
       (lib.mkIf cfg.tmux.enable {
         home.file.".config/tmux" = {
           source = ./dotfiles/config/tmux;
-          recursive = true;
-        };
-      })
-      (lib.mkIf cfg.alacritty.enable {
-        home.file.".config/alacritty" = {
-          source = ./dotfiles/config/alacritty;
-          recursive = true;
-        };
-      })
-      (lib.mkIf cfg.waybar.enable {
-        home.file.".config/waybar" = {
-          source = ./dotfiles/config/waybar;
-          recursive = true;
-        };
-      })
-      (lib.mkIf cfg.wal.enable {
-        home.file.".config/wal" = {
-          source = ./dotfiles/config/wal;
-          recursive = true;
-        };
-      })
-      (lib.mkIf cfg.wlogout.enable {
-        home.file.".config/wlogout" = {
-          source = ./dotfiles/config/wlogout;
           recursive = true;
         };
       })
