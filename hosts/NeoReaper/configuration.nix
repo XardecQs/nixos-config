@@ -10,6 +10,7 @@
 
   imports = [
     ./hardware-configuration.nix
+    ./hardware-extra.nix
     ./../../modules/nixos
   ];
 
@@ -56,7 +57,13 @@
 
   modulos = {
     nixos = {
-      persistencia.enable = true;
+      persistencia = {
+        enable = true;
+        rollbackRoot = {
+          enable = true;
+          device = "/dev/mapper/DecryptedSystem";
+        };
+      };
 
       core = {
         boot.enable = true;

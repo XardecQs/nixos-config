@@ -1,0 +1,4 @@
+ignore = [
+  ".direnv"
+  "hardware-configuration.nix"
+]
