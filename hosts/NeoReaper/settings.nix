@@ -26,8 +26,8 @@
         enable = true;
         user = "xardec";
         dryRun = true;
-        # Poner a true al migrar (ver scripts/migrar-home.sh y docs/persistencia.md):
-        subvolumen.enable = false;
+        # Migración hecha (2026-09-24): montar /home desde @home.
+        subvolumen.enable = true;
 
         allow = {
           top = [
