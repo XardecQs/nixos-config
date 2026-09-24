@@ -10,7 +10,8 @@ let
   linea = ruta: icono: ''
     dir="$HOME/${ruta}"
     if [ -d "$dir" ]; then
-      ${pkgs.glib}/bin/gio set -t string "$dir" metadata::custom-icon ${lib.escapeShellArg icono} || echo "no se pudo: $dir"
+      ${pkgs.glib}/bin/gio set -d "$dir" metadata::custom-icon 2>/dev/null || true
+      ${pkgs.glib}/bin/gio set -t string "$dir" metadata::custom-icon-name ${lib.escapeShellArg icono} || echo "no se pudo: $dir"
     fi
   '';
 
