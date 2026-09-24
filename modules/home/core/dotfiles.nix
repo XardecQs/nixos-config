@@ -77,7 +77,7 @@ in
           enable = true;
           createDirectories = true;
           setSessionVariables = false;
-          desktop = "$HOME/Documentos/Escritorio";
+          desktop = "$HOME/Escritorio";
           documents = "$HOME/Documentos";
           download = "$HOME/Descargas";
           music = "$HOME/Media/Música";
@@ -85,7 +85,7 @@ in
           videos = "$HOME/Media/Vídeos";
           projects = "$HOME/Proyectos";
           templates = "$HOME/Documentos/Plantillas";
-          publicShare = "$HOME/Documentos/Público";
+          publicShare = null;
         };
       })
       {

@@ -1,74 +1,83 @@
 # Organización de archivos
 
-Esquema híbrido aplicado: **PARA** para documentos, **por origen** para el archivo
-sentimental, y **por tipo** para media/juegos.
+Sistema híbrido (**Modelo A**): **XDG** para las carpetas de sistema, **PARA** para documentos
+activos, **por origen** para el archivo sentimental y **por tipo** para media/juegos.
 
-## Árbol aplicado
+## Regla de nombres
+
+- **Carpetas de contenido** (visibles, con icono): **español natural** (Mayúscula inicial,
+  tildes y espacios): `Imágenes`, `Vídeos`, `Música`, `Áreas`, `Notas`, `Grabaciones de pantalla`…
+- **Carpetas técnicas** (código, repos, extensiones, ocultas): **ASCII**/`kebab-case`, minúsculas:
+  `Proyectos/GitHub`, `Proyectos/Scripts/py`, `Juegos/ROMs`.
+- Fechas `YYYY-MM-DD`; sin `|`, `:` ni duplicados por mayúsculas.
+
+## Principios
+
+- **Un solo inbox:** todo entra por `Descargas` y se triajea pronto (nada vive ahí más de unos días).
+- **Temperatura:** lo activo en `Documentos`/`Media`/`Proyectos`; lo frío en `Archivo/`.
+- **Un criterio por nivel:** documentos por **tema**, media por **tipo**, sentimental por **origen**.
+- **XDG en la raíz** (nunca anidados); `Público` desactivado, `Plantillas` dentro de `Documentos`.
+- **Sin duplicados lógicos:** una única ubicación canónica por cosa.
+
+## Árbol
 
 ```
 ~/
-├── Descargas/                 # bandeja de entrada (vaciar semanal)
-├── Documentos/
-│   ├── Académicos/{Informes,...}
-│   ├── Areas/                 # responsabilidades continuas
-│   ├── Recursos/              # referencia (pdf, jpg, escritos...)
-│   ├── Obsidian/              # vault activo
-│   └── Archivo/
-├── Media/
-│   ├── Imágenes/{Fondos,Capturas,Fotos}
-│   ├── Vídeos/  Música/
-│   └── Libros/{Libros,Mangas}
-├── Proyectos/
-│   ├── GitHub/<repo>          # repos con remoto
-│   ├── Local/<proyecto>       # sin remoto (C, gta3sc, legacy-conversion)
-│   └── Scripts/
+├── Descargas/                 # inbox (único sitio donde usar `ordenar`)
+├── Escritorio/                # XDG desktop
+├── Documentos/                # ACTIVO, por TEMA
+│   ├── Universidad/<curso>/
+│   ├── Áreas/{Finanzas,Marca}/
+│   ├── Recursos/<tema>/       # referencia por tema (no por formato)
+│   ├── Plantillas/            # XDG templates
+│   ├── Notas/                 # vault de Obsidian
+│   └── Personal/
+├── Media/                     # por TIPO
+│   ├── Imágenes/{Capturas de pantalla,Fondos de pantalla,Fotos,...}
+│   ├── Vídeos/{Grabaciones de pantalla,...}
+│   ├── Música/{Álbumes,Sencillos}
+│   └── Libros/  Mangas/
+├── Proyectos/{GitHub,Local,Scripts}   # técnicas: ASCII
 ├── Juegos/
-│   ├── GTA/{mods,SA...}
-│   ├── Minecraft/{servers,tools}
-│   ├── Linux/ Windows/ ROMs/
-├── Archivo/
-│   ├── Personal/              # irremplazable (SSD + backup pendiente)
-│   │   ├── PC-Infancia/{backup-2025-08,backup-2025-08-parte2,backup-2026-03,Renovatio,juegos}
-│   │   ├── Abuelo/  Familia/  Ximena/
-│   │   ├── Telefono/{2026-02,2026-07}
-│   │   ├── Marca/  Notas/
-│   └── GTA/                   # (se usa Juegos/GTA/mods para modding activo)
-└── Virtualizacion -> /storage/lab-hdd/Virtualizacion   # movido al HDD (regenerable)
+└── Archivo/                   # FRÍO
+    ├── Personal/{Abuelo,Familia,Ximena,Tia}/   # sentimental por origen
+    ├── Dispositivos/{PC-Infancia,Telefono}/<YYYY-MM>/
+    ├── _recuperacion/         # informe 0 bytes (hasta cerrarlo)
+    ├── Universidad/<año>/     # académicos terminados
+    └── Propios/               # proyectos personales fríos
 ```
+
+`Virtualizacion -> /storage/lab-hdd/Virtualizacion` (regenerable, en el HDD).
 
 ## Clasificación por disco
 
-- **SSD**: todo lo personal/irremplazable (`Documentos`, `Proyectos`, `Archivo/Personal`,
-  `Media`, `Juegos`).
-- **HDD (`/storage/lab-hdd`, poco fiable)**: solo datos regenerables (`Virtualizacion`,
-  librería Steam secundaria, ROMs, modding). Nunca copia única de algo importante.
+- **SSD:** personal/irremplazable (`Documentos`, `Proyectos`, `Archivo`, `Media`, `Juegos`).
+- **HDD (`/storage/lab-hdd`, poco fiable):** solo regenerable (`Virtualizacion`, librería Steam
+  secundaria, ROMs, modding). Nunca copia única.
 
 ## Reglas
 
 - **1 proyecto = 1 repo git**; sin `.bk` (el historial está en git).
-- **Sin espacios ni acentos** en rutas de código; `kebab-case`; fechas `YYYY-MM-DD`.
-- **Regla de 3 cajas**: `Descargas` (hoy) → carpeta temática (activo) → `Archivo` (frío) → HDD.
+- `ordenar` solo en `Descargas` (crea carpetas por extensión; **no** usarlo en `Documentos`/`Recursos`).
 - Configs gestionadas viven en el repo (`modules/home/.../dotfiles`); `~/.config` solo lo demás.
 
 ## Estado (2026-09)
 
-Hecho: `Trastero` → `Archivo/Personal` (por origen), `Descargas` clasificado y vacío,
-`Virtualizacion` movido al HDD, sueltos y duplicados consolidados, y creado
-`Proyectos/Local/legacy-conversion` con inventario.
+- Reorganización a Modelo A: `Escritorio` a la raíz, `Público` desactivado, vault en
+  `Documentos/Notas`, `Académicos` → `Universidad`, `Areas` → `Áreas`, `libros` → `Libros`.
+- `Archivo`: `Personal` (por persona) y `Dispositivos` (backups técnicos) separados; `Tia` dentro de
+  `Personal`; duplicado `papá`/`Papá` y `Grabaciones de pantalla` unificados.
 
 ## Pendiente
 
-- **Backups** (restic/borg) para `Archivo/Personal`, `Documentos` y `Proyectos`.
-- Terminar la migración de formatos en `Proyectos/Local/legacy-conversion` y deduplicar
-  originales vs convertidos (solo tras backup).
-- **Archivos en 0 bytes** de la migración antigua (rsync sin verificar): 1401 recuperados
-  in-place por hardlink; 858 pendientes de recopiar desde la laptop de mi hermana / USB de
-  papá. Informe y `.zero` en `~/Archivo/Personal/_recuperacion/`.
+- **Backups** (restic/borg) para `Archivo` (126G irremplazable), `Documentos` y `Proyectos`.
+- **0 bytes**: informe y `.zero` en `~/Archivo/_recuperacion/`; 858 pendientes de recopiar.
+- Terminar la migración de formatos en `Proyectos/Local/legacy-conversion` (tras backup).
 
 ## Acoplamientos al mover/renombrar
 
-- La allowlist del enforcement: `users/<usuario>/home-allowlist.nix`.
+- La allowlist del enforcement: `users/<usuario>/home-allowlist.nix` (**cualquier carpeta nueva en la raíz**).
 - `modules/home/core/dotfiles.nix` (`xdg.userDirs`).
 - `modules/home/apps/syncthing.nix` (rutas sincronizadas).
 - `hosts/<host>/settings.nix` (`gwal.directorio`) y `hardware-extra.nix` (montajes).
-- `modules/home/apps/gta-mo.nix` (`game_root`) y librerías de Steam.
+- `modules/home/apps/gta-mo.nix` (`gameRoot`) y librerías de Steam.

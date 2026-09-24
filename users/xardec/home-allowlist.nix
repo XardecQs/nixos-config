@@ -7,6 +7,7 @@
       "Archivo"
       "Descargas"
       "Documentos"
+      "Escritorio"
       "Juegos"
       "Media"
       "Proyectos"
