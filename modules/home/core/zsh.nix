@@ -180,8 +180,17 @@ in
             backup() { cp -r "$1" "$1.bak"; }
 
             rebuild() {
-              local flake_path="''${1:-/etc/nixos}"
-              sudo nixos-rebuild switch --flake "$flake_path"
+              local repo="$HOME/Proyectos/GitHub/nixos-config"
+              local overrides=()
+              [[ -d "$HOME/Proyectos/GitHub/font-collection/.git" ]] || \
+                overrides+=(--override-input font-collection github:XardecQs/font-collection)
+              [[ -d "$HOME/Proyectos/GTA-Mod-Organizer/.git" ]] || \
+                overrides+=(--override-input gta-mo github:XardecQs/samt-nix)
+              if (( ''${#overrides[@]} )); then
+                nh os switch "$repo" "$@" -- "''${overrides[@]}"
+              else
+                nh os switch "$repo" "$@"
+              fi
             }
 
             whereisreal() {
