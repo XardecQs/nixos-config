@@ -7,7 +7,7 @@
 #
 # Hace SOLO la parte de datos (respaldo, crear @home, repoblar). Luego:
 #   1) editar hosts/<host>/settings.nix -> modulos.nixos.homeEstado.subvolumen.enable = true
-#   2) sudo nixos-rebuild boot && sudo reboot
+#   2) sudo nixos-rebuild boot --flake ~/Proyectos/GitHub/nixos-config#NeoReaper && sudo reboot
 #   3) revisar `home-audit`, sembrar allowlist y poner dryRun = false
 #
 # Usa `cp --reflink=auto` (no `rsync --reflink`, que este build no soporta): al ser el
@@ -62,7 +62,7 @@ cp -a --reflink=auto "$HOME_SRC/." "$MNT/@home/$USER_NAME/" \
 echo
 echo "Listo. Pasos siguientes:"
 echo "  1) En hosts/<host>/settings.nix: modulos.nixos.homeEstado.subvolumen.enable = true;"
-echo "  2) sudo nixos-rebuild boot && sudo reboot"
+echo "  2) sudo nixos-rebuild boot --flake ~/Proyectos/GitHub/nixos-config#NeoReaper && sudo reboot"
 echo "  3) Tras reiniciar: 'home-audit' (solo lista). Sembrar allowlist y poner dryRun = false."
 echo
 echo "Respaldos en $MNT/old_roots/; el home viejo sigue en /persist/home/$USER_NAME hasta verificarlo."

@@ -51,7 +51,7 @@ sudo ./scripts/migrar-home.sh
 ```
 Luego:
 1. En `hosts/<host>/settings.nix`: `modulos.nixos.homeEstado.subvolumen.enable = true;`
-2. `sudo nixos-rebuild boot && sudo reboot`.
+2. `sudo nixos-rebuild boot --flake ~/Proyectos/GitHub/nixos-config#NeoReaper && sudo reboot`.
 3. Tras reiniciar: `home-audit` (revisar), sembrar la allowlist con lo legítimo, y
    `dryRun = false`.
 4. Cuando esté validado: borrar `/persist/home/<user>` y los `old_roots/@home_stale_*`.
