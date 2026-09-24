@@ -50,12 +50,19 @@ sentimental, y **por tipo** para media/juegos.
 - **Regla de 3 cajas**: `Descargas` (hoy) → carpeta temática (activo) → `Archivo` (frío) → HDD.
 - Configs gestionadas viven en el repo (`modules/home/.../dotfiles`); `~/.config` solo lo demás.
 
+## Estado (2026-09)
+
+Hecho: `Trastero` → `Archivo/Personal` (por origen), `Descargas` clasificado y vacío,
+`Virtualizacion` movido al HDD, sueltos y duplicados consolidados, y creado
+`Proyectos/Local/legacy-conversion` con inventario.
+
 ## Pendiente
 
 - **Backups** (restic/borg) para `Archivo/Personal`, `Documentos` y `Proyectos`.
-- **Proyecto `Proyectos/Local/legacy-conversion`**: terminar/registrar la migración a
-  opus/mkv/webp y deduplicar (solo tras backup).
-- Limpieza menor: `Trastero/salvar/sonido` (logs) y `Descargas/borrar` (tras revisar).
+- Terminar la migración de formatos en `Proyectos/Local/legacy-conversion` y deduplicar
+  originales vs convertidos (solo tras backup).
+- `Archivo/Personal/Familia/Papá` tiene documentos con 0 bytes (posible copia defectuosa);
+  revisar si hay que recuperar desde otra fuente.
 
 ## Acoplamientos al mover/renombrar
 
