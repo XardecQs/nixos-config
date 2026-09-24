@@ -33,7 +33,7 @@
           "Media/Imágenes" = "folder-pictures";
           "Media/Vídeos" = "folder-videos";
           "Media/Música" = "folder-music";
-          "Media/libros" = "folder-books";
+          "Media/Libros" = "folder-books";
           "Media/Mangas" = "folder-manga";
           "Proyectos/GitHub" = "folder-github";
           "Proyectos/Scripts" = "folder-scripts";
@@ -41,10 +41,11 @@
           "Proyectos/Scripts/rust" = "folder-rust";
           "Proyectos/Scripts/py" = "folder-python";
           "Proyectos/Scripts/MATLAB" = "folder-matlab";
-          "Proyectos/Local/C" = "folder-c";
+          "Proyectos/Scripts/C" = "folder-c";
           "Documentos/Plantillas" = "folder-templates";
           "Juegos/Minecraft" = "folder-minecraft";
           "Virtualizacion" = "folder-virt";
+          "Archivo" = "folder-archive";
         };
       };
     };
