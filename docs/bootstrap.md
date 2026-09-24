@@ -7,19 +7,21 @@ git clone git@github.com:XardecQs/nixos-config.git ~/Proyectos/GitHub/nixos-conf
 cd ~/Proyectos/GitHub/nixos-config
 ```
 
-## 2. Inputs locales (font-collection / gta-mo)
+## 2. Inputs locales (font-collection / gta-mo / iconos)
 
-Por defecto el flake usa dos inputs locales:
+Por defecto el flake usa tres inputs locales:
 
 - `font-collection` → `~/Proyectos/GitHub/font-collection` (repo pesado; se usa en local por velocidad).
 - `gta-mo` → `~/Proyectos/GitHub/samt-nix` (en desarrollo; commits locales).
+- `iconos` → `~/Proyectos/GitHub/iconos` (pack de iconos en desarrollo; commits locales).
 
 En una máquina sin esos repos, se sustituyen por GitHub con `--override-input`:
 
 ```sh
 nh os switch ~/Proyectos/GitHub/nixos-config -- \
   --override-input font-collection github:XardecQs/font-collection \
-  --override-input gta-mo github:XardecQs/samt-nix
+  --override-input gta-mo github:XardecQs/samt-nix \
+  --override-input iconos github:XardecQs/iconos
 ```
 
 La función `rebuild` del zsh hace esta detección automáticamente: si los directorios locales

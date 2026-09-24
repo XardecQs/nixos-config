@@ -93,17 +93,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1789875343,
-        "narHash": "sha256-Z0RYGBF3ZGhuvxjUdhpGMqOJdeTwbUVNnGYZAeAMISM=",
+        "lastModified": 1790272534,
+        "narHash": "sha256-GPzgMM2SMZL0dWqHiRwhpE5Al01+adtCPRsVjpH+Kc8=",
         "ref": "refs/heads/main",
-        "rev": "d6465dac09116e92246c9fc307cdce1f1bcd52bc",
-        "revCount": 94,
+        "rev": "ddc61552f0cffe0c8f27e2ef05e83305ac089c6f",
+        "revCount": 95,
         "type": "git",
-        "url": "file:///home/xardec/Proyectos/GTA-Mod-Organizer"
+        "url": "file:///home/xardec/Proyectos/GitHub/samt-nix"
       },
       "original": {
         "type": "git",
-        "url": "file:///home/xardec/Proyectos/GTA-Mod-Organizer"
+        "url": "file:///home/xardec/Proyectos/GitHub/samt-nix"
       }
     },
     "home-manager": {
@@ -155,17 +155,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1781388240,
-        "narHash": "sha256-FrOP5NuFTlV0JuV6GYSg/HNl/KpZbMvfVsMrLpj5Bvw=",
-        "owner": "XardecQs",
-        "repo": "iconos",
-        "rev": "f8649daff55d205211ac6e174520609a22bcbc80",
-        "type": "github"
+        "lastModified": 1790273971,
+        "narHash": "sha256-4VwWbsYGy9kgVxHV8xPggRmIbBNGugrqKtCj2x/WUwc=",
+        "ref": "refs/heads/main",
+        "rev": "c00e8e61008b97892be129565f2e02ba859e100c",
+        "revCount": 13,
+        "type": "git",
+        "url": "file:///home/xardec/Proyectos/GitHub/iconos"
       },
       "original": {
-        "owner": "XardecQs",
-        "repo": "iconos",
-        "type": "github"
+        "type": "git",
+        "url": "file:///home/xardec/Proyectos/GitHub/iconos"
       }
     },
     "libnbtplusplus": {

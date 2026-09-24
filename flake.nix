@@ -20,7 +20,9 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     iconos = {
-      url = "github:XardecQs/iconos";
+      # local: pack de iconos en desarrollo; se testean commits locales sin push.
+      # En una máquina sin este repo local, usar --override-input (ver `rebuild`).
+      url = "git+file:///home/xardec/Proyectos/GitHub/iconos";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nix-index-database = {

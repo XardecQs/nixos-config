@@ -184,6 +184,8 @@ in
               local overrides=()
               [[ -d "$HOME/Proyectos/GitHub/font-collection/.git" ]] || \
                 overrides+=(--override-input font-collection github:XardecQs/font-collection)
+              [[ -d "$HOME/Proyectos/GitHub/iconos/.git" ]] || \
+                overrides+=(--override-input iconos github:XardecQs/iconos)
               [[ -d "$HOME/Proyectos/GitHub/samt-nix/.git" ]] || \
                 overrides+=(--override-input gta-mo github:XardecQs/samt-nix)
               if (( ''${#overrides[@]} )); then
