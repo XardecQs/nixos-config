@@ -22,6 +22,123 @@
         };
       };
 
+      homeEstado = {
+        enable = true;
+        user = "xardec";
+        dryRun = true;
+        # Poner a true al migrar (ver scripts/migrar-home.sh y docs/persistencia.md):
+        subvolumen.enable = false;
+
+        allow = {
+          top = [
+            "Archivo"
+            "Descargas"
+            "Documentos"
+            "Juegos"
+            "Media"
+            "Proyectos"
+            ".cache"
+            ".config"
+            ".copilot"
+            ".cups"
+            ".dotnet"
+            ".gitconfig"
+            ".local"
+            ".nix-defexpr"
+            ".npm"
+            ".ssh"
+            ".steam"
+            ".themes"
+            ".true-mem"
+            ".var"
+            ".vscode"
+            ".vscode-shared"
+          ];
+          config = [
+            "albert"
+            "btop"
+            "Code"
+            "containers"
+            "dconf"
+            "direnv"
+            "environment.d"
+            "evolution"
+            "fastfetch"
+            "fontconfig"
+            "gh"
+            "git"
+            "GitHub Desktop"
+            "gnome-initial-setup-done"
+            "goa-1.0"
+            "gsconnect"
+            ".gsd-keyboard.settings-ported"
+            "gta-mo"
+            "gtk-3.0"
+            "gtk-4.0"
+            "ibus"
+            "kitty"
+            "libresprite"
+            "librewolf"
+            "mimeapps.list"
+            "nautilus"
+            "nvim"
+            "opencode"
+            "pulse"
+            "retroarch"
+            "syncthing"
+            "systemd"
+            "tmux"
+            "user-dirs.conf"
+            "user-dirs.dirs"
+            "zsh"
+          ];
+          share = [
+            "albert"
+            "applications"
+            "containers"
+            "ElyPrismLauncher"
+            "evolution"
+            "flatpak"
+            "fonts"
+            "gnome-settings-daemon"
+            "gnome-shell"
+            "gta-mo"
+            "gvfs-metadata"
+            "icc"
+            "keyrings"
+            "nautilus"
+            "nvim"
+            "opencode"
+            "opentui"
+            "org.gnome.TextEditor"
+            "pki"
+            "recently-used.xbel"
+            "SMB1R"
+            "sounds"
+            "Steam"
+            "tracker3"
+            "Trash"
+            "TwilitRealm"
+            "umu"
+            "xemu"
+            "zinit"
+            "zoxide"
+          ];
+          state = [
+            "gwal"
+            "home-manager"
+            ".keep"
+            "lesshst"
+            "nix"
+            "nix-output-monitor"
+            "opencode"
+            "syncthing"
+            "wireplumber"
+            "zsh"
+          ];
+        };
+      };
+
       core = {
         boot = {
           enable = true;

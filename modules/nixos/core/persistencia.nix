@@ -8,6 +8,9 @@ let
   cfg = config.modulos.nixos.persistencia;
   user = config.modulos.nixos.core.users.admin;
 
+  # Cuando /home se monta desde @home, deja de usarse preservation para el hogar.
+  unicoHome = config.modulos.nixos.homeEstado.subvolumen.enable;
+
   sistema = {
     directories = [
       "/etc/NetworkManager/system-connections"
@@ -128,6 +131,8 @@ in
       preserveAt."/persist" = {
         commonMountOptions = [ "x-gvfs-hide" ];
         inherit (sistema) directories files;
+      }
+      // lib.optionalAttrs (!unicoHome) {
         users.${user} = {
           inherit (usuario) directories files;
         };

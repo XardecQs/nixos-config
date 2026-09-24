@@ -34,3 +34,4 @@ Hosts disponibles: `NeoReaper`.
 - [Bootstrap de una máquina nueva](docs/bootstrap.md)
 - [Arquitectura](docs/arquitectura.md)
 - [Organización de archivos](docs/archivos.md)
+- [Persistencia del home](docs/persistencia.md)

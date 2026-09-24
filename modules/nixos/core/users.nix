@@ -27,7 +27,14 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    age.identityPaths = [ "/persist/home/${cfg.admin}/.ssh/agenix" ];
+    age.identityPaths = [
+      (
+        if config.modulos.nixos.homeEstado.subvolumen.enable then
+          "/home/${cfg.admin}/.ssh/agenix"
+        else
+          "/persist/home/${cfg.admin}/.ssh/agenix"
+      )
+    ];
 
     age.secrets = {
       root-password.file = ../../../secrets/root-password.age;
