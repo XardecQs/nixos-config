@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  vars,
+  ...
+}:
 let
   cfg = config.modulos.nixos.core.general;
 in
@@ -7,15 +12,15 @@ in
     enable = lib.mkEnableOption "general";
     stateVersion = lib.mkOption {
       type = lib.types.str;
-      default = "26.05";
-      description = "stateVersion del sistema (fuente única para NixOS y home-manager)";
+      default = vars.stateVersion;
+      description = "stateVersion del sistema (fuente única: vars.nix)";
     };
   };
 
   config = lib.mkIf cfg.enable {
     system.stateVersion = cfg.stateVersion;
-    time.timeZone = "America/Lima";
-    i18n.defaultLocale = "es_PE.UTF-8";
+    time.timeZone = vars.timezone;
+    i18n.defaultLocale = vars.locale;
     console.keyMap = "la-latin1";
   };
 }
