@@ -42,7 +42,6 @@ in
             "com.github.jeromerobert.pdfarranger"
             "io.github.Querz.mcaselector"
             "com.usebottles.bottles"
-            "net.retrodeck.retrodeck"
             "org.kde.krita"
             "page.codeberg.JakobDev.jdNBTExplorer"
             "ar.xjuan.Cambalache"

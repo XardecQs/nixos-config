@@ -36,7 +36,7 @@
     gta-mo = {
       # local: proyecto en desarrollo; se testean commits locales sin push.
       # En una máquina sin este repo local, usar --override-input (ver `rebuild`).
-      url = "git+file:///home/xardec/Proyectos/GTA-Mod-Organizer";
+      url = "git+file:///home/xardec/Proyectos/GitHub/samt-nix";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
   };

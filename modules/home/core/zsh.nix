@@ -184,7 +184,7 @@ in
               local overrides=()
               [[ -d "$HOME/Proyectos/GitHub/font-collection/.git" ]] || \
                 overrides+=(--override-input font-collection github:XardecQs/font-collection)
-              [[ -d "$HOME/Proyectos/GTA-Mod-Organizer/.git" ]] || \
+              [[ -d "$HOME/Proyectos/GitHub/samt-nix/.git" ]] || \
                 overrides+=(--override-input gta-mo github:XardecQs/samt-nix)
               if (( ''${#overrides[@]} )); then
                 nh os switch "$repo" "$@" -- "''${overrides[@]}"

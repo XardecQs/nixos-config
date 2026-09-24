@@ -12,7 +12,7 @@ cd ~/Proyectos/GitHub/nixos-config
 Por defecto el flake usa dos inputs locales:
 
 - `font-collection` → `~/Proyectos/GitHub/font-collection` (repo pesado; se usa en local por velocidad).
-- `gta-mo` → `~/Proyectos/GTA-Mod-Organizer` (en desarrollo; commits locales).
+- `gta-mo` → `~/Proyectos/GitHub/samt-nix` (en desarrollo; commits locales).
 
 En una máquina sin esos repos, se sustituyen por GitHub con `--override-input`:
 
