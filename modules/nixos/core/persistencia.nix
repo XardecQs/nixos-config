@@ -195,7 +195,9 @@ in
         '';
       };
 
-      # Hacer disponibles los binarios necesarios en el initrd
+      # Hacer disponibles los binarios necesarios en el initrd.
+      # `head`/`sort`/`grep` se toman de coreutils/grep (no de busybox) porque el
+      # script de poda usa `head -n -3`, que busybox no soporta.
       extraBin = {
         "btrfs" = "${pkgs.btrfs-progs}/bin/btrfs";
         "date" = "${pkgs.coreutils}/bin/date";
@@ -203,6 +205,9 @@ in
         "ls" = "${pkgs.coreutils}/bin/ls";
         "find" = "${pkgs.findutils}/bin/find";
         "mkdir" = "${pkgs.coreutils}/bin/mkdir";
+        "head" = "${pkgs.coreutils}/bin/head";
+        "sort" = "${pkgs.coreutils}/bin/sort";
+        "grep" = "${pkgs.gnugrep}/bin/grep";
       };
     };
   };
