@@ -38,8 +38,7 @@ let
       "Juegos"
       "Media"
       "Proyectos"
-      "Trastero"
-      "Virtualizacion"
+      "Archivo"
 
       # Core / shell
       ".cache/nix-index"
