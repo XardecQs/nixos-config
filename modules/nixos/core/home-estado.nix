@@ -187,37 +187,39 @@ in
       }
     ];
 
-    systemd.services.home-estado = {
-      description = "Enforcement de allowlist del home (cuarentena)";
-      wantedBy = [ "multi-user.target" ];
-      requires = [ "home.mount" ];
-      after = [
-        "local-fs.target"
-        "home.mount"
-      ];
-      before = [ "display-manager.service" ];
-      path = servicePath;
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = true;
-        ExecStart = "${enforceScript}/bin/home-enforce";
+    systemd = {
+      services.home-estado = {
+        description = "Enforcement de allowlist del home (cuarentena)";
+        wantedBy = [ "multi-user.target" ];
+        requires = [ "home.mount" ];
+        after = [
+          "local-fs.target"
+          "home.mount"
+        ];
+        before = [ "display-manager.service" ];
+        path = servicePath;
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+          ExecStart = "${enforceScript}/bin/home-enforce";
+        };
       };
-    };
 
-    systemd.services.home-estado-prune = {
-      description = "Poda de la cuarentena del home";
-      path = servicePath;
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = "${pruneScript}/bin/home-estado-prune";
+      services.home-estado-prune = {
+        description = "Poda de la cuarentena del home";
+        path = servicePath;
+        serviceConfig = {
+          Type = "oneshot";
+          ExecStart = "${pruneScript}/bin/home-estado-prune";
+        };
       };
-    };
 
-    systemd.timers.home-estado-prune = {
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        OnCalendar = "daily";
-        Persistent = true;
+      timers.home-estado-prune = {
+        wantedBy = [ "timers.target" ];
+        timerConfig = {
+          OnCalendar = "daily";
+          Persistent = true;
+        };
       };
     };
 

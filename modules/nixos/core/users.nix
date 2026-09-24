@@ -54,7 +54,7 @@ in
       }
       // builtins.listToAttrs (
         map (name: {
-          name = name;
+          inherit name;
           value = {
             isNormalUser = true;
             extraGroups = [ "networkmanager" ];

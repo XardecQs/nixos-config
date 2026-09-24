@@ -8,5 +8,5 @@
 
   networking.hostName = host.hostname;
 
-  modulos = host.modulos;
+  inherit (host) modulos;
 }
