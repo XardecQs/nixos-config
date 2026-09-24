@@ -44,6 +44,7 @@ let
       # Core / shell
       ".cache/nix-index"
       ".config/btop"
+      ".local/state/gwal"
       ".config/gh"
       ".local/share/Trash"
       ".local/share/applications"

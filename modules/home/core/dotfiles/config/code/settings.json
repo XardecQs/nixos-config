@@ -14,6 +14,8 @@
   "workbench.tree.renderIndentGuides": "none",
   "window.autoDetectHighContrast": false,
   "update.mode": "manual",
+  // --- Seguridad ---
+  "security.workspace.trust.enabled": false,
   "chat.agentsControl.enabled": false,
   "workbench.navigationControl.enabled": false,
   "workbench.layoutControl.enabled": false,

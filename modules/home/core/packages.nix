@@ -2,25 +2,10 @@
   pkgs,
   lib,
   config,
-  inputs,
   ...
 }:
 let
   cfg = config.modulos.home.core.packages;
-
-  elyWrapped = pkgs.symlinkJoin {
-    name = "elyprismlauncher-wrapped";
-    paths = [
-      inputs.elyprismlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default
-      pkgs.temurin-bin-25
-    ];
-    nativeBuildInputs = [ pkgs.makeWrapper ];
-    postBuild = ''
-      wrapProgram $out/bin/elyprismlauncher \
-        --prefix XDG_DATA_DIRS : "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}" \
-        --prefix XDG_DATA_DIRS : "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
-    '';
-  };
 in
 {
   options.modulos.home.core.packages = {
@@ -78,7 +63,6 @@ in
       opencode
 
       protonup-ng
-      elyWrapped
       dusklight
       librewolf
       cage

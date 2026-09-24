@@ -50,6 +50,7 @@
           syncthing.enable = true;
           retroarch.enable = true;
           gta-mo.enable = true;
+          elyprismlauncher.enable = true;
         };
       };
     };
@@ -93,6 +94,10 @@
       };
       services = {
         arduino.enable = true;
+        keyd = {
+          enable = true;
+          mouse.enable = true;
+        };
         networking.enable = true;
         printing.enable = true;
         sshd.enable = true;
