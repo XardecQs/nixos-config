@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.modulos.nixos.persistencia;
-  user = config.modulos.nixos.core.users.primaryUser;
+  user = config.modulos.nixos.core.users.admin;
 
   sistema = {
     directories = [

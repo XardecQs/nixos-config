@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.modulos.nixos.services.virtualisation;
-  user = config.modulos.nixos.core.users.primaryUser;
+  user = config.modulos.nixos.core.users.admin;
 
   # libvirt espera una credencial cifrada con systemd-creds, pero el sellado
   # TPM2 falla en este equipo y la clave de host no sobrevive a impermanence.

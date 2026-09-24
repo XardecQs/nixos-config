@@ -1,5 +1,5 @@
 {
-  description = "Configuración NixOS modular para NeoReaper";
+  description = "Configuración NixOS modular multi-host/multi-usuario";
 
   inputs = {
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
@@ -14,6 +14,8 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     font-collection = {
+      # local: repo pesado (~500 MB), GitHub es muy lento para reconstruir.
+      # En una máquina sin este repo local, usar --override-input (ver `rebuild`).
       url = "git+file:///home/xardec/Proyectos/GitHub/font-collection";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
@@ -32,7 +34,8 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     gta-mo = {
-      #url = "github:XardecQs/samt-nix";
+      # local: proyecto en desarrollo; se testean commits locales sin push.
+      # En una máquina sin este repo local, usar --override-input (ver `rebuild`).
       url = "git+file:///home/xardec/Proyectos/GTA-Mod-Organizer";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
@@ -46,25 +49,47 @@
       ...
     }@inputs:
     let
-      system = "x86_64-linux";
+      vars = import ./vars.nix;
 
       helpers = import ./lib { inherit (nixpkgs-stable) lib; };
 
-      unstableOverlay = _final: _prev: {
+      unstableOverlay = system: _final: _prev: {
         unstable = import nixpkgs-unstable {
           inherit system;
           config.allowUnfree = true;
         };
       };
 
+      # Configuración de home-manager común a todo usuario.
+      mkUser = user: {
+        imports = [ ./users/${user} ];
+        home.stateVersion = vars.stateVersion;
+      };
+
       mkHost =
-        hostname: extraModules:
+        {
+          hostname,
+          system ? vars.system,
+          users ? [ vars.defaultUser ],
+        }:
+        let
+          pkgs = nixpkgs-stable.legacyPackages.${system};
+          host = import ./hosts/${hostname}/settings.nix { inherit pkgs; };
+          userList = host.users or users;
+        in
         nixpkgs-stable.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs helpers; };
+          specialArgs = {
+            inherit
+              inputs
+              helpers
+              vars
+              host
+              ;
+          };
 
           modules = [
-            ./hosts/${hostname}/configuration.nix
+            ./hosts/${hostname}
             inputs.font-collection.nixosModules.default
             inputs.iconos.nixosModules.default
             inputs.preservation.nixosModules.default
@@ -73,10 +98,35 @@
             inputs.nix-index-database.nixosModules.default
             {
               nixpkgs.config.allowUnfree = true;
-              nixpkgs.overlays = [ unstableOverlay ];
+              nixpkgs.overlays = [ (unstableOverlay system) ];
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "backup";
+                extraSpecialArgs = {
+                  inherit
+                    inputs
+                    helpers
+                    vars
+                    host
+                    ;
+                };
+                sharedModules = [
+                  ./modules/home
+                  inputs.nix-flatpak.homeManagerModules.nix-flatpak
+                ];
+                users = nixpkgs-stable.lib.listToAttrs (
+                  map (u: {
+                    name = u;
+                    value = nixpkgs-stable.lib.mkMerge [
+                      (mkUser u)
+                      ((host.homeOverrides or { }).${u} or { })
+                    ];
+                  }) userList
+                );
+              };
             }
-          ]
-          ++ extraModules;
+          ];
         };
 
     in
@@ -84,7 +134,7 @@
       formatter.x86_64-linux = nixpkgs-stable.legacyPackages.x86_64-linux.nixfmt;
 
       nixosConfigurations = {
-        NeoReaper = mkHost "NeoReaper" [ ];
+        NeoReaper = mkHost { hostname = "NeoReaper"; };
       };
     };
 }

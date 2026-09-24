@@ -2,6 +2,8 @@
   pkgs,
   lib,
   config,
+  vars,
+  host,
   ...
 }:
 let
@@ -58,9 +60,17 @@ in
         };
       })
       (lib.mkIf cfg.code.enable {
-        home.file.".config/Code/User/settings.json" = {
-          source = ./dotfiles/config/code/settings.json;
-        };
+        home.file.".config/Code/User/settings.json".text =
+          builtins.replaceStrings
+            [
+              "@FLAKE@"
+              "@HOST@"
+            ]
+            [
+              "${config.home.homeDirectory}/${vars.flakeSubpath}"
+              host.hostname
+            ]
+            (builtins.readFile ./dotfiles/config/code/settings.json.tmpl);
       })
       (lib.mkIf cfg.xdgUserDirs.enable {
         xdg.userDirs = {

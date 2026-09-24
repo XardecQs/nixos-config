@@ -10,14 +10,24 @@ in
 {
   options.modulos.nixos.core.users = {
     enable = lib.mkEnableOption "users";
-    primaryUser = lib.mkOption {
+    admin = lib.mkOption {
       type = lib.types.str;
-      description = "Usuario primario del sistema";
+      description = "Usuario administrador (wheel, con contraseña gestionada por age)";
+    };
+    adminDescription = lib.mkOption {
+      type = lib.types.str;
+      default = "Administrador";
+      description = "Descripción (GECOS) del usuario administrador";
+    };
+    extraUsers = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ ];
+      description = "Usuarios adicionales sin contraseña gestionada por age";
     };
   };
 
   config = lib.mkIf cfg.enable {
-    age.identityPaths = [ "/persist/home/${cfg.primaryUser}/.ssh/agenix" ];
+    age.identityPaths = [ "/persist/home/${cfg.admin}/.ssh/agenix" ];
 
     age.secrets = {
       root-password.file = ../../../secrets/root-password.age;
@@ -27,19 +37,30 @@ in
     users = {
       mutableUsers = true;
       defaultUserShell = pkgs.zsh;
-      users.root = {
-        shell = pkgs.zsh;
-        hashedPasswordFile = config.age.secrets.root-password.path;
-      };
-      users.${cfg.primaryUser} = {
-        isNormalUser = true;
-        description = "Xavier Del Piero";
-        extraGroups = [
-          "networkmanager"
-          "wheel"
-        ];
-        hashedPasswordFile = config.age.secrets.primaryUser-password.path;
-      };
+      users = {
+        root = {
+          shell = pkgs.zsh;
+          hashedPasswordFile = config.age.secrets.root-password.path;
+        };
+        ${cfg.admin} = {
+          isNormalUser = true;
+          description = cfg.adminDescription;
+          extraGroups = [
+            "networkmanager"
+            "wheel"
+          ];
+          hashedPasswordFile = config.age.secrets.primaryUser-password.path;
+        };
+      }
+      // builtins.listToAttrs (
+        map (name: {
+          name = name;
+          value = {
+            isNormalUser = true;
+            extraGroups = [ "networkmanager" ];
+          };
+        }) cfg.extraUsers
+      );
     };
     programs = {
       zsh.enable = true;

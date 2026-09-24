@@ -21,7 +21,7 @@ in
       ];
     };
 
-    users.users.${config.modulos.nixos.core.users.primaryUser} = {
+    users.users.${config.modulos.nixos.core.users.admin} = {
       extraGroups = [
         "scanner"
         "lp"

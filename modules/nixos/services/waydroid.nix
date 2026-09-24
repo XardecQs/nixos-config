@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.modulos.nixos.services.waydroid;
-  user = config.modulos.nixos.core.users.primaryUser;
+  user = config.modulos.nixos.core.users.admin;
 in
 {
   options.modulos.nixos.services.waydroid = {

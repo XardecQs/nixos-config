@@ -16,13 +16,13 @@ in
 
     gameRoot = lib.mkOption {
       type = lib.types.str;
-      default = "/home/xardec/Juegos/Windows/GTA_SA_Limpio";
+      default = "${config.home.homeDirectory}/Juegos/Windows/GTA_SA_Limpio";
       description = "Directorio raíz de GTA SA (game_root).";
     };
 
     protonPath = lib.mkOption {
       type = lib.types.str;
-      default = "/home/xardec/.steam/root/compatibilitytools.d/GE-Proton11-6";
+      default = "${config.home.homeDirectory}/.steam/root/compatibilitytools.d/GE-Proton11-6";
       description = "Directorio de la tool de Proton/GE (proton_path).";
     };
 

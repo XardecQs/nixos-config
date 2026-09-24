@@ -34,7 +34,7 @@ in
         sddm.enable = cfg.backend == "sddm";
         autoLogin = lib.mkIf cfg.autoLogin {
           enable = true;
-          user = config.modulos.nixos.core.users.primaryUser;
+          user = config.modulos.nixos.core.users.admin;
         };
       }
     ];

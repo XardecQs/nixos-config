@@ -19,7 +19,7 @@ in
       usbutils
     ];
 
-    users.users.${config.modulos.nixos.core.users.primaryUser}.extraGroups = [ "dialout" ];
+    users.users.${config.modulos.nixos.core.users.admin}.extraGroups = [ "dialout" ];
 
     services.udev.packages = [
       (pkgs.writeTextFile {

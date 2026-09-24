@@ -1,7 +1,7 @@
 { lib, config, ... }:
 let
   cfg = config.modulos.compartidos.flatpak;
-  user = config.modulos.nixos.core.users.primaryUser;
+  user = config.modulos.nixos.core.users.admin;
 in
 {
   options.modulos.compartidos.flatpak = {

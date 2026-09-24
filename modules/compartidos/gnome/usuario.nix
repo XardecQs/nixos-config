@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.modulos.compartidos.gnome;
-  user = config.modulos.nixos.core.users.primaryUser;
+  user = config.modulos.nixos.core.users.admin;
 in
 {
   config = lib.mkIf cfg.enable {
