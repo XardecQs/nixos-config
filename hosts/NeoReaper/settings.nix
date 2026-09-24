@@ -25,7 +25,7 @@
       homeEstado = {
         enable = true;
         user = "xardec";
-        dryRun = true;
+        dryRun = false;
         # Migración hecha (2026-09-24): montar /home desde @home.
         subvolumen.enable = true;
 
@@ -125,15 +125,17 @@
             "zoxide"
           ];
           state = [
+            ".keep"
+            "btop.log"
             "gwal"
             "home-manager"
-            ".keep"
             "lesshst"
             "nix"
             "nix-output-monitor"
             "opencode"
             "syncthing"
             "wireplumber"
+            "yazi"
             "zsh"
           ];
         };
