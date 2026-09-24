@@ -21,6 +21,32 @@
         enable = true;
         directorio = host.gwal.directorio;
       };
+
+      iconosCarpetas = {
+        enable = true;
+        asignaciones = {
+          "Documentos" = "folder-documents";
+          "Descargas" = "folder-download";
+          "Media" = "folder-multimedia";
+          "Proyectos" = "folder-projects";
+          "Juegos" = "folder-games";
+          "Media/Imágenes" = "folder-pictures";
+          "Media/Vídeos" = "folder-videos";
+          "Media/Música" = "folder-music";
+          "Media/libros" = "folder-books";
+          "Media/Mangas" = "folder-manga";
+          "Proyectos/GitHub" = "folder-github";
+          "Proyectos/Scripts" = "folder-scripts";
+          "Proyectos/Local" = "folder-programer";
+          "Proyectos/Scripts/rust" = "folder-rust";
+          "Proyectos/Scripts/py" = "folder-python";
+          "Proyectos/Scripts/MATLAB" = "folder-matlab";
+          "Proyectos/Local/C" = "folder-c";
+          "Documentos/Plantillas" = "folder-templates";
+          "Juegos/Minecraft" = "folder-minecraft";
+          "Virtualizacion" = "folder-virt";
+        };
+      };
     };
 
     apps = {
