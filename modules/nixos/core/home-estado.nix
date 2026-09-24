@@ -41,6 +41,9 @@ let
         else
           mkdir -p "$QUARANTINE/$STAMP/$(dirname "$rel")"
           mv -- "$entry" "$QUARANTINE/$STAMP/$rel"
+          # La cuarentena la crea root: cederla al usuario para que `home-promote`
+          # pueda restaurar sin sudo.
+          chown -R ${cfg.user} "$QUARANTINE" 2>/dev/null || true
           printf 'cuarentenado: %s\n' "$rel"
         fi
       done < <(find "$base" -mindepth 1 -maxdepth 1 -print0)
