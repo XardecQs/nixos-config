@@ -61,8 +61,9 @@ Hecho: `Trastero` → `Archivo/Personal` (por origen), `Descargas` clasificado y
 - **Backups** (restic/borg) para `Archivo/Personal`, `Documentos` y `Proyectos`.
 - Terminar la migración de formatos en `Proyectos/Local/legacy-conversion` y deduplicar
   originales vs convertidos (solo tras backup).
-- `Archivo/Personal/Familia/Papá` tiene documentos con 0 bytes (posible copia defectuosa);
-  revisar si hay que recuperar desde otra fuente.
+- **Archivos en 0 bytes** de la migración antigua (rsync sin verificar): 1401 recuperados
+  in-place por hardlink; 858 pendientes de recopiar desde la laptop de mi hermana / USB de
+  papá. Informe y `.zero` en `~/Archivo/Personal/_recuperacion/`.
 
 ## Acoplamientos al mover/renombrar
 
