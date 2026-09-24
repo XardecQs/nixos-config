@@ -25,7 +25,7 @@ El repo separa tres ejes que antes vivían mezclados en `configuration.nix`:
 - **Host**: `fileSystems`, `boot.*`, `networking.hostName`, GPU/kernel, LUKS, rollback,
   rutas a discos externos, `gwal.directorio`.
 - **Usuario**: `modulos.home.*`, `home.packages`, rutas dentro del hogar, atajos `dconf`,
-  dotfiles.
+  dotfiles, y la allowlist del home (`users/<u>/home-allowlist.nix`).
 - **Compartido/global**: `modulos.nixos.*`, `modulos.compartidos.*`, `vars.nix`.
 
 ## Añadir capacidades

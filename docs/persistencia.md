@@ -33,6 +33,11 @@ Opciones principales (en `hosts/<host>/settings.nix`):
 | `dryRun` | Si `true`, solo reporta (no mueve nada) |
 | `janitor.*` | Limpieza de `~/.cache`/`~/.local/state` por antigüedad |
 
+La **allowlist** no se escribe en el host: es data del usuario y vive en
+`users/<usuario>/home-allowlist.nix`; el flake la descubre (según `homeEstado.user`) y la
+inyecta. El host solo activa (`enable`/`user`/`dryRun`). Con `dryRun = false` ninguna
+categoría puede quedar vacía (assertion en `home-estado.nix`).
+
 El janitor se implementa aparte, en `modules/nixos/core/home-janitor.nix` (mismas opciones
 bajo `homeEstado.janitor`), para que `home-estado.nix` se ocupe solo del enforcement.
 
