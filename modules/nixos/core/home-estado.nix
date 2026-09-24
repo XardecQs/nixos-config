@@ -172,6 +172,21 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    assertions = [
+      {
+        assertion =
+          cfg.dryRun
+          || (
+            cfg.allow.top != [ ] && cfg.allow.config != [ ] && cfg.allow.share != [ ] && cfg.allow.state != [ ]
+          );
+        message = ''
+          modulos.nixos.homeEstado: con dryRun = false ninguna categoría de la
+          allowlist (top/config/share/state) puede quedar vacía, o se cuarentenaría
+          todo su contenido. Completa users/<usuario>/home-allowlist.nix o activa dryRun.
+        '';
+      }
+    ];
+
     systemd.services.home-estado = {
       description = "Enforcement de allowlist del home (cuarentena)";
       wantedBy = [ "multi-user.target" ];

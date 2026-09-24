@@ -76,6 +76,13 @@
           pkgs = nixpkgs-stable.legacyPackages.${system};
           host = import ./hosts/${hostname}/settings.nix { inherit pkgs; };
           userList = host.users or users;
+
+          # Allowlist del home definida por el usuario del enforcement
+          # (users/<usuario>/home-allowlist.nix). El host solo la activa.
+          cfgUser = nixpkgs-stable.lib.attrByPath [ "modulos" "nixos" "homeEstado" "user" ] null host;
+          allowPath = if cfgUser == null then null else ./users/${cfgUser}/home-allowlist.nix;
+          homeAllow =
+            if allowPath != null && builtins.pathExists allowPath then (import allowPath).allow or { } else { };
         in
         nixpkgs-stable.lib.nixosSystem {
           inherit system;
@@ -99,6 +106,7 @@
             {
               nixpkgs.config.allowUnfree = true;
               nixpkgs.overlays = [ (unstableOverlay system) ];
+              modulos.nixos.homeEstado.allow = homeAllow;
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
