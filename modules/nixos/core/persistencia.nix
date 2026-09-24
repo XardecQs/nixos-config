@@ -6,10 +6,6 @@
 }:
 let
   cfg = config.modulos.nixos.persistencia;
-  user = config.modulos.nixos.core.users.admin;
-
-  # Cuando /home se monta desde @home, deja de usarse preservation para el hogar.
-  unicoHome = config.modulos.nixos.homeEstado.subvolumen.enable;
 
   sistema = {
     directories = [
@@ -30,83 +26,6 @@ let
         inInitrd = true;
       }
       "/var/cache/locatedb"
-    ];
-  };
-
-  usuario = {
-    directories = [
-      # Directorios XDG
-      "Descargas"
-      "Documentos"
-      "Juegos"
-      "Media"
-      "Proyectos"
-      "Archivo"
-
-      # Core / shell
-      ".cache/nix-index"
-      ".config/btop"
-      ".local/state/gwal"
-      ".config/gh"
-      ".local/share/Trash"
-      ".local/share/applications"
-      ".local/share/zinit"
-      ".local/share/zoxide"
-      ".local/state/zsh"
-      ".ssh"
-
-      # Desarrollo
-      ".cache/opencode"
-      ".config/Code"
-      ".config/GitHub Desktop"
-      ".config/opencode"
-      ".local/share/nvim"
-      ".local/share/opencode"
-      ".vscode"
-
-      # Escritorio / GNOME
-      ".cache/clipboard-indicator@tudmotu.com"
-      ".cache/fontconfig"
-      ".config/dconf"
-      ".config/goa-1.0"
-      ".config/gsconnect"
-      ".config/gtk-3.0"
-      ".config/gtk-4.0"
-      ".cups"
-      ".local/share/albert"
-      ".local/share/fonts"
-      ".local/share/gvfs-metadata"
-      ".local/share/gnome-shell/extensions"
-      ".local/share/keyrings"
-      ".local/share/nautilus"
-      ".local/state/wireplumber"
-      ".themes"
-
-      # Aplicaciones
-      ".config/containers"
-      ".config/libresprite"
-      ".config/librewolf"
-      ".config/retroarch"
-      ".config/syncthing"
-      ".local/share/containers"
-      ".local/share/ElyPrismLauncher"
-      ".local/share/gta-mo"
-      ".local/share/flatpak"
-      ".local/share/SMB1R"
-      ".local/share/Steam"
-      ".local/share/TwilitRealm"
-      ".local/share/umu"
-      ".local/share/xemu"
-      ".local/state/syncthing"
-      ".cache/tracker3"
-      ".local/share/tracker3"
-      ".steam"
-      ".var"
-    ];
-    files = [
-      ".config/gta-mo/config.user.toml"
-      ".config/mimeapps.list"
-      ".gitconfig"
     ];
   };
 in
@@ -131,11 +50,6 @@ in
       preserveAt."/persist" = {
         commonMountOptions = [ "x-gvfs-hide" ];
         inherit (sistema) directories files;
-      }
-      // lib.optionalAttrs (!unicoHome) {
-        users.${user} = {
-          inherit (usuario) directories files;
-        };
       };
     };
 

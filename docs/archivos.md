@@ -67,7 +67,7 @@ Hecho: `Trastero` → `Archivo/Personal` (por origen), `Descargas` clasificado y
 
 ## Acoplamientos al mover/renombrar
 
-- `modules/nixos/core/persistencia.nix` (`usuario.directories`).
+- La allowlist del enforcement: `hosts/<host>/settings.nix` (`modulos.nixos.homeEstado.allow`).
 - `modules/home/core/dotfiles.nix` (`xdg.userDirs`).
 - `modules/home/apps/syncthing.nix` (rutas sincronizadas).
 - `hosts/<host>/settings.nix` (`gwal.directorio`) y `hardware-extra.nix` (montajes).

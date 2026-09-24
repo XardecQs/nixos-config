@@ -8,7 +8,8 @@ distrobox/waydroid con mounts anidados, etc.).
 
 - `/home` se monta desde un **subvolumen btrfs dedicado `@home`** → es un **único
   filesystem normal**. Root sigue impermanente (`@root` se recrea desde `@blank`), pero
-  el home no se toca.
+  el home no se toca. El montaje vive en el host (`hosts/<host>/hardware-configuration.nix`,
+  `fileSystems."/home"`), no en el módulo.
 - La limpieza ya no es "persistir solo lo listado", sino **"persistir todo y cuarentenar
   lo no permitido"** al arrancar (allowlist declarativa).
 - Lo cuarentenado va a `~/.quarantine/<fecha>/…` (nunca se borra en el enforcement) y se
@@ -31,7 +32,9 @@ Opciones principales (en `hosts/<host>/settings.nix`):
 | `retentionDays` | Retención de la cuarentena (30) |
 | `dryRun` | Si `true`, solo reporta (no mueve nada) |
 | `janitor.*` | Limpieza de `~/.cache`/`~/.local/state` por antigüedad |
-| `subvolumen.enable` | Monta `/home` desde `@home` (migración) |
+
+El janitor se implementa aparte, en `modules/nixos/core/home-janitor.nix` (mismas opciones
+bajo `homeEstado.janitor`), para que `home-estado.nix` se ocupe solo del enforcement.
 
 Comportamiento del enforcement:
 - Se ejecuta antes del display manager (`systemd.services.home-estado`).
@@ -50,7 +53,8 @@ sudo mount /dev/mapper/DecryptedSystem /mnt   # subvolid=5
 sudo ./scripts/migrar-home.sh
 ```
 Luego:
-1. En `hosts/<host>/settings.nix`: `modulos.nixos.homeEstado.subvolumen.enable = true;`
+1. En `hosts/<host>/hardware-configuration.nix`: añadir `fileSystems."/home"` con
+   `subvol=@home` y `neededForBoot = true` (ver el host de referencia `NeoReaper`).
 2. `sudo nixos-rebuild boot --flake ~/Proyectos/GitHub/nixos-config#NeoReaper && sudo reboot`.
 3. Tras reiniciar: `home-audit` (revisar), sembrar la allowlist con lo legítimo, y
    `dryRun = false`.
@@ -59,8 +63,7 @@ Luego:
 ## Riesgos y salvaguardas
 
 - **Nunca borra**: todo va a cuarentena (reversible). `home-promote` restaura.
-- `dryRun = true` por defecto; `.zero`/binds no se tocan hasta activar.
-- `subvolumen.enable = false` mantiene el modelo anterior (preservation) intacto.
+- `dryRun = true` por defecto; nada se mueve hasta activar.
 - `/home` usa `neededForBoot = true` por agenix (`~/.ssh/agenix`).
 - El janitor usa **mtime** (los mounts son `noatime`) y excluye estado sensible
   (`zsh`, `wireplumber`, `syncthing`, `nix`, `home-manager`).

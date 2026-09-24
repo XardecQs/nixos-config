@@ -1,5 +1,7 @@
 # Base de hardware/almacenamiento (estilo nixos-generate-config).
 # Lo generado por el sistema va aquí; los añadidos manuales, en hardware-extra.nix.
+# Excepción: los montajes de almacenamiento base (incluido /home -> @home) se
+# mantienen aquí para tenerlos todos juntos.
 {
   config,
   lib,
@@ -48,6 +50,18 @@
       "autodefrag"
       "space_cache=v2"
     ];
+  };
+
+  fileSystems."/home" = {
+    device = "/dev/mapper/DecryptedSystem";
+    fsType = "btrfs";
+    options = [
+      "subvol=@home"
+      "noatime"
+      "compress=zstd"
+      "space_cache=v2"
+    ];
+    neededForBoot = true; # agenix: ~/.ssh/agenix
   };
 
   fileSystems."/persist" = {

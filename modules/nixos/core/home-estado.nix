@@ -41,9 +41,6 @@ let
         else
           mkdir -p "$QUARANTINE/$STAMP/$(dirname "$rel")"
           mv -- "$entry" "$QUARANTINE/$STAMP/$rel"
-          # La cuarentena la crea root: cederla al usuario para que `home-promote`
-          # pueda restaurar sin sudo.
-          chown -R ${cfg.user} "$QUARANTINE" 2>/dev/null || true
           printf 'cuarentenado: %s\n' "$rel"
         fi
       done < <(find "$base" -mindepth 1 -maxdepth 1 -print0)
@@ -70,6 +67,11 @@ let
       enforce_dir "$HOME_DIR/.config" "''${allow_config[@]}"
       enforce_dir "$HOME_DIR/.local/share" "''${allow_share[@]}"
       enforce_dir "$HOME_DIR/.local/state" "''${allow_state[@]}"
+      # La cuarentena la crea root: cederla al usuario para que `home-promote`
+      # pueda restaurar sin sudo.
+      if [[ "$DRY" != "true" ]]; then
+        chown -R ${lib.escapeShellArg cfg.user} "$QUARANTINE" 2>/dev/null || true
+      fi
     '';
 
   enforceScript = mkEnforce {
@@ -106,22 +108,6 @@ let
     find "$Q" -mindepth 1 -maxdepth 1 -mtime +${toString cfg.retentionDays} -exec rm -rf -- {} +
   '';
 
-  janitorScript = pkgs.writeShellScriptBin "home-cache-janitor" ''
-    set -euo pipefail
-    AGE=${toString cfg.janitor.ageDays}
-    HOME_DIR=${lib.escapeShellArg cfg.home}
-    excludes=( ${lib.concatMapStringsSep " " lib.escapeShellArg cfg.janitor.exclude} )
-    exargs=()
-    for e in "''${excludes[@]}"; do
-      exargs+=( -not -path "*/$e/*" )
-    done
-    for base in ${lib.concatMapStringsSep " " lib.escapeShellArg cfg.janitor.paths}; do
-      d="$HOME_DIR/$base"
-      [[ -d "$d" ]] || continue
-      find "$d" -xdev -type f -mtime +"$AGE" "''${exargs[@]}" -delete 2>/dev/null || true
-    done
-  '';
-
   servicePath = [
     pkgs.coreutils
     pkgs.findutils
@@ -131,24 +117,6 @@ in
 {
   options.modulos.nixos.homeEstado = {
     enable = lib.mkEnableOption "enforcement de allowlist del home (cuarentena)";
-
-    subvolumen = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Montar /home desde el subvolumen @home (migración). Hasta activarlo, el home sigue siendo el de preservation.";
-      };
-      device = lib.mkOption {
-        type = lib.types.str;
-        default = "/dev/mapper/DecryptedSystem";
-        description = "Dispositivo btrfs que contiene @home";
-      };
-      name = lib.mkOption {
-        type = lib.types.str;
-        default = "@home";
-        description = "Nombre del subvolumen para /home";
-      };
-    };
 
     user = lib.mkOption {
       type = lib.types.str;
@@ -201,56 +169,13 @@ in
       default = true;
       description = "Si true, no mueve nada: solo reporta";
     };
-
-    janitor = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-        description = "Limpieza por antigüedad de caché/estado";
-      };
-      ageDays = lib.mkOption {
-        type = lib.types.ints.positive;
-        default = 30;
-        description = "Antigüedad (días) para borrar en los paths del janitor";
-      };
-      paths = lib.mkOption {
-        type = lib.types.listOf lib.types.str;
-        default = [
-          ".cache"
-          ".local/state"
-        ];
-        description = "Subrutas del home a limpiar por antigüedad";
-      };
-      exclude = lib.mkOption {
-        type = lib.types.listOf lib.types.str;
-        default = [
-          "zsh"
-          "wireplumber"
-          "syncthing"
-          "nix"
-          "home-manager"
-        ];
-        description = "Nombres de subdirectorio excluidos del janitor";
-      };
-    };
   };
 
   config = lib.mkIf cfg.enable {
-    fileSystems."/home" = lib.mkIf cfg.subvolumen.enable {
-      device = cfg.subvolumen.device;
-      fsType = "btrfs";
-      options = [
-        "subvol=${cfg.subvolumen.name}"
-        "noatime"
-        "compress=zstd"
-        "space_cache=v2"
-      ];
-      neededForBoot = true;
-    };
-
     systemd.services.home-estado = {
       description = "Enforcement de allowlist del home (cuarentena)";
       wantedBy = [ "multi-user.target" ];
+      requires = [ "home.mount" ];
       after = [
         "local-fs.target"
         "home.mount"
@@ -274,24 +199,6 @@ in
     };
 
     systemd.timers.home-estado-prune = {
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        OnCalendar = "daily";
-        Persistent = true;
-      };
-    };
-
-    systemd.services.home-cache-janitor = lib.mkIf cfg.janitor.enable {
-      description = "Limpieza de caché/estado antiguo del home";
-      path = servicePath;
-      serviceConfig = {
-        Type = "oneshot";
-        User = cfg.user;
-        ExecStart = "${janitorScript}/bin/home-cache-janitor";
-      };
-    };
-
-    systemd.timers.home-cache-janitor = lib.mkIf cfg.janitor.enable {
       wantedBy = [ "timers.target" ];
       timerConfig = {
         OnCalendar = "daily";

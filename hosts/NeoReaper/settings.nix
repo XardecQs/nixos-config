@@ -26,8 +26,6 @@
         enable = true;
         user = "xardec";
         dryRun = false;
-        # Migración hecha (2026-09-24): montar /home desde @home.
-        subvolumen.enable = true;
 
         allow = {
           top = [

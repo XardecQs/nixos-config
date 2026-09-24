@@ -6,7 +6,7 @@
 #   sudo ./scripts/migrar-home.sh [--no-snapshot]
 #
 # Hace SOLO la parte de datos (respaldo, crear @home, repoblar). Luego:
-#   1) editar hosts/<host>/settings.nix -> modulos.nixos.homeEstado.subvolumen.enable = true
+#   1) añadir fileSystems."/home" (subvol=@home, neededForBoot) en hosts/<host>/hardware-configuration.nix
 #   2) sudo nixos-rebuild boot --flake ~/Proyectos/GitHub/nixos-config#NeoReaper && sudo reboot
 #   3) revisar `home-audit`, sembrar allowlist y poner dryRun = false
 #
@@ -61,7 +61,7 @@ cp -a --reflink=auto "$HOME_SRC/." "$MNT/@home/$USER_NAME/" \
 
 echo
 echo "Listo. Pasos siguientes:"
-echo "  1) En hosts/<host>/settings.nix: modulos.nixos.homeEstado.subvolumen.enable = true;"
+echo "  1) Añadir fileSystems.\"/home\" (subvol=@home, neededForBoot) en hosts/<host>/hardware-configuration.nix;"
 echo "  2) sudo nixos-rebuild boot --flake ~/Proyectos/GitHub/nixos-config#NeoReaper && sudo reboot"
 echo "  3) Tras reiniciar: 'home-audit' (solo lista). Sembrar allowlist y poner dryRun = false."
 echo
