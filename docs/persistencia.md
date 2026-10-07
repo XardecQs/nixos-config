@@ -51,19 +51,11 @@ Comandos:
 - `home-audit`: como el enforcement pero siempre en dry-run (lista lo que cuarentenaría).
 - `home-promote <ruta-en-cuarentena> [destino]`: restaura algo de la cuarentena.
 
-## Migración (una vez)
+## Migración
 
-```sh
-sudo mount /dev/mapper/DecryptedSystem /mnt   # subvolid=5
-sudo ./scripts/migrar-home.sh
-```
-Luego:
-1. En `hosts/<host>/hardware-configuration.nix`: añadir `fileSystems."/home"` con
-   `subvol=@home` y `neededForBoot = true` (ver el host de referencia `NeoReaper`).
-2. `sudo nixos-rebuild boot --flake ~/Proyectos/GitHub/nixos-config#NeoReaper && sudo reboot`.
-3. Tras reiniciar: `home-audit` (revisar), sembrar la allowlist con lo legítimo, y
-   `dryRun = false`.
-4. Cuando esté validado: borrar `/persist/home/<user>` y los `old_roots/@home_stale_*`.
+Ya completada (home migrado a `@home`, `/persist/home/<user>` y los
+`old_roots/@home_stale_*` eliminados). El script de migración se retiró del repo
+para no arrastrar utilidades de un solo uso.
 
 ## Riesgos y salvaguardas
 
@@ -75,5 +67,5 @@ Luego:
 
 ## Relación con backup
 
-Este modelo **no** sustituye backups. `Archivo/Personal`, `Documentos` y `Proyectos`
-siguen necesitando copia externa (ver `~/Documentos/pendientes.md`).
+Este modelo **no** sustituye backups. `Archivo/Personal`, `Documentos` y
+`Proyectos` siguen necesitando copia externa (ver `~/Documentos/pendientes.md`).

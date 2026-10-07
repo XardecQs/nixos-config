@@ -53,6 +53,7 @@ in
         "tga"
         "tiff"
         "webp"
+        "avif"
         "bmp"
         "farbfeld"
       ];

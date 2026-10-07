@@ -5,7 +5,7 @@ set -euo pipefail
 
 DIRECTORIO="${GWAL_DIRECTORIO:-$HOME/Media/Imágenes/Wallpapers}"
 MODO="${GWAL_MODO:-auto}"
-read -r -a EXTENSIONES <<< "${GWAL_EXTENSIONES:-jpeg jpg png gif pnm tga tiff webp bmp farbfeld}"
+read -r -a EXTENSIONES <<< "${GWAL_EXTENSIONES:-jpeg jpg png gif pnm tga tiff webp avif bmp farbfeld}"
 ESTADO_DIR="${GWAL_ESTADO_DIRECTORIO:-$HOME/.local/state/gwal}"
 NOTIFICACIONES="${GWAL_NOTIFICACIONES:-true}"
 

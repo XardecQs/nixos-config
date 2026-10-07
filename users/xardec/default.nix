@@ -8,7 +8,6 @@
         kitty.enable = true;
         fastfetch.enable = true;
         tmux.enable = true;
-        albert.enable = true;
         code.enable = true;
         xdgUserDirs.enable = true;
       };

@@ -28,8 +28,24 @@ in
 
     disableUpscalers = lib.mkOption {
       type = lib.types.bool;
-      default = false;
+      default = true;
       description = "Evitar que Proton (GE/CachyOS) descargue/actualice upscalers (FSR/DLSS/XeSS/OptiScaler).";
+    };
+
+    preload = lib.mkOption {
+      type = lib.types.enum [ "off" "prefix" "full" ];
+      default = "prefix";
+      description = ''
+        Precarga en caché de página antes de lanzar: "off", "prefix" (por
+        defecto) o "full" (también el juego base y todos los mods; avisa y pide
+        confirmación en terminal interactiva).
+      '';
+    };
+
+    timings = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "Imprimir tiempos por fase durante el arranque.";
     };
   };
 
@@ -43,6 +59,20 @@ in
         game_root = cfg.gameRoot;
         proton_path = cfg.protonPath;
         proton_disable_upscalers = cfg.disableUpscalers;
+        proton_use_wined3d = false;
+        auto_discover = true;
+        preload = cfg.preload;
+        timings = cfg.timings;
+        proton_log = false;
+        prefix_ram = true;
+        prefix_ram_proton = true;
+        preload_proton = false;
+        preload_steamrt = false;
+      };
+      gameDesktopEntry = {
+        enable = true;
+        icon = "gta-san-andreas";
+        wmClass = "steam_app_gtasa";
       };
     };
   };

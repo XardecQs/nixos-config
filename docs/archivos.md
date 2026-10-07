@@ -61,13 +61,6 @@ activos, **por origen** para el archivo sentimental y **por tipo** para media/ju
 - `ordenar` solo en `Descargas` (crea carpetas por extensión; **no** usarlo en `Documentos`/`Recursos`).
 - Configs gestionadas viven en el repo (`modules/home/.../dotfiles`); `~/.config` solo lo demás.
 
-## Estado (2026-09)
-
-- Reorganización a Modelo A: `Escritorio` a la raíz, `Público` desactivado, vault en
-  `Documentos/Notas`, `Académicos` → `Universidad`, `Areas` → `Áreas`, `libros` → `Libros`.
-- `Archivo`: `Personal` (por persona) y `Dispositivos` (backups técnicos) separados; `Tia` dentro de
-  `Personal`; duplicado `papá`/`Papá` y `Grabaciones de pantalla` unificados.
-
 ## Pendiente
 
 - **Backups** (restic/borg) para `Archivo` (126G irremplazable), `Documentos` y `Proyectos`.

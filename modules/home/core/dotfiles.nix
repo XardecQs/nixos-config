@@ -16,7 +16,6 @@ in
     kitty.enable = lib.mkEnableOption "configuración de Kitty";
     fastfetch.enable = lib.mkEnableOption "configuración de Fastfetch";
     tmux.enable = lib.mkEnableOption "configuración de Tmux";
-    albert.enable = lib.mkEnableOption "configuración de Albert launcher";
     code.enable = lib.mkEnableOption "configuración de VS Code";
     xdgUserDirs.enable = lib.mkEnableOption "directorios XDG con nombres en español";
   };
@@ -45,18 +44,6 @@ in
         home.file.".config/tmux" = {
           source = ./dotfiles/config/tmux;
           recursive = true;
-        };
-      })
-      (lib.mkIf cfg.albert.enable {
-        home.file = {
-          ".config/albert" = {
-            source = ./dotfiles/config/albert;
-            recursive = true;
-          };
-          ".local/share/albert/widgetsboxmodel" = {
-            source = ./dotfiles/config/albert/widgetsboxmodel;
-            recursive = true;
-          };
         };
       })
       (lib.mkIf cfg.code.enable {

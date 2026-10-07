@@ -73,11 +73,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781388736,
-        "narHash": "sha256-MtmCPRxUmntxY3pE8cKxp/uIh0Qb0AIR/b2CrND5O+I=",
+        "lastModified": 1791070283,
+        "narHash": "sha256-iC74xcK8Jyv6e0zidKzEodZwP5iHIsAJv/h/sZZ0V/w=",
         "ref": "refs/heads/master",
-        "rev": "354f465b41c751f999a15e6209333b2428568b2c",
-        "revCount": 4,
+        "rev": "43133a63e23319ea459b4e1114fbe00a6ba3d2a3",
+        "revCount": 5,
         "type": "git",
         "url": "file:///home/xardec/Proyectos/GitHub/font-collection"
       },
@@ -93,11 +93,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790272534,
-        "narHash": "sha256-GPzgMM2SMZL0dWqHiRwhpE5Al01+adtCPRsVjpH+Kc8=",
+        "lastModified": 1791163446,
+        "narHash": "sha256-wJojoZlNegjKB+H39Dn/1XyxRCqdrZpfKkFOREtREVs=",
         "ref": "refs/heads/main",
-        "rev": "ddc61552f0cffe0c8f27e2ef05e83305ac089c6f",
-        "revCount": 95,
+        "rev": "538820e5e1e126a6fd6a7e2476bf932e4905221b",
+        "revCount": 136,
         "type": "git",
         "url": "file:///home/xardec/Proyectos/GitHub/samt-nix"
       },
@@ -155,11 +155,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790273971,
-        "narHash": "sha256-4VwWbsYGy9kgVxHV8xPggRmIbBNGugrqKtCj2x/WUwc=",
+        "lastModified": 1791067615,
+        "narHash": "sha256-o0rW5GzM3Z17r94L973TrSZhGX8/caTC0xL5mQwndpc=",
         "ref": "refs/heads/main",
-        "rev": "c00e8e61008b97892be129565f2e02ba859e100c",
-        "revCount": 13,
+        "rev": "9f09afeba4384370c5d2d7104bb8fb405f4cbcf0",
+        "revCount": 15,
         "type": "git",
         "url": "file:///home/xardec/Proyectos/GitHub/iconos"
       },

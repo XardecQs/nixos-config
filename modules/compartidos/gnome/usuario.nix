@@ -12,10 +12,12 @@ in
   config = lib.mkIf cfg.enable {
     home-manager.users.${user} = {
       home.packages = with pkgs; [
-        gnomeExtensions.gsconnect
+        # gnomeExtensions.gsconnect se instala a nivel de sistema vía
+        # programs.kdeconnect (sistema.nix). Duplicarlo aquí hace que Nautilus
+        # cargue dos veces nautilus-gsconnect.py y salga "Send to ..." duplicado.
         gnomeExtensions.blur-my-shell
         gnomeExtensions.dash-to-dock
-        gnomeExtensions.show-desktop-button
+        #gnomeExtensions.show-desktop-button
         gnomeExtensions.user-themes
         gnomeExtensions.rounded-window-corners-reborn
         gnomeExtensions.fullscreen-hot-corner
@@ -31,7 +33,8 @@ in
         gnome-tweaks
         gnome-extension-manager
         dconf-editor
-        nautilus-python
+        webp-pixbuf-loader
+        libavif
         ffmpegthumbnailer
 
         adw-gtk3
@@ -114,7 +117,7 @@ in
         "org/gnome/shell" = {
           enabled-extensions = with pkgs.gnomeExtensions; [
             dash-to-dock.extensionUuid
-            show-desktop-button.extensionUuid
+            #show-desktop-button.extensionUuid
             user-themes.extensionUuid
             gsconnect.extensionUuid
             blur-my-shell.extensionUuid
