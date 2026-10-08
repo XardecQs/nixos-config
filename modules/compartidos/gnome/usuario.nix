@@ -7,6 +7,20 @@
 let
   cfg = config.modulos.compartidos.gnome;
   user = config.modulos.nixos.core.users.admin;
+
+  # Thumbnailer propio para AVIF. El loader gdk-pixbuf de libavif 1.4.1 sólo
+  # reconoce AVIF cuyo box `ftyp` mide 32 bytes (máscara buggy de la firma), así
+  # que los AVIF de 3 compatible brands no generan miniatura. En vez de parchear
+  # libavif (que arrastra graphviz->gd->wayland->gtk4 y recompila medio sistema),
+  # decodificamos con avifdec y escalamos con gdk-pixbuf-thumbnailer.
+  avifThumbnailer = pkgs.writeShellScriptBin "avif-thumbnailer" ''
+    set -euo pipefail
+    size="$1"; input="$2"; output="$3"
+    tmp="$(dirname "$output")/.avif-thumbnailer-src.png"
+    trap 'rm -f "$tmp"' EXIT
+    ${pkgs.libavif}/bin/avifdec "$input" "$tmp" >/dev/null 2>&1
+    ${pkgs.gdk-pixbuf}/bin/gdk-pixbuf-thumbnailer -s "$size" "$tmp" "$output"
+  '';
 in
 {
   config = lib.mkIf cfg.enable {
@@ -34,7 +48,7 @@ in
         gnome-extension-manager
         dconf-editor
         webp-pixbuf-loader
-        libavif
+        avifThumbnailer
         ffmpegthumbnailer
 
         adw-gtk3
@@ -44,6 +58,15 @@ in
         resources
         gthumb
       ];
+
+      # Registra el thumbnailer de AVIF en el directorio de datos del usuario:
+      # gnome-desktop lo lee antes que XDG_DATA_DIRS, así que gana al de libavif.
+      home.file.".local/share/thumbnailers/avif.thumbnailer".text = ''
+        [Thumbnailer Entry]
+        TryExec=${avifThumbnailer}/bin/avif-thumbnailer
+        Exec=${avifThumbnailer}/bin/avif-thumbnailer %s %i %o
+        MimeType=image/avif;
+      '';
 
       gtk = {
         enable = true;

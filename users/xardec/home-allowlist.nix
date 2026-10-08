@@ -100,6 +100,7 @@
       "SMB1R"
       "sounds"
       "Steam"
+      "thumbnailers"
       "tracker3"
       "Trash"
       "TwilitRealm"
