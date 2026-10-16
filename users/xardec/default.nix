@@ -54,6 +54,24 @@
       retroarch.enable = true;
       gta-mo.enable = true;
       elyprismlauncher.enable = true;
+      waydroid.enable = true;
+
+      # Carpetas del host visibles dentro de Android (activar tras `waydroid init`).
+      # El destino se ve como /sdcard/<nombre>. Ejemplo:
+      # waydroid.carpetasCompartidas = [
+      #   {
+      #     origen = "/home/xardec/Descargas";
+      #     destino = "/home/xardec/.local/share/waydroid/data/media/0/Descargas";
+      #   }
+      #   {
+      #     origen = "/home/xardec/Documentos";
+      #     destino = "/home/xardec/.local/share/waydroid/data/media/0/Documentos";
+      #   }
+      #   {
+      #     origen = "/home/xardec/Media";
+      #     destino = "/home/xardec/.local/share/waydroid/data/media/0/Media";
+      #   }
+      # ];
     };
   };
 }

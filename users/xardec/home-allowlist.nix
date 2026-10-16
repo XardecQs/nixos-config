@@ -71,6 +71,7 @@
       "tmux"
       "user-dirs.conf"
       "user-dirs.dirs"
+      "waydroid-helper"
       "zsh"
     ];
     share = [
@@ -105,6 +106,7 @@
       "Trash"
       "TwilitRealm"
       "umu"
+      "waydroid"
       "xemu"
       "zoxide"
     ];

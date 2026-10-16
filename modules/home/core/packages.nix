@@ -61,6 +61,7 @@ in
       unstable.vscode
       ffmpeg-full
       opencode
+      #unstable.ghidra
 
       protonup-ng
       dusklight

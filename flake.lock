@@ -23,6 +23,21 @@
         "type": "github"
       }
     },
+    "crane": {
+      "locked": {
+        "lastModified": 1791754810,
+        "narHash": "sha256-cN0Mgk+sQtCJcGWs9H4M0CnLRAuC4I8aCwiBTcBJs6E=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "bd63bf1d0a0f6dcacd7549c714a671ee63b0db6a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -88,16 +103,17 @@
     },
     "gta-mo": {
       "inputs": {
+        "crane": "crane",
         "nixpkgs": [
           "nixpkgs-stable"
         ]
       },
       "locked": {
-        "lastModified": 1791163446,
-        "narHash": "sha256-wJojoZlNegjKB+H39Dn/1XyxRCqdrZpfKkFOREtREVs=",
+        "lastModified": 1792108408,
+        "narHash": "sha256-hm0QchG9KbS/zKU6nGyYuGl24VBtu7Pnzf9GYvPccG4=",
         "ref": "refs/heads/main",
-        "rev": "538820e5e1e126a6fd6a7e2476bf932e4905221b",
-        "revCount": 136,
+        "rev": "de659802e920a279a4e0bcccb805edc39f3c4089",
+        "revCount": 152,
         "type": "git",
         "url": "file:///home/xardec/Proyectos/GitHub/samt-nix"
       },

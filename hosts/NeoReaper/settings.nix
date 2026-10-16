@@ -68,7 +68,10 @@
         printing.enable = true;
         sshd.enable = true;
         virtualisation.enable = true;
-        # waydroid.enable = true;
+        waydroid = {
+          enable = true;
+          debloat.enable = true;
+        };
       };
     };
 
