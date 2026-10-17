@@ -16,6 +16,8 @@
     };
 
     desktop = {
+      audio.enable = true;
+
       gwal = {
         enable = true;
         directorio = host.gwal.directorio;
