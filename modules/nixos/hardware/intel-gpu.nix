@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   cfg = config.modulos.nixos.hardware.intel-gpu;
 in
@@ -12,6 +17,7 @@ in
       graphics = {
         enable = true;
         enable32Bit = true;
+        extraPackages = [ pkgs.intel-media-driver ];
       };
       enableRedistributableFirmware = true;
     };

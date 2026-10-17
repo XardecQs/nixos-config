@@ -23,6 +23,23 @@
         "type": "github"
       }
     },
+    "artcraft-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792263334,
+        "narHash": "sha256-03hTYN6KgPrIPpVpFbfuLuOxAEg4E6kY8bnYDZkqUbI=",
+        "path": "/home/xardec/Proyectos/GitHub/artcraft-nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/xardec/Proyectos/GitHub/artcraft-nix",
+        "type": "path"
+      }
+    },
     "crane": {
       "locked": {
         "lastModified": 1791754810,
@@ -35,6 +52,7 @@
       "original": {
         "owner": "ipetkov",
         "repo": "crane",
+        "rev": "bd63bf1d0a0f6dcacd7549c714a671ee63b0db6a",
         "type": "github"
       }
     },
@@ -103,17 +121,19 @@
     },
     "gta-mo": {
       "inputs": {
-        "crane": "crane",
+        "crane": [
+          "crane"
+        ],
         "nixpkgs": [
           "nixpkgs-stable"
         ]
       },
       "locked": {
-        "lastModified": 1792108408,
-        "narHash": "sha256-hm0QchG9KbS/zKU6nGyYuGl24VBtu7Pnzf9GYvPccG4=",
+        "lastModified": 1792135071,
+        "narHash": "sha256-3+D1f1foKpYSlpwUc4c4t26fwv2lxKCiM7lksZvf1ZY=",
         "ref": "refs/heads/main",
-        "rev": "de659802e920a279a4e0bcccb805edc39f3c4089",
-        "revCount": 152,
+        "rev": "f9591f386bfe44804285acb426959d163c3c3395",
+        "revCount": 156,
         "type": "git",
         "url": "file:///home/xardec/Proyectos/GitHub/samt-nix"
       },
@@ -171,11 +191,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791067615,
-        "narHash": "sha256-o0rW5GzM3Z17r94L973TrSZhGX8/caTC0xL5mQwndpc=",
+        "lastModified": 1791077388,
+        "narHash": "sha256-GvUTV02bRfdXp/1m4dbzCpMi/umQZbTQBVKF9698Js0=",
         "ref": "refs/heads/main",
-        "rev": "9f09afeba4384370c5d2d7104bb8fb405f4cbcf0",
-        "revCount": 15,
+        "rev": "7a51813958e12180446db3665c9180e5fb6a74d3",
+        "revCount": 17,
         "type": "git",
         "url": "file:///home/xardec/Proyectos/GitHub/iconos"
       },
@@ -286,6 +306,8 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "artcraft-nix": "artcraft-nix",
+        "crane": "crane",
         "elyprismlauncher": "elyprismlauncher",
         "font-collection": "font-collection",
         "gta-mo": "gta-mo",

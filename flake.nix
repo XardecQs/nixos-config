@@ -25,6 +25,12 @@
       url = "git+file:///home/xardec/Proyectos/GitHub/iconos";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    artcraft-nix = {
+      # local: se prueba el flake antes de publicarlo. Cuando esté commiteado,
+      # cambiar a git+file:///home/xardec/Proyectos/GitHub/artcraft-nix.
+      url = "path:/home/xardec/Proyectos/GitHub/artcraft-nix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs-stable";
@@ -35,11 +41,15 @@
       url = "github:ElyPrismLauncher/ElyPrismLauncher";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    # Fijado a la misma rev que samt-nix para que actualizar `gta-mo` no mueva
+    # crane ni invalide la caché de deps (gta-mo hace `inputs.crane.follows`).
+    crane.url = "github:ipetkov/crane/bd63bf1d0a0f6dcacd7549c714a671ee63b0db6a";
     gta-mo = {
       # local: proyecto en desarrollo; se testean commits locales sin push.
       # En una máquina sin este repo local, usar --override-input (ver `rebuild`).
       url = "git+file:///home/xardec/Proyectos/GitHub/samt-nix";
       inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.crane.follows = "crane";
     };
   };
 

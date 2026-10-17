@@ -50,6 +50,8 @@
     };
 
     apps = {
+      artcraft.enable = true;
+      obs.enable = true;
       syncthing.enable = true;
       retroarch.enable = true;
       gta-mo.enable = true;
