@@ -22,7 +22,7 @@ in
 
     directorio = lib.mkOption {
       type = lib.types.str;
-      default = "${config.home.homeDirectory}/Media/Imágenes/Wallpapers";
+      default = "${config.home.homeDirectory}/Media/Imágenes/Fondos de pantalla";
       description = "Directorio de imágenes para los fondos de pantalla";
     };
 
@@ -55,6 +55,7 @@ in
         "webp"
         "avif"
         "bmp"
+        "svg"
         "farbfeld"
       ];
       description = "Extensiones de imagen soportadas";

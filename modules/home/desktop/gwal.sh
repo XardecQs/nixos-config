@@ -3,9 +3,9 @@ set -euo pipefail
 
 # ─── Configuración (inyectada por Nix o variables de entorno) ────────────────
 
-DIRECTORIO="${GWAL_DIRECTORIO:-$HOME/Media/Imágenes/Wallpapers}"
+DIRECTORIO="${GWAL_DIRECTORIO:-$HOME/Media/Imágenes/Fondos de pantalla}"
 MODO="${GWAL_MODO:-auto}"
-read -r -a EXTENSIONES <<< "${GWAL_EXTENSIONES:-jpeg jpg png gif pnm tga tiff webp avif bmp farbfeld}"
+read -r -a EXTENSIONES <<< "${GWAL_EXTENSIONES:-jpeg jpg png gif pnm tga tiff webp avif bmp svg farbfeld}"
 ESTADO_DIR="${GWAL_ESTADO_DIRECTORIO:-$HOME/.local/state/gwal}"
 NOTIFICACIONES="${GWAL_NOTIFICACIONES:-true}"
 

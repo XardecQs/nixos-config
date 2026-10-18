@@ -30,10 +30,10 @@ activos, **por origen** para el archivo sentimental y **por tipo** para media/ju
 │   ├── Áreas/{Finanzas,Marca}/
 │   ├── Recursos/<tema>/       # referencia por tema (no por formato)
 │   ├── Plantillas/            # XDG templates
-│   └── Obsidian/              # vault de Obsidian
-├── Media/                     # por TIPO
-│   ├── Imágenes/{Capturas de pantalla,Wallpapers,Fotos,...}
-│   ├── Vídeos/{Grabaciones de pantalla,...}
+│   └── Notas/                 # vault de Obsidian
+├── Media/                     # por TIPO (término técnico)
+│   ├── Imágenes/{Capturas de pantalla,Fondos de pantalla,Fotos,...}
+│   ├── Vídeos/{Grabaciones de pantalla,Fondos animados,...}
 │   ├── Música/{Álbumes,Sencillos}
 │   ├── Libros/
 │   └── Mangas/
@@ -42,13 +42,13 @@ activos, **por origen** para el archivo sentimental y **por tipo** para media/ju
 ├── Virtualizacion -> /storage/lab-hdd/Virtualizacion
 └── Archivo/                   # FRÍO
     ├── Personal/
-    │   ├── {Abuelo,Familia,Marca,Notas,PC-Infancia,Telefono,Ximena}/
-    │   └── _recuperacion/     # informe y `zero/` (hasta cerrarlo)
-    └── Tia/
+    │   ├── {Abuelo,Familia,Marca,Notas,PC-Infancia,Teléfono,Ximena}/
+    │   └── _recuperación/     # informe y `zero/` (hasta cerrarlo)
+    └── Tía/
 ```
 
-Los wallpapers viven en `Media/Imágenes/Wallpapers` (SSD). `Virtualizacion` apunta al
-HDD y es regenerable.
+Los wallpapers viven en `Media/Imágenes/Fondos de pantalla` (SSD). `Virtualizacion`
+apunta al HDD y es regenerable.
 
 ## Clasificación por disco
 
@@ -65,9 +65,9 @@ HDD y es regenerable.
 ## Pendiente
 
 - **Backups** (restic/borg) para `Archivo` (126G irremplazable), `Documentos` y `Proyectos`.
-- **0 bytes**: informe y `zero/` en `~/Archivo/Personal/_recuperacion/`; 858 pendientes de recopiar.
+- **0 bytes**: informe y `zero/` en `~/Archivo/Personal/_recuperación/`; 858 pendientes de recopiar.
 - Terminar la migración de formatos en `Proyectos/Local/legacy-conversion` (tras backup).
-- Triaje manual de `Descargas` (6,2 GB) y de `Documentos/test`.
+- Triaje manual de `Descargas` (6,2 GB).
 
 ## Acoplamientos al mover/renombrar
 

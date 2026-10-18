@@ -7,7 +7,7 @@
   users = [ "xardec" ];
 
   # Rutas de host que consumen los módulos de usuario.
-  gwal.directorio = "/home/xardec/Media/Imágenes/Wallpapers";
+  gwal.directorio = "/home/xardec/Media/Imágenes/Fondos de pantalla";
 
   # Ajustes de host que consume el módulo de usuario.
   gnome.monitorConnector = "eDP-1";
