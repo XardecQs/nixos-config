@@ -46,6 +46,7 @@ in
       unstable.gnomeExtensions.maximize-window-into-new-workspace
       gnomeExtensions.night-theme-switcher
       gnomeExtensions.boost-volume
+      gnomeExtensions.gtk4-desktop-icons-ng-ding
       gnomeExtensions.gnome-wallpaper-engine
       mpv
 
@@ -159,7 +160,7 @@ in
           "MaximizeWindowIntoNewWorkspace@kyleross.com"
           night-theme-switcher.extensionUuid
           boost-volume.extensionUuid
-          gnome-wallpaper-engine.extensionUuid
+          gtk4-desktop-icons-ng-ding.extensionUuid
         ];
       };
 
