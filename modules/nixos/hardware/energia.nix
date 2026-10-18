@@ -68,7 +68,7 @@ in
     };
     descargarWifiSuspend = lib.mkOption {
       type = lib.types.bool;
-      default = true;
+      default = false;
       description = "Descargar ath10k_pci antes de suspender para evitar cuelgues por enlace PCIe degradado";
     };
   };

@@ -7,15 +7,16 @@ git clone git@github.com:XardecQs/nixos-config.git ~/Proyectos/GitHub/nixos-conf
 cd ~/Proyectos/GitHub/nixos-config
 ```
 
-## 2. Inputs locales (font-collection / gta-mo / iconos)
+## 2. Inputs locales (font-collection / gta-mo / iconos / artcraft-nix)
 
-Por defecto el flake usa tres inputs locales:
+Por defecto el flake usa cuatro inputs locales:
 
 - `font-collection` → `~/Proyectos/GitHub/font-collection` (repo pesado; se usa en local por velocidad).
 - `gta-mo` → `~/Proyectos/GitHub/samt-nix` (en desarrollo; commits locales).
 - `iconos` → `~/Proyectos/GitHub/iconos` (pack de iconos en desarrollo; commits locales).
+- `artcraft-nix` → `~/Proyectos/GitHub/artcraft-nix` (input `path:`; aún no tiene remoto).
 
-En una máquina sin esos repos, se sustituyen por GitHub con `--override-input`:
+En una máquina sin los tres primeros repos, se sustituyen por GitHub con `--override-input`:
 
 ```sh
 nh os switch ~/Proyectos/GitHub/nixos-config -- \
@@ -24,8 +25,12 @@ nh os switch ~/Proyectos/GitHub/nixos-config -- \
   --override-input iconos github:XardecQs/iconos
 ```
 
-La función `rebuild` del zsh hace esta detección automáticamente: si los directorios locales
-no existen, añade los overrides; si existen, los usa.
+`artcraft-nix` no se puede sustituir por GitHub todavía: hay que copiar o clonar el
+directorio completo en `~/Proyectos/GitHub/artcraft-nix` antes de reconstruir.
+
+La función `rebuild` del zsh hace la detección automática de los tres inputs con remoto:
+si los directorios locales no existen, añade los overrides; si existen, los usa. También
+avisa si falta `artcraft-nix`.
 
 Alternativa: clonar también esos repos en las mismas rutas locales.
 
@@ -74,5 +79,6 @@ sudo nixos-rebuild switch --flake ~/Proyectos/GitHub/nixos-config#<nuevo>
 
 1. Crear `users/<usuario>/default.nix` (importando perfiles y `modulos.home.*`).
 2. Añadirlo a `hosts/<host>/settings.nix` en la lista `users`.
-3. Declararlo en `modules/nixos/core/users.nix` (`admin` o `extraUsers` del host).
-4. Añadir su clave a `secrets.nix` y crear sus secretos.
+3. Declararlo en `hosts/<host>/settings.nix` (`modulos.nixos.core.users.admin` o `extraUsers`).
+4. Añadir su clave pública a `adminAuthorizedKeys` (administrador) o a su configuración SSH.
+5. Añadir su clave a `secrets.nix` y crear sus secretos.

@@ -57,6 +57,13 @@ Ya completada (home migrado a `@home`, `/persist/home/<user>` y los
 `old_roots/@home_stale_*` eliminados). El script de migración se retiró del repo
 para no arrastrar utilidades de un solo uso.
 
+## Persistencia del sistema
+
+Además del home, `preservation` conserva `/var/lib/systemd/random-seed`,
+`/var/lib/containers` (Podman) y `/var/lib/containerd`. Las claves SSH del host
+viven en `/persist/etc/ssh` (configurado con `sshd.hostKeysPath`), así que no
+cambian en cada arranque.
+
 ## Riesgos y salvaguardas
 
 - **Nunca borra**: todo va a cuarentena (reversible). `home-promote` restaura.

@@ -24,10 +24,15 @@ in
       default = [ ];
       description = "Usuarios adicionales sin contraseña gestionada por age";
     };
+    adminAuthorizedKeys = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ ];
+      description = "Claves SSH públicas autorizadas para el administrador";
+    };
   };
 
   config = lib.mkIf cfg.enable {
-    age.identityPaths = [ "/home/${cfg.admin}/.ssh/agenix" ];
+    age.identityPaths = [ "${config.users.users.${cfg.admin}.home}/.ssh/agenix" ];
 
     age.secrets = {
       root-password.file = ../../../secrets/root-password.age;
@@ -50,6 +55,7 @@ in
             "wheel"
           ];
           hashedPasswordFile = config.age.secrets.primaryUser-password.path;
+          openssh.authorizedKeys.keys = cfg.adminAuthorizedKeys;
         };
       }
       // builtins.listToAttrs (

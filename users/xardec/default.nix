@@ -17,6 +17,7 @@
 
     desktop = {
       audio.enable = true;
+      gnome.enable = true;
 
       gwal = {
         enable = true;
@@ -54,7 +55,56 @@
     apps = {
       artcraft.enable = true;
       obs.enable = true;
-      syncthing.enable = true;
+      flatpak = {
+        enable = true;
+        packages = [
+          "com.github.tchx84.Flatseal"
+          "org.gtk.Gtk3theme.adw-gtk3"
+          "com.github.johnfactotum.Foliate"
+          "app.zen_browser.zen"
+          "md.obsidian.Obsidian"
+          "org.gnome.NetworkDisplays"
+          "io.gitlab.adhami3310.Converter"
+          "fr.handbrake.ghb"
+          "org.nickvision.tubeconverter"
+          "org.musicbrainz.Picard"
+          "org.soundconverter.SoundConverter"
+          "com.github.jeromerobert.pdfarranger"
+          "io.github.Querz.mcaselector"
+          "com.usebottles.bottles"
+          "org.kde.krita"
+          "page.codeberg.JakobDev.jdNBTExplorer"
+          "ar.xjuan.Cambalache"
+          "io.mrarm.mcpelauncher"
+        ];
+      };
+      syncthing = {
+        enable = true;
+        deviceName = "Redmi Note 10 Pro";
+        deviceId = "ER73BNF-I5V5D4M-IOITMSU-4JQTRS5-PN7EIPR-3CXF2KN-FMHN3MI-6VIPAAW";
+        folders = [
+          {
+            name = "Kotatsu";
+            path = "Media/Mangas/.Kotatsu";
+            id = "tovx9-9995f";
+          }
+          {
+            name = "Música";
+            path = "Media/Música";
+            id = "w9yjz-9kb76";
+          }
+          {
+            name = "Capturas de pantalla";
+            path = "Media/Imágenes/Capturas de pantalla";
+            id = "7979p-4pjv5";
+          }
+          {
+            name = "ROMs";
+            path = "Juegos/ROMs";
+            id = "qlb1e-69yh0";
+          }
+        ];
+      };
       retroarch.enable = true;
       gta-mo.enable = true;
       elyprismlauncher.enable = true;

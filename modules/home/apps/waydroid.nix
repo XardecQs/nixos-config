@@ -42,8 +42,8 @@ in
       example = lib.literalExpression ''
         [
           {
-            origen = "/home/xardec/Descargas";
-            destino = "/home/xardec/.local/share/waydroid/data/media/0/Descargas";
+            origen = "/home/usuario/Descargas";
+            destino = "/home/usuario/.local/share/waydroid/data/media/0/Descargas";
           }
         ]
       '';

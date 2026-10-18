@@ -69,8 +69,8 @@ let
       enforce_dir "$HOME_DIR/.local/state" "''${allow_state[@]}"
       # La cuarentena la crea root: cederla al usuario para que `home-promote`
       # pueda restaurar sin sudo.
-      if [[ "$DRY" != "true" ]]; then
-        chown -R ${lib.escapeShellArg cfg.user} "$QUARANTINE" 2>/dev/null || true
+      if [[ "$DRY" != "true" && -d "$QUARANTINE/$STAMP" ]]; then
+        chown -R ${lib.escapeShellArg cfg.user} "$QUARANTINE/$STAMP" 2>/dev/null || true
       fi
     '';
 
@@ -195,6 +195,7 @@ in
         after = [
           "local-fs.target"
           "home.mount"
+          "home-manager-${cfg.user}.service"
         ];
         before = [ "display-manager.service" ];
         path = servicePath;

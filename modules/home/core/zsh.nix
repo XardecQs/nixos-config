@@ -181,13 +181,26 @@ in
 
             rebuild() {
               local repo="$HOME/Proyectos/GitHub/nixos-config"
+              local artcraft="$HOME/Proyectos/GitHub/artcraft-nix"
               local overrides=()
+              if [[ ! -d "$artcraft" ]]; then
+                echo "Falta $artcraft (input local path: de artcraft-nix). Cópialo o clónalo antes de reconstruir." >&2
+                return 1
+              fi
               [[ -d "$HOME/Proyectos/GitHub/font-collection/.git" ]] || \
                 overrides+=(--override-input font-collection github:XardecQs/font-collection)
               [[ -d "$HOME/Proyectos/GitHub/iconos/.git" ]] || \
                 overrides+=(--override-input iconos github:XardecQs/iconos)
               [[ -d "$HOME/Proyectos/GitHub/samt-nix/.git" ]] || \
                 overrides+=(--override-input gta-mo github:XardecQs/samt-nix)
+              if command -v home-audit >/dev/null 2>&1; then
+                local audit
+                audit="$(home-audit)"
+                if [[ -n "$audit" ]]; then
+                  echo "Aviso: home-audit detectó entradas fuera de la allowlist:" >&2
+                  printf '%s\n' "$audit" >&2
+                fi
+              fi
               if (( ''${#overrides[@]} )); then
                 nh os switch "$repo" "$@" -- "''${overrides[@]}"
               else

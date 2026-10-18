@@ -13,6 +13,7 @@ let
       "/var/db/sudo"
       "/var/lib/AccountsService"
       "/var/lib/bluetooth"
+      "/var/lib/containers"
       "/var/lib/containerd"
       "/var/lib/libvirt"
       "/var/lib/nixos"
@@ -26,6 +27,10 @@ let
         inInitrd = true;
       }
       "/var/cache/locatedb"
+      {
+        file = "/var/lib/systemd/random-seed";
+        mode = "0600";
+      }
     ];
   };
 in

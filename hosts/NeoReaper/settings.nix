@@ -7,7 +7,10 @@
   users = [ "xardec" ];
 
   # Rutas de host que consumen los módulos de usuario.
-  gwal.directorio = "/storage/lab-hdd/Fondos de pantalla";
+  gwal.directorio = "/home/xardec/Media/Imágenes/Wallpapers";
+
+  # Ajustes de host que consume el módulo de usuario.
+  gnome.monitorConnector = "eDP-1";
 
   # Overrides de home-manager específicos de este host/usuario.
   homeOverrides.xardec = {
@@ -79,12 +82,18 @@
           enable = true;
           admin = "xardec";
           adminDescription = "Xavier Del Piero";
+          adminAuthorizedKeys = [
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJfPyQDmThtZEjxLNEaG6V7XiJVLfbKMl8AEbl6HZp9z xavierdelpiero@proton.me"
+          ];
         };
       };
 
       hardware = {
         intel-gpu.enable = true;
-        energia.enable = true;
+        energia = {
+          enable = true;
+          descargarWifiSuspend = true;
+        };
       };
 
       desktop = {
@@ -103,7 +112,10 @@
         };
         networking.enable = true;
         printing.enable = true;
-        sshd.enable = true;
+        sshd = {
+          enable = true;
+          hostKeysPath = "/persist/etc/ssh";
+        };
         virtualisation.enable = true;
         waydroid = {
           enable = true;

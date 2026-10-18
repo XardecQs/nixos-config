@@ -33,7 +33,11 @@ in
     };
 
     preload = lib.mkOption {
-      type = lib.types.enum [ "off" "prefix" "full" ];
+      type = lib.types.enum [
+        "off"
+        "prefix"
+        "full"
+      ];
       default = "prefix";
       description = ''
         Precarga en caché de página antes de lanzar: "off", "prefix" (por

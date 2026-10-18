@@ -47,6 +47,8 @@ in
       nodejs
       python3
       nixfmt
+      statix
+      deadnix
       texliveFull
       cargo
       rust-analyzer
