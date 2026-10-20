@@ -184,7 +184,7 @@ in
               local artcraft="$HOME/Proyectos/GitHub/artcraft-nix"
               local overrides=()
               if [[ ! -d "$artcraft" ]]; then
-                echo "Falta $artcraft (input local path: de artcraft-nix). Cópialo o clónalo antes de reconstruir." >&2
+                echo "Falta $artcraft (repo local git+file de artcraft-nix). Cópialo o clónalo antes de reconstruir." >&2
                 return 1
               fi
               [[ -d "$HOME/Proyectos/GitHub/font-collection/.git" ]] || \

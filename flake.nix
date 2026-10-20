@@ -26,9 +26,8 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     artcraft-nix = {
-      # local: se prueba el flake antes de publicarlo. Cuando esté commiteado,
-      # cambiar a git+file:///home/xardec/Proyectos/GitHub/artcraft-nix.
-      url = "path:/home/xardec/Proyectos/GitHub/artcraft-nix";
+      # local: repo ya commiteado; se publicará en GitHub más adelante.
+      url = "git+file:///home/xardec/Proyectos/GitHub/artcraft-nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nix-index-database = {

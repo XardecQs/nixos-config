@@ -30,14 +30,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1792263334,
-        "narHash": "sha256-03hTYN6KgPrIPpVpFbfuLuOxAEg4E6kY8bnYDZkqUbI=",
-        "path": "/home/xardec/Proyectos/GitHub/artcraft-nix",
-        "type": "path"
+        "lastModified": 1792511815,
+        "narHash": "sha256-wydVgjLMFCEuaVwrNxfFKDxzApM6ORm8OJtUKmEWzWM=",
+        "ref": "refs/heads/main",
+        "rev": "e0b81ffc97706e40c9e8fae31480f492fb81d4b4",
+        "revCount": 4,
+        "type": "git",
+        "url": "file:///home/xardec/Proyectos/GitHub/artcraft-nix"
       },
       "original": {
-        "path": "/home/xardec/Proyectos/GitHub/artcraft-nix",
-        "type": "path"
+        "type": "git",
+        "url": "file:///home/xardec/Proyectos/GitHub/artcraft-nix"
       }
     },
     "crane": {

@@ -14,7 +14,7 @@ Por defecto el flake usa cuatro inputs locales:
 - `font-collection` → `~/Proyectos/GitHub/font-collection` (repo pesado; se usa en local por velocidad).
 - `gta-mo` → `~/Proyectos/GitHub/samt-nix` (en desarrollo; commits locales).
 - `iconos` → `~/Proyectos/GitHub/iconos` (pack de iconos en desarrollo; commits locales).
-- `artcraft-nix` → `~/Proyectos/GitHub/artcraft-nix` (input `path:`; aún no tiene remoto).
+- `artcraft-nix` → `~/Proyectos/GitHub/artcraft-nix` (input `git+file:`; repo local commiteado, aún sin remoto).
 
 En una máquina sin los tres primeros repos, se sustituyen por GitHub con `--override-input`:
 
@@ -25,8 +25,9 @@ nh os switch ~/Proyectos/GitHub/nixos-config -- \
   --override-input iconos github:XardecQs/iconos
 ```
 
-`artcraft-nix` no se puede sustituir por GitHub todavía: hay que copiar o clonar el
-directorio completo en `~/Proyectos/GitHub/artcraft-nix` antes de reconstruir.
+`artcraft-nix` todavía no tiene remoto: mantén el repo local en
+`~/Proyectos/GitHub/artcraft-nix`. Cuando se publique, sustituye el input por
+`github:XardecQs/artcraft-nix` y ejecuta `nix flake update artcraft-nix`.
 
 La función `rebuild` del zsh hace la detección automática de los tres inputs con remoto:
 si los directorios locales no existen, añade los overrides; si existen, los usa. También
