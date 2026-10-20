@@ -1,0 +1,53 @@
+:root {
+  color-scheme: dark;
+  --card-alpha: 0.18;
+  --bar: #31e6ff;
+  --bar-2: #8a5cff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  overflow: hidden;
+  font-family: "SF Pro Display", "Noto Sans", sans-serif;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(8, 12, 24, var(--card-alpha));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 40px rgba(49, 230, 255, 0.06);
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.status {
+  position: absolute;
+  inset: auto 12px 8px 12px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-align: center;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+}
+
+.status.hidden {
+  opacity: 0;
+}

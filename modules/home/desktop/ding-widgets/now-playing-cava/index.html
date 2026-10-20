@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Now Playing + Cava</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="card">
+      <div class="top">
+        <div class="art-wrap">
+          <img id="art" class="art hidden" alt="" />
+          <div id="art-fallback" class="art-fallback">♪</div>
+        </div>
+        <div class="meta">
+          <div id="title" class="title">Sin reproducción</div>
+          <div id="artist" class="artist">—</div>
+          <div class="controls">
+            <button id="prev" type="button" title="Anterior">⏮</button>
+            <button id="toggle" type="button" title="Reproducir/Pausar">▶</button>
+            <button id="next" type="button" title="Siguiente">⏭</button>
+            <span id="time" class="time">0:00 / 0:00</span>
+          </div>
+        </div>
+      </div>
+      <div class="progress">
+        <div id="progress-fill" class="progress-fill"></div>
+      </div>
+      <div class="spectrum-wrap">
+        <canvas id="spectrum"></canvas>
+      </div>
+      <div id="status" class="status">playerctl…</div>
+    </div>
+  </body>
+</html>

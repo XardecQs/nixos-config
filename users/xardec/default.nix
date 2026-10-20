@@ -19,6 +19,71 @@
       audio.enable = true;
       gnome.enable = true;
 
+      dingWidgets = {
+        enable = true;
+        stateMode = "merge";
+
+        instances = [
+          {
+            instanceId = "decl-cava";
+            widgetId = "cava.horizontal";
+            kind = "html";
+            monitorIndex = 0;
+            normX = 0.02;
+            normY = 0.03;
+            width = 480;
+            height = 160;
+            pinned = false;
+            webConsent = true;
+            backendConsent = true;
+            config = {
+              barColor = "#31e6ff";
+              barColor2 = "#8a5cff";
+              bgAlpha = 0.18;
+              showPeaks = true;
+            };
+          }
+          {
+            instanceId = "decl-now-playing";
+            widgetId = "now-playing.cava";
+            kind = "html";
+            monitorIndex = 0;
+            normX = 0.02;
+            normY = 0.26;
+            width = 480;
+            height = 200;
+            pinned = false;
+            webConsent = true;
+            backendConsent = true;
+            config = {
+              accent = "#31e6ff";
+              showSpectrum = true;
+            };
+          }
+          {
+            instanceId = "decl-command-deck";
+            widgetId = "command.deck";
+            kind = "html";
+            monitorIndex = 0;
+            normX = 0.7;
+            normY = 0.03;
+            width = 380;
+            height = 280;
+            pinned = false;
+            webConsent = true;
+            backendConsent = true;
+            config = {
+              enabledActions = [
+                "rebuild"
+                "gwal-random"
+                "ordenar"
+                "home-audit"
+              ];
+            };
+          }
+        ];
+      };
+
       gwal = {
         enable = true;
         directorio = host.gwal.directorio;

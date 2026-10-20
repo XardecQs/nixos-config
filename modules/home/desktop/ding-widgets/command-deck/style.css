@@ -1,0 +1,204 @@
+:root {
+  color-scheme: dark;
+  --accent: #31e6ff;
+  --accent-2: #8a5cff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  overflow: hidden;
+  font-family: "SF Pro Display", "Noto Sans", sans-serif;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 16px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(8, 12, 24, 0.34);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 50px rgba(49, 230, 255, 0.07);
+}
+
+header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 650;
+  color: rgba(255, 255, 255, 0.94);
+  letter-spacing: 0.02em;
+}
+
+.status {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  align-content: start;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.grid::-webkit-scrollbar {
+  width: 5px;
+}
+
+.grid::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+}
+
+button.action {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.88);
+  cursor: pointer;
+  text-align: left;
+  transition: background 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+
+button.action:hover {
+  background: rgba(49, 230, 255, 0.12);
+  border-color: rgba(49, 230, 255, 0.28);
+}
+
+button.action:active {
+  transform: scale(0.98);
+}
+
+button.action:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+button.action .glyph {
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  background: rgba(49, 230, 255, 0.13);
+  color: var(--accent);
+  font-size: 13px;
+}
+
+button.action .label {
+  min-width: 0;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.output {
+  flex: 0 0 auto;
+  max-height: 92px;
+  margin: 0;
+  padding: 8px 10px;
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(0, 0, 0, 0.28);
+  color: rgba(255, 255, 255, 0.72);
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 9.5px;
+  line-height: 1.35;
+  overflow: auto;
+  white-space: pre-wrap;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.confirm {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(2, 4, 10, 0.62);
+  backdrop-filter: blur(4px);
+}
+
+.confirm-box {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(18, 22, 34, 0.96);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.confirm-title {
+  font-size: 13px;
+  font-weight: 650;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.confirm-description {
+  margin-top: 4px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.58);
+  line-height: 1.4;
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.confirm-actions button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.confirm-actions button.danger {
+  border-color: rgba(255, 120, 120, 0.35);
+  background: rgba(255, 90, 90, 0.18);
+  color: #ffd7d7;
+}

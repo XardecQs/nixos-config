@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Command Deck</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="card">
+      <header>
+        <div class="title">Command Deck</div>
+        <div id="status" class="status">listo</div>
+      </header>
+      <div id="grid" class="grid"></div>
+      <pre id="output" class="output hidden"></pre>
+      <div id="confirm" class="confirm hidden">
+        <div class="confirm-box">
+          <div id="confirm-title" class="confirm-title">¿Ejecutar?</div>
+          <div id="confirm-description" class="confirm-description"></div>
+          <div class="confirm-actions">
+            <button id="confirm-cancel" type="button">Cancelar</button>
+            <button id="confirm-run" type="button" class="danger">Ejecutar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

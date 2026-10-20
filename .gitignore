@@ -1,3 +1,5 @@
 secrets/*.tmp
 secrets/keys.txt
 /result
+__pycache__/
+*.pyc
