@@ -161,7 +161,13 @@ in
           night-theme-switcher.extensionUuid
           boost-volume.extensionUuid
           gtk4-desktop-icons-ng-ding.extensionUuid
+          gnome-wallpaper-engine.extensionUuid
         ];
+      };
+
+      "org/gnome/shell/extensions/gnome-wallpaper-engine" = {
+        autostart = true;
+        pause-on-fullscreen = true;
       };
 
       "org/gnome/shell/extensions/user-theme" = {

@@ -8,6 +8,7 @@ MODO="${GWAL_MODO:-auto}"
 read -r -a EXTENSIONES <<< "${GWAL_EXTENSIONES:-jpeg jpg png gif pnm tga tiff webp avif bmp svg farbfeld}"
 ESTADO_DIR="${GWAL_ESTADO_DIRECTORIO:-$HOME/.local/state/gwal}"
 NOTIFICACIONES="${GWAL_NOTIFICACIONES:-true}"
+LIVE="${GWAL_LIVE_WALLPAPER:-}"
 
 # Estado de la última selección (lo fijan las funciones de elección).
 SELECCIONADA=""
@@ -191,9 +192,27 @@ menu_zenity() {
 
 # ─── Aplicar fondo ───────────────────────────────────────────────────────────
 
+es_animada() {
+    [[ -n "$LIVE" && -x "$LIVE" ]] || return 1
+    "$LIVE" --is-animated "$1" >/dev/null 2>&1
+}
+
+detener_live() {
+    [[ -n "$LIVE" && -x "$LIVE" ]] || return 0
+    "$LIVE" --stop >/dev/null 2>&1 || true
+}
+
 aplicar_fondo() {
     local img uri
     img="$(realpath "$1")" || error "ruta de imagen inválida: '$1'"
+
+    if es_animada "$img"; then
+        "$LIVE" "$img" || error "no se pudo aplicar el fondo animado"
+        echo "Fondo animado aplicado: $img"
+        return 0
+    fi
+
+    detener_live
     uri="file://$img"
     gsettings set org.gnome.desktop.background picture-uri "$uri" \
         || error "gsettings falló al establecer picture-uri"
@@ -222,6 +241,9 @@ Opciones:
   -h, --help     Muestra esta ayuda
 
 Sin argumentos, muestra un diálogo de selección.
+
+Los GIF, WebP y AVIF animados se reproducen con Gnome Live Wallpaper Engine;
+el resto se aplica como fondo estático.
 EOF
 }
 

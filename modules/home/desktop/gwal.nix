@@ -7,12 +7,24 @@
 let
   cfg = config.modulos.home.desktop.gwal;
 
+  liveWallpaperPython = pkgs.python3.withPackages (ps: [ ps.pillow ]);
+
+  liveWallpaper = pkgs.writeScriptBin "wallpaper-live" ''
+    #!${pkgs.bash}/bin/bash
+    export WALLPAPER_LIVE_FFMPEG=${pkgs.ffmpeg}/bin/ffmpeg
+    export WALLPAPER_LIVE_FFPROBE=${pkgs.ffmpeg}/bin/ffprobe
+    export WALLPAPER_LIVE_DCONF=${pkgs.dconf}/bin/dconf
+    export WALLPAPER_LIVE_GNOME_EXTENSIONS=${pkgs.gnome-shell}/bin/gnome-extensions
+    exec ${liveWallpaperPython}/bin/python3 ${./wallpaper-live.py} "$@"
+  '';
+
   gwalBin = pkgs.writeShellScriptBin "gwal" ''
     export GWAL_DIRECTORIO='${cfg.directorio}'
     export GWAL_MODO='${cfg.modo}'
     export GWAL_EXTENSIONES='${lib.concatStringsSep " " cfg.extensiones}'
     export GWAL_ESTADO_DIRECTORIO='${cfg.estadoDirectorio}'
     export GWAL_NOTIFICACIONES='${lib.boolToString cfg.notificaciones}'
+    export GWAL_LIVE_WALLPAPER='${liveWallpaper}/bin/wallpaper-live'
     exec ${pkgs.bash}/bin/bash ${./gwal.sh} "$@"
   '';
 in
@@ -57,6 +69,11 @@ in
         "bmp"
         "svg"
         "farbfeld"
+        "mp4"
+        "webm"
+        "mkv"
+        "mov"
+        "avi"
       ];
       description = "Extensiones de imagen soportadas";
     };
@@ -78,6 +95,7 @@ in
     home.packages = [
       pkgs.zenity
       gwalBin
+      liveWallpaper
     ]
     ++ lib.optional cfg.notificaciones pkgs.libnotify;
 
