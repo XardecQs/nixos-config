@@ -8,6 +8,20 @@
 let
   cfg = config.modulos.home.desktop.gnome;
 
+  # GWE 1.3.0 (version 9) incorpora el renderer de GNOME 50 con
+  # Meta.WaylandClient, ventana DESKTOP y clonado en la capa de fondo. La
+  # versión de nixpkgs (1.2.1/8) usa una ventana mpv normal y provoca que
+  # aparezca en el dock, se pueda arrastrar y quede sobre los iconos de DING.
+  gnomeWallpaperEngine = pkgs.gnomeExtensions.gnome-wallpaper-engine.overrideAttrs (_old: {
+    version = "1.3.0";
+    src = pkgs.fetchFromGitHub {
+      owner = "achu94";
+      repo = "gnome-wallpaper-engine";
+      rev = "7c5bb3b6d209ad0b4049f05d1672371cd884b2b1";
+      hash = "sha256-apRjgDqwYC8/2A+jCO2PknDw+klt1wk3v6r1iHkAu5g=";
+    };
+  });
+
   # Thumbnailer propio para AVIF. El loader gdk-pixbuf de libavif 1.4.1 sólo
   # reconoce AVIF cuyo box `ftyp` mide 32 bytes (máscara buggy de la firma), así
   # que los AVIF de 3 compatible brands no generan miniatura. En vez de parchear
@@ -47,7 +61,7 @@ in
       gnomeExtensions.night-theme-switcher
       gnomeExtensions.boost-volume
       gnomeExtensions.gtk4-desktop-icons-ng-ding
-      gnomeExtensions.gnome-wallpaper-engine
+      gnomeWallpaperEngine
       mpv
 
       gnome-tweaks
@@ -161,7 +175,7 @@ in
           night-theme-switcher.extensionUuid
           boost-volume.extensionUuid
           gtk4-desktop-icons-ng-ding.extensionUuid
-          gnome-wallpaper-engine.extensionUuid
+          gnomeWallpaperEngine.extensionUuid
         ];
       };
 

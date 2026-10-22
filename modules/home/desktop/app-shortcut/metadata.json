@@ -1,0 +1,7 @@
+{
+  "uuid": "desktop-shortcut@xardec.local",
+  "name": "Crear acceso directo",
+  "description": "Añade 'Crear acceso directo en el escritorio' al menú contextual de las aplicaciones.",
+  "shell-version": ["50"],
+  "version": 1
+}

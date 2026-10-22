@@ -16,8 +16,10 @@
     };
 
     desktop = {
+      appShortcut.enable = true;
       audio.enable = true;
       gnome.enable = true;
+      varios.enable = true;
 
       dingWidgets = {
         enable = true;

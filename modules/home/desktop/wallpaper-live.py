@@ -164,7 +164,7 @@ def convert_avif(path, output):
         "-b:v",
         "0",
         "-crf",
-        "35",
+        "30",
         "-row-mt",
         "1",
         "-cpu-used",
@@ -211,7 +211,7 @@ def convert_webp(path, output):
             "-b:v",
             "0",
             "-crf",
-            "35",
+            "30",
             "-row-mt",
             "1",
             "-cpu-used",
@@ -242,26 +242,35 @@ def convert_webp(path, output):
 
 
 def make_thumbnail(video, thumbnail):
-    result = run(
-        [
-            FFMPEG,
-            "-y",
-            "-v",
-            "error",
-            "-ss",
-            "0",
-            "-i",
-            str(video),
-            "-frames:v",
-            "1",
-            "-vf",
-            "scale=640:-2",
-            str(thumbnail),
-        ]
-    )
-    if result.returncode != 0 or not thumbnail.exists():
+    for seek in ("1", "0"):
         thumbnail.unlink(missing_ok=True)
-        raise RuntimeError(result.stderr.strip() or "no se pudo generar el thumbnail")
+        result = run(
+            [
+                FFMPEG,
+                "-y",
+                "-v",
+                "error",
+                "-ss",
+                seek,
+                "-i",
+                str(video),
+                "-frames:v",
+                "1",
+                "-vf",
+                "scale=trunc(iw/2)*2:trunc(ih/2)*2",
+                "-q:v",
+                "2",
+                str(thumbnail),
+            ]
+        )
+        if (
+            result.returncode == 0
+            and thumbnail.exists()
+            and thumbnail.stat().st_size > 0
+        ):
+            return
+    thumbnail.unlink(missing_ok=True)
+    raise RuntimeError(result.stderr.strip() or "no se pudo generar el thumbnail")
 
 
 def link_file(target, link):

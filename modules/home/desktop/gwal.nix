@@ -18,6 +18,13 @@ let
     exec ${liveWallpaperPython}/bin/python3 ${./wallpaper-live.py} "$@"
   '';
 
+  wallpaperConvert = pkgs.writeScriptBin "wallpaper-convert" ''
+    #!${pkgs.bash}/bin/bash
+    export WALLPAPER_CONVERT_FFMPEG=${pkgs.ffmpeg}/bin/ffmpeg
+    export WALLPAPER_CONVERT_FFPROBE=${pkgs.ffmpeg}/bin/ffprobe
+    exec ${pkgs.python3}/bin/python3 ${./wallpaper-convert.py} "$@"
+  '';
+
   gwalBin = pkgs.writeShellScriptBin "gwal" ''
     export GWAL_DIRECTORIO='${cfg.directorio}'
     export GWAL_MODO='${cfg.modo}'
@@ -96,6 +103,7 @@ in
       pkgs.zenity
       gwalBin
       liveWallpaper
+      wallpaperConvert
     ]
     ++ lib.optional cfg.notificaciones pkgs.libnotify;
 

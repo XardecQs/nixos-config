@@ -32,7 +32,7 @@ activos, **por origen** para el archivo sentimental y **por tipo** para media/ju
 │   ├── Plantillas/            # XDG templates
 │   └── Notas/                 # vault de Obsidian
 ├── Media/                     # por TIPO (término técnico)
-│   ├── Imágenes/{Capturas de pantalla,Fondos de pantalla/{Animados},Fotos,...}
+│   ├── Imágenes/{Capturas de pantalla,Fondos de pantalla,Fotos,...}
 │   ├── Vídeos/{Grabaciones de pantalla,Fondos animados,...}
 │   ├── Música/{Álbumes,Sencillos}
 │   ├── Libros/
@@ -48,8 +48,8 @@ activos, **por origen** para el archivo sentimental y **por tipo** para media/ju
 ```
 
 Los wallpapers estáticos viven en `Media/Imágenes/Fondos de pantalla` (SSD) y los
-AVIF animados en `Media/Imágenes/Fondos de pantalla/Animados`. `Virtualizacion`
-apunta al HDD y es regenerable.
+animados (AVIF/WebM) en `Media/Vídeos/Fondos animados`. `Virtualizacion` apunta
+al HDD y es regenerable.
 
 ## Clasificación por disco
 
