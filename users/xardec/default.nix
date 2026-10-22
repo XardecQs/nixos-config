@@ -1,5 +1,7 @@
 { host, ... }:
 {
+  programs.unmined.enable = true;
+
   modulos.home = {
     core = {
       dotfiles = {

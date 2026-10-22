@@ -87,6 +87,8 @@
       "syncthing"
       "systemd"
       "tmux"
+      "unmined"
+      "unmined-cli"
       "user-dirs.conf"
       "user-dirs.dirs"
       "vectorcraft"

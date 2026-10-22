@@ -30,6 +30,11 @@
       url = "git+file:///home/xardec/Proyectos/GitHub/artcraft-nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    unmined-nix = {
+      # local: empaquetado propio de uNmINeD (GUI + CLI) y su módulo HM.
+      url = "git+file:///home/xardec/Proyectos/GitHub/unmined-nix";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs-stable";
@@ -132,6 +137,7 @@
                 };
                 sharedModules = [
                   ./modules/home
+                  inputs.unmined-nix.homeManagerModules.default
                   inputs.nix-flatpak.homeManagerModules.nix-flatpak
                 ];
                 users = nixpkgs-stable.lib.listToAttrs (

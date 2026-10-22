@@ -320,7 +320,8 @@
         "nix-index-database": "nix-index-database",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "preservation": "preservation"
+        "preservation": "preservation",
+        "unmined-nix": "unmined-nix"
       }
     },
     "systems": {
@@ -336,6 +337,26 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
+      }
+    },
+    "unmined-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-stable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792699014,
+        "narHash": "sha256-XjSdBGdueyJFxiM58HAe5jm1jAD8At9yBa7hxA1Z6kA=",
+        "ref": "refs/heads/main",
+        "rev": "5e7443e737c456e3444afefdd9f89b1cf4f2eebe",
+        "revCount": 1,
+        "type": "git",
+        "url": "file:///home/xardec/Proyectos/GitHub/unmined-nix"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///home/xardec/Proyectos/GitHub/unmined-nix"
       }
     }
   },
