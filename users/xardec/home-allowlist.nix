@@ -120,6 +120,8 @@
       "gta-mo"
       "gthumb"
       "gvfs-metadata"
+      "horizon"
+      "horizon-launcher"
       "HotlineMiami"
       "icc"
       "icons"

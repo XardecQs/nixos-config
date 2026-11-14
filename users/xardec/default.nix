@@ -123,6 +123,7 @@
 
     apps = {
       artcraft.enable = true;
+      horizon.enable = true;
       obs.enable = true;
       flatpak = {
         enable = true;

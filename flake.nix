@@ -35,6 +35,11 @@
       url = "git+file:///home/xardec/Proyectos/GitHub/unmined-nix";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    horizon-nix = {
+      # local: launcher de Horizon empaquetado y su módulo HM.
+      url = "git+file:///home/xardec/Proyectos/GitHub/horizon-nix";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs-stable";

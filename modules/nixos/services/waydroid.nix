@@ -148,7 +148,7 @@ in
   config = lib.mkIf cfg.enable {
     virtualisation.waydroid = {
       enable = true;
-      package = cfg.package;
+      inherit (cfg) package;
     };
 
     environment.systemPackages = [

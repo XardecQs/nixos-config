@@ -55,14 +55,14 @@ in
         };
         folders = lib.listToAttrs (
           map (folder: {
-            name = folder.name;
+            inherit (folder) name;
             value = {
               path =
                 if lib.hasPrefix "/" folder.path then
                   folder.path
                 else
                   "${config.home.homeDirectory}/${folder.path}";
-              id = folder.id;
+              inherit (folder) id;
               devices = lib.optional (cfg.deviceId != "") cfg.deviceName;
             };
           }) cfg.folders

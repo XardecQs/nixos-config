@@ -17,15 +17,26 @@ Configuración NixOS + home-manager, **multi-host** y **multi-usuario**, gestion
 | `secrets/` | Secretos cifrados con agenix. |
 | `docs/` | Guías. |
 
-## Reconstruir
+## Tareas
+
+Las tareas viven en `justfile` (requiere `just`, incluido en el perfil de usuario):
 
 ```sh
-# con la función `rebuild` del zsh (usa nh y detecta inputs locales):
-rebuild
-
-# equivalente manual:
-nh os switch ~/Proyectos/GitHub/nixos-config
+just                    # lista las tareas
+just switch             # aplica la configuración (nh + overrides de inputs locales)
+just boot               # registra la próxima generación de arranque
+just build              # construye sin activar
+just check              # nix flake check con overrides
+just ci                 # fmt-check + lint + check
+just fmt                # formatea todos los .nix versionados
+just update             # actualiza todos los inputs
+just update nixpkgs-stable
+just gc                 # limpia generaciones antiguas
+just audit              # home-audit
 ```
+
+`just switch` acepta otro host: `just switch <host>`. La función `rebuild` del zsh
+sigue disponible y llama al mismo script (`scripts/flake.sh`).
 
 Hosts disponibles: `NeoReaper`.
 

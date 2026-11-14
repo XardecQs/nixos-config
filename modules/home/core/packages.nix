@@ -49,6 +49,7 @@ in
       nixfmt
       statix
       deadnix
+      just
       texliveFull
       cargo
       rust-analyzer
@@ -62,7 +63,7 @@ in
       upx
       unstable.vscode
       ffmpeg-full
-      opencode
+      unstable.opencode
       unstable.ghidra
 
       protonup-ng
@@ -71,6 +72,8 @@ in
       cage
       onlyoffice-desktopeditors
       varia
+
+      #unstable.rustdesk
     ];
     programs.git = {
       enable = true;

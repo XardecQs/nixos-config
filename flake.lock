@@ -132,11 +132,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792135071,
-        "narHash": "sha256-3+D1f1foKpYSlpwUc4c4t26fwv2lxKCiM7lksZvf1ZY=",
+        "lastModified": 1794152415,
+        "narHash": "sha256-QMcluV/cvEp7+8mh02374Tr25VQLT6D721WCaJW9VVo=",
         "ref": "refs/heads/main",
-        "rev": "f9591f386bfe44804285acb426959d163c3c3395",
-        "revCount": 156,
+        "rev": "b0fc0818516f63347e2d3c786912c24a37663550",
+        "revCount": 161,
         "type": "git",
         "url": "file:///home/xardec/Proyectos/GitHub/samt-nix"
       },
@@ -185,6 +185,26 @@
         "ref": "release-26.05",
         "repo": "home-manager",
         "type": "github"
+      }
+    },
+    "horizon-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-stable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792894472,
+        "narHash": "sha256-8Mm6ebOt+bqA0zIArVSwjgGaS0B1W8q+ZzsfK51ymoI=",
+        "ref": "refs/heads/main",
+        "rev": "c074034f18d8a46a49944c999ab04dadb122e290",
+        "revCount": 2,
+        "type": "git",
+        "url": "file:///home/xardec/Proyectos/GitHub/horizon-nix"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///home/xardec/Proyectos/GitHub/horizon-nix"
       }
     },
     "iconos": {
@@ -315,6 +335,7 @@
         "font-collection": "font-collection",
         "gta-mo": "gta-mo",
         "home-manager": "home-manager_2",
+        "horizon-nix": "horizon-nix",
         "iconos": "iconos",
         "nix-flatpak": "nix-flatpak",
         "nix-index-database": "nix-index-database",

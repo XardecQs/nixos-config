@@ -65,8 +65,7 @@ in
         proton_disable_upscalers = cfg.disableUpscalers;
         proton_use_wined3d = false;
         auto_discover = true;
-        preload = cfg.preload;
-        timings = cfg.timings;
+        inherit (cfg) preload timings;
         proton_log = false;
         prefix_ram = true;
         prefix_ram_proton = true;
